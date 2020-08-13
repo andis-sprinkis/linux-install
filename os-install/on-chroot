@@ -1,0 +1,109 @@
+#!/usr/bin/env sh
+set -e
+dir=$(cd -P -- "$(dirname -- "$0")" && pwd -P)
+. $dir/../config
+. $dir/../common/util
+
+add_enable_swapfile() {
+  echo_fn_status 0 ${FUNCNAME[0]}
+
+  # add and enable swapfile
+  dd if=/dev/zero of=/swapfile bs=1M count=$cf_swap_M_count status=progress
+  chmod 600 /swapfile && mkswap /swapfile && swapon /swapfile
+  echo /swapfile none swap defaults 0 0 >> /etc/fstab
+
+  echo_fn_status 1 ${FUNCNAME[0]}
+}
+
+enable_networkmanager() {
+  echo_fn_status 0 ${FUNCNAME[0]}
+
+  systemctl enable NetworkManager
+
+  echo_fn_status 1 ${FUNCNAME[0]}
+}
+
+set_timezone() {
+  echo_fn_status 0 ${FUNCNAME[0]}
+
+  ln -sf /usr/share/zoneinfo/$cf_timezone /etc/localtime
+
+  echo_fn_status 1 ${FUNCNAME[0]}
+}
+
+set_hardware_clock() {
+  echo_fn_status 0 ${FUNCNAME[0]}
+
+  hwclock --systohc 
+
+  echo_fn_status 1 ${FUNCNAME[0]}
+}
+
+set_locale() {
+  echo_fn_status 0 ${FUNCNAME[0]}
+
+  cp $dir/sys-config/locale/etc/locale.gen /etc
+  locale-gen
+  cp $dir/sys-config/locale/etc/locale.conf /etc
+
+  echo_fn_status 1 ${FUNCNAME[0]}
+}
+
+set_hostname() {
+  echo_fn_status 0 ${FUNCNAME[0]}
+
+  echo $cf_hostname > /etc/hostname
+
+  echo_fn_status 1 ${FUNCNAME[0]}
+}
+
+set_root_password() {
+  echo_fn_status 0 ${FUNCNAME[0]}
+
+  set_user_pw root
+
+  echo_fn_status 1 ${FUNCNAME[0]}
+}
+
+create_regular_user() {
+  echo_fn_status 0 ${FUNCNAME[0]}
+
+  useradd -m $cf_username
+  usermod -G wheel -a $cf_username
+  set_user_pw $cf_username
+
+  echo_fn_status 1 ${FUNCNAME[0]}
+}
+
+set_sudoers() {
+  echo_fn_status 0 ${FUNCNAME[0]}
+
+  cp $dir/sys-config/sudoers/etc/sudoers /etc
+
+  echo_fn_status 1 ${FUNCNAME[0]}
+}
+
+initialize_bootloader() {
+  echo_fn_status 0 ${FUNCNAME[0]}
+
+  bootctl --path=/boot install
+  cp -rv $dir/sys-config/systemd-boot/* /
+  echo "options root=PARTUUID=$(blkid -s PARTUUID -o value $cf_system_partition) rw" >> /boot/loader/entries/arch.conf
+
+  echo_fn_status 1 ${FUNCNAME[0]}
+}
+
+on_chroot() {
+  add_enable_swapfile
+  enable_networkmanager
+  set_timezone
+  set_hardware_clock
+  set_locale
+  set_hostname
+  set_root_password
+  create_regular_user
+  set_sudoers
+  initialize_bootloader
+}
+
+on_chroot

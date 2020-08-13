@@ -1,0 +1,12 @@
+#!/usr/bin/env sh
+set -e
+
+cf_hostname=arch-00
+cf_username=user-00
+cf_timezone=Europe/Riga
+cf_boot_partition=/dev/sda1
+cf_system_partition=/dev/sda2
+cf_mkfs_format_system_partition=ext4
+cf_swap_M_count=4096
+cf_pacman_mirror_country=Latvia,Lithuania,Estonia,Finland,Sweden,Russia
+cf_base_packages="base linux linux-firmware sudo git neovim networkmanager openssh"

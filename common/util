@@ -1,0 +1,95 @@
+#!/usr/bin/env sh
+set -e
+
+echo_br_bottom() {
+  echo $1; echo
+}
+
+echo_br_top() {
+  echo; echo $1
+}
+
+echo_br_both() {
+  echo; echo $1; echo
+}
+
+echo_fn_status() {
+  if [ "$1" -eq "0" ]; then
+    echo_br_bottom "Function $2 started..."
+  fi 
+
+  if [ "$1" -eq "1" ]; then
+    echo_br_bottom "Function $2 is complete!"
+  fi 
+}
+
+echo_script_status() {
+  if [ "$1" -eq "0" ]; then
+    echo_br_bottom "Starting $2..."
+  fi 
+
+  if [ "$1" -eq "1" ]; then
+    echo_br_bottom "$2 is complete!"
+  fi 
+}
+
+read_pw() {
+  REPLY="$(
+    # always read from the tty even when redirected:
+    exec < /dev/tty || exit # || exit only needed for bash
+
+    # save current tty settings:
+    tty_settings=$(stty -g) || exit
+
+    # schedule restore of the settings on exit of that subshell
+    # or on receiving SIGINT or SIGTERM:
+    trap 'stty "$tty_settings"' EXIT INT TERM
+
+    # disable terminal local echo
+    stty -echo || exit
+
+    # prompt on tty
+    printf "Password: " > /dev/tty
+
+    # read password as one line, record exit status
+    IFS= read -r password; ret=$?
+
+    # display a newline to visually acknowledge the entered password
+    echo > /dev/tty
+
+    # return the password for $REPLY
+    printf '%s\n' "$password"
+    exit "$ret"
+  )"
+}
+
+set_user_pw() {
+  prefix_usr_input_err="User input error -"
+  echo "Set the password for user $1."
+  read_pw && password_1=$REPLY && REPLY=""
+
+  if [ -z "$password_1" ]; then
+    password_1="" password_2=""
+    echo_br_top "$prefix_usr_input_err password must not be empty."
+    set_user_pw $1 && return 0; return 1
+  fi
+
+  echo_br_top "Repeat the password user $1."
+  read_pw && password_2=$REPLY && REPLY=""
+
+  if [ -z "$password_2" ]; then
+    password_1="" password_2=""
+    echo_br_top "$prefix_usr_input_err password must not be empty."
+    set_user_pw $1 && return 0; return 1
+  fi
+
+  if [ ! "$password_1" == "$password_2" ]; then
+    password_1="" password_2=""
+    echo_br_top "$prefix_usr_input_err passwords must match."
+    set_user_pw $1 && return 0; return 1
+  fi
+
+  (echo "$password_1"; echo "$password_2") | passwd $1
+  password_1="" password_2=""
+  echo_br_both "Password for user $1 has been set."
+}

@@ -1,0 +1,16 @@
+#!/usr/bin/env sh
+set -e
+dir=$(cd -P -- "$(dirname -- "$0")" && pwd -P)
+. $dir/../common/util
+scriptname="System installation script"
+echo_script_status 0 "$scriptname"
+
+system_install() {
+  $dir/pre-chroot
+  arch-chroot /mnt /linux-install/os-install/on-chroot
+}
+
+system_install
+
+echo_script_status 1 "$scriptname"
+echo_br_bottom "Please reboot (systemctl reboot) and run /linux-install/post-os-install/install to continue with installing the user packages and configuration!"
