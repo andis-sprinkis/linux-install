@@ -14,14 +14,6 @@ activate_ntp() {
   echo_fn_status 1 ${FUNCNAME[0]}
 }
 
-install_pkg_pacman() {
-  echo_fn_status 0 ${FUNCNAME[0]}
-
-  sudo pacman -S --needed - < $dir/list-pkg-pacman 
-
-  echo_fn_status 1 ${FUNCNAME[0]}
-}
-
 install_pkg_aur() {
   echo_fn_status 0 ${FUNCNAME[0]}
 
@@ -33,19 +25,6 @@ install_pkg_aur() {
     cd $HOME
   fi
   yay -S --needed - < $dir/list-pkg-aur
-
-  echo_fn_status 1 ${FUNCNAME[0]}
-}
-
-install_st() {
-  echo_fn_status 0 ${FUNCNAME[0]}
-
-  temp_path=$(mktemp -d)
-  git clone https://github.com/andis-sprinkis/st.git $temp_path
-  cd $temp_path
-  git checkout 73c034ba05101e2fc337183af1cdec5bfe318b99
-  sudo make install
-  cd $HOME
 
   echo_fn_status 1 ${FUNCNAME[0]}
 }
@@ -77,14 +56,6 @@ install_otf_cascadia_code() {
   echo_fn_status 1 ${FUNCNAME[0]}
 }
 
-change_shell() {
-  echo_fn_status 0 ${FUNCNAME[0]}
-
-  chsh -s /bin/zsh $cf_username 
-
-  echo_fn_status 1 ${FUNCNAME[0]}
-}
-
 install_dotfile() {
   echo_fn_status 0 ${FUNCNAME[0]}
 
@@ -110,14 +81,11 @@ enable_vboxservice() {
 
 install_user_cfg() {
   activate_ntp
-  install_pkg_pacman
   install_pkg_aur
-  install_st
   install_node_lts
   install_otf_cascadia_code
   install_dotfile
   enable_vboxservice
-  change_shell
 }
 
 install_user_cfg

@@ -15,6 +15,16 @@ add_enable_swapfile() {
   echo_fn_status 1 ${FUNCNAME[0]}
 }
 
+initialize_bootloader() {
+  echo_fn_status 0 ${FUNCNAME[0]}
+
+  bootctl --path=/boot install
+  cp -rv $dir/sys-config/systemd-boot/* /
+  echo "options root=PARTUUID=$(blkid -s PARTUUID -o value $cf_system_partition) rw" >> /boot/loader/entries/arch.conf
+
+  echo_fn_status 1 ${FUNCNAME[0]}
+}
+
 enable_networkmanager() {
   echo_fn_status 0 ${FUNCNAME[0]}
 
@@ -83,17 +93,38 @@ set_sudoers() {
   echo_fn_status 1 ${FUNCNAME[0]}
 }
 
-initialize_bootloader() {
+change_shell() {
   echo_fn_status 0 ${FUNCNAME[0]}
 
-  bootctl --path=/boot install
-  cp -rv $dir/sys-config/systemd-boot/* /
-  echo "options root=PARTUUID=$(blkid -s PARTUUID -o value $cf_system_partition) rw" >> /boot/loader/entries/arch.conf
+  chsh -s /bin/zsh root
+  chsh -s /bin/zsh $cf_username 
+
+  echo_fn_status 1 ${FUNCNAME[0]}
+}
+
+install_pkg_pacman() {
+  echo_fn_status 0 ${FUNCNAME[0]}
+
+  sudo pacman -S --needed - < $dir/list-pkg-pacman 
+
+  echo_fn_status 1 ${FUNCNAME[0]}
+}
+
+install_st() {
+  echo_fn_status 0 ${FUNCNAME[0]}
+
+  temp_path=$(mktemp -d)
+  git clone https://github.com/andis-sprinkis/st.git $temp_path
+  cd $temp_path
+  git checkout 73c034ba05101e2fc337183af1cdec5bfe318b99
+  make install
+  cd $HOME
 
   echo_fn_status 1 ${FUNCNAME[0]}
 }
 
 on_chroot() {
+  initialize_bootloader
   add_enable_swapfile
   enable_networkmanager
   set_timezone
@@ -103,7 +134,9 @@ on_chroot() {
   set_root_password
   create_regular_user
   set_sudoers
-  initialize_bootloader
+  install_pkg_pacman
+  install_st
+  change_shell
 }
 
 on_chroot
