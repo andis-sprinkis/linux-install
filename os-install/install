@@ -2,6 +2,7 @@
 set -e
 dir=$(cd -P -- "$(dirname -- "$0")" && pwd -P)
 . $dir/../common/util
+. $dir/../config
 scriptname="System installation script"
 echo_script_status 0 "$scriptname"
 
