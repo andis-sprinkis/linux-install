@@ -126,7 +126,7 @@ install_st() {
 }
 
 su_regular_user() {
-  su $cf_username -c "/linux-install/os-install/on-su-regular-user"
+  su $cf_username --pty -c "/linux-install/os-install/on-su-regular-user"
 }
 
 fn() {

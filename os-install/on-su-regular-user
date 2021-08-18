@@ -14,7 +14,7 @@ install_pkg_aur() {
     makepkg -si
     cd $HOME
   fi
-  yay -S --needed - < $dir/list-pkg-aur
+  yay -S --noconfirm --needed - < $dir/list-pkg-aur
 
   echo_fn_status 1 ${FUNCNAME[0]}
 }
