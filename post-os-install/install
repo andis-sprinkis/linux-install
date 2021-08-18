@@ -24,9 +24,15 @@ enable_vboxservice() {
   echo_fn_status 1 ${FUNCNAME[0]}
 }
 
+clean_zshrc() {
+  tmp=$(mktemp)
+  head -n -1 /home/${cf_username}/.zshrc > $tmp && mv $tmp /home/${cf_username}/.zshrc
+}
+
 fn() {
   activate_ntp
   enable_vboxservice
+  clean_zshrc
 }
 
 fn

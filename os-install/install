@@ -8,9 +8,10 @@ echo_script_status 0 "$scriptname"
 fn() {
   $dir/pre-chroot
   arch-chroot /mnt /linux-install/os-install/on-chroot
+  echo "sudo /linux-install/post-os-install/install" >> /mnt/home/${cf_username}/.zshrc
 }
 
 fn
 
 echo_script_status 1 "$scriptname"
-echo_br_bottom "Please reboot (systemctl reboot) and run /linux-install/post-os-install/install to continue with installing the user packages and configuration!"
+echo_br_bottom "Please reboot and log in the tty as ${cf_username} to finish installing the user packages and configuration!"
