@@ -56,7 +56,7 @@ cp_install_files_root() {
   echo_fn_status 1 ${FUNCNAME[0]}
 }
 
-pre_chroot() {
+fn() {
   format_partitions
   mount_partitions
   sort_pacman_mirrors
@@ -65,4 +65,4 @@ pre_chroot() {
   cp_install_files_root
 }
 
-pre_chroot
+fn

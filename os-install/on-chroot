@@ -98,6 +98,8 @@ change_shell() {
 
   chsh -s /bin/zsh root
   chsh -s /bin/zsh $cf_username 
+  touch /root/.zshrc
+  touch /home/$cf_username/.zshrc
 
   echo_fn_status 1 ${FUNCNAME[0]}
 }
@@ -123,7 +125,11 @@ install_st() {
   echo_fn_status 1 ${FUNCNAME[0]}
 }
 
-on_chroot() {
+su_regular_user() {
+  su $cf_username -c "/linux-install/os-install/on-su-regular-user"
+}
+
+fn() {
   initialize_bootloader
   add_enable_swapfile
   enable_networkmanager
@@ -137,6 +143,7 @@ on_chroot() {
   install_pkg_pacman
   install_st
   change_shell
+  su_regular_user
 }
 
-on_chroot
+fn
