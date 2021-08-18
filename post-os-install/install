@@ -24,11 +24,11 @@ enable_vboxservice() {
   echo_fn_status 1 ${FUNCNAME[0]}
 }
 
-run_functions() {
+fn() {
   activate_ntp
   enable_vboxservice
 }
 
-run_functions
+fn
 
 echo_script_status 1 "$scriptname"
