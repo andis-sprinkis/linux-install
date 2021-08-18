@@ -107,7 +107,7 @@ change_shell() {
 install_pkg_pacman() {
   echo_fn_status 0 ${FUNCNAME[0]}
 
-  sudo pacman -S --needed - < $dir/list-pkg-pacman 
+  sudo pacman -S --noconfirm --needed - < $dir/list-pkg-pacman 
 
   echo_fn_status 1 ${FUNCNAME[0]}
 }
