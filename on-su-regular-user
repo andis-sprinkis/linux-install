@@ -62,7 +62,7 @@ install_node_lts() {
 set_post_reboot_script() {
   echo_fn_status 0 ${FUNCNAME[0]}
 
-  echo "sudo /linux-instal/post-reboot" >> /home/${cf_username}/.zshrc
+  echo "sudo /linux-install/post-reboot" >> /home/${cf_username}/.zshrc
 
   echo_fn_status 1 ${FUNCNAME[0]}
 }
