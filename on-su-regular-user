@@ -59,7 +59,7 @@ install_node_lts() {
   echo_fn_status 1 ${FUNCNAME[0]}
 }
 
-zsrhc_append_post_reboot_script() {
+set_post_reboot_script() {
   echo_fn_status 0 ${FUNCNAME[0]}
 
   echo "sudo /linux-instal/post-reboot" >> /home/${cf_username}/.zshrc
@@ -72,7 +72,7 @@ fn() {
   install_dotfile
   install_otf_cascadia_code
   install_node_lts
-  zshrc_append_post_reboot_script
+  set_post_reboot_script
   exit
 }
 
