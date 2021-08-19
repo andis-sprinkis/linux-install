@@ -30,6 +30,7 @@ cleanup_zshrc() {
   tmp=$(mktemp)
   path_zshrc=/home/${cf_username}/.zshrc
   head -n -1 $path_zshrc > $tmp && mv $tmp $path_zshrc
+  chown $cf_username:$cf_username $path_zshrc
 
   echo_fn_status 0 ${FUNCNAME[1]}
 }
