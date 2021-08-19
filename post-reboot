@@ -9,7 +9,7 @@ echo_script_status 0 "$scriptname"
 activate_ntp() {
   echo_fn_status 0 ${FUNCNAME[0]}
 
-  timedatectl set-ntp on
+  sudo timedatectl set-ntp on
 
   echo_fn_status 1 ${FUNCNAME[0]}
 }
@@ -18,7 +18,7 @@ enable_vboxservice() {
   echo_fn_status 0 ${FUNCNAME[0]}
 
   if ! systemctl is-active --quiet vboxservice.service; then
-    systemctl enable --now vboxservice.service
+    sudo systemctl enable --now vboxservice.service
   fi
 
   echo_fn_status 1 ${FUNCNAME[0]}
@@ -30,7 +30,6 @@ cleanup_zshrc() {
   tmp=$(mktemp)
   path_zshrc=/home/${cf_username}/.zshrc
   head -n -1 $path_zshrc > $tmp && mv $tmp $path_zshrc
-  chown $cf_username:$cf_username $path_zshrc
 
   echo_fn_status 0 ${FUNCNAME[1]}
 }
