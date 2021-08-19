@@ -27,11 +27,11 @@ computer. In order to do that:
    ```bash
    reflector --country Latvia,Lithuania,Estonia,Finland,Sweden,Russia --protocol https --latest 5 --save /etc/pacman.d/mirrorlist
    rm -rf /var/lib/pacman/sync && pacman --noconfirm -Sy git neovim
-   git clone https://github.com/andis-sprinkis/linux-install /linux-install && /linux-install/os-install/install
+   git clone https://github.com/andis-sprinkis/linux-install /linux-install && /linux-install/start-setup
    systemctl-reboot
    ```
    ```bash
-   /linux-install/post-os-install/install
+   /linux-install/start-setup
    exit
    ```
 1. Start GUI locally:

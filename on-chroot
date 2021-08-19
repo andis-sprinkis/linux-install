@@ -1,8 +1,8 @@
 #!/usr/bin/env sh
 set -e
 dir=$(cd -P -- "$(dirname -- "$0")" && pwd -P)
-. $dir/../config
-. $dir/../common/util
+. $dir/config
+. $dir/util
 
 add_enable_swapfile() {
   echo_fn_status 0 ${FUNCNAME[0]}
@@ -107,7 +107,7 @@ change_shell() {
 install_pkg_pacman() {
   echo_fn_status 0 ${FUNCNAME[0]}
 
-  sudo pacman -S --needed - < $dir/list-pkg-pacman 
+  sudo pacman -S --needed - < $dir/package-lists/list-pkg-pacman 
 
   echo_fn_status 1 ${FUNCNAME[0]}
 }
@@ -126,7 +126,7 @@ install_st() {
 }
 
 su_regular_user() {
-  su $cf_username --pty -c "/linux-install/os-install/on-su-regular-user"
+  su $cf_username --pty -c "/linux-install/on-su-regular-user"
 }
 
 fn() {

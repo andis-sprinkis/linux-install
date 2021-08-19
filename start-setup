@@ -1,0 +1,17 @@
+#!/usr/bin/env sh
+set -e
+dir=$(cd -P -- "$(dirname -- "$0")" && pwd -P)
+. $dir/config
+. $dir/util
+scriptname="System installation script"
+echo_script_status 0 "$scriptname"
+
+fn() {
+  $dir/pre-chroot
+  arch-chroot /mnt /linux-install/on-chroot
+}
+
+fn
+
+echo_script_status 1 "$scriptname"
+echo_br_bottom "Please reboot and log into tty as ${cf_username} to finalize installation of the user configuration!"
