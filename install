@@ -283,7 +283,6 @@ pre_reboot() {
   generate_fstab
   cp_install_files_root
   arch-chroot /mnt /linux-install/install 1
-  systemctl reboot
 
   echo_script_status 1 "$scriptname"
 }
@@ -321,7 +320,7 @@ on_su_regular_user() {
   set_post_reboot_script
 
   echo_script_status 1 "$scriptname"
-  exit
+  systemctl reboot
 }
 
 post_reboot() {
