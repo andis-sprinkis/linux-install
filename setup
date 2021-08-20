@@ -124,7 +124,8 @@ set_root_password() {
 
   set_user_pw root
 
-  echo_fn_status 1 ${FUNCNAME[0]} }
+  echo_fn_status 1 ${FUNCNAME[0]} 
+}
 
 create_regular_user() {
   echo_fn_status 0 ${FUNCNAME[0]}
@@ -334,7 +335,7 @@ post_reboot() {
   echo_script_status 1 "$scriptname"
 }
 
-if [ "$1" -eq "0" || -z "$1" ]; then; pre_reboot; fi
-if [ "$1" -eq "1" ]; then; on_chroot; fi
-if [ "$1" -eq "2" ]; then; on_su_regular_user; fi
-if [ "$1" -eq "3" ]; then; post_reboot; fi
+  [ -z "$1" ] || [ "$1" -eq "0" ] && pre_reboot
+[ ! -z "$1" ] && [ "$1" -eq "1" ] && on_chroot
+[ ! -z "$1" ] && [ "$1" -eq "2" ] && on_su_regular_user
+[ ! -z "$1" ] && [ "$1" -eq "3" ] && post_reboot
