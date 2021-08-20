@@ -178,7 +178,7 @@ install_st() {
 }
 
 su_regular_user() {
-  su $cf_username --pty -c "/linux-install/setup 2"
+  su $cf_username --pty -c "/linux-install/install 2"
 }
 
 install_pkg_aur() {
@@ -239,7 +239,7 @@ install_node_lts() {
 set_post_reboot_script() {
   echo_fn_status 0 ${FUNCNAME[0]}
 
-  echo "/linux-install/setup 3" >> /home/${cf_username}/.zshrc
+  echo "/linux-install/install 3" >> /home/${cf_username}/.zshrc
 
   echo_fn_status 1 ${FUNCNAME[0]}
 }
@@ -282,7 +282,7 @@ pre_reboot() {
   install_base_packages
   generate_fstab
   cp_install_files_root
-  arch-chroot /mnt /linux-install/setup 1
+  arch-chroot /mnt /linux-install/install 1
   systemctl reboot
 
   echo_script_status 1 "$scriptname"
