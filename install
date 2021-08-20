@@ -335,6 +335,6 @@ post_reboot() {
 }
 
   [ -z "$1" ] || [ "$1" -eq "0" ] && pre_reboot
-[ ! -z "$1" ] && [ "$1" -eq "1" ] && on_chroot
+[ ! -z "$1" ] && [ "$1" -eq "1" ] && on_chroot && systemctl reboot
 [ ! -z "$1" ] && [ "$1" -eq "2" ] && on_su_regular_user
 [ ! -z "$1" ] && [ "$1" -eq "3" ] && post_reboot
