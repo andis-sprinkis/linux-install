@@ -323,17 +323,6 @@ on_su_regular_user() {
   systemctl reboot
 }
 
-pre_reboot_finish() {
-  scriptname="Pre-reboot system installation finishing script"
-  echo_script_status 0 "$scriptname"
-
-  umount -lf /mnt/boot
-  umount -lf /mnt
-
-  echo_script_status 1 "$scriptname"
-  systemctl-reboot
-}
-
 post_reboot() {
   scriptname="Post-reboot system installation script"
   echo_script_status 0 "$scriptname"
@@ -346,6 +335,6 @@ post_reboot() {
 }
 
   [ -z "$1" ] || [ "$1" -eq "0" ] && pre_reboot_start
-[ ! -z "$1" ] && [ "$1" -eq "1" ] && on_chroot && pre_reboot_finish
+[ ! -z "$1" ] && [ "$1" -eq "1" ] && on_chroot && systemctl reboot
 [ ! -z "$1" ] && [ "$1" -eq "2" ] && on_su_regular_user
 [ ! -z "$1" ] && [ "$1" -eq "3" ] && post_reboot
