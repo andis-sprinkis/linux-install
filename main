@@ -320,7 +320,6 @@ on_su_regular_user() {
   set_post_reboot_script
 
   echo_script_status 1 "$scriptname"
-  systemctl reboot
 }
 
 
