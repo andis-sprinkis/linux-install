@@ -25,7 +25,7 @@ computer. In order to do that:
    | sda2          | System root    | Rest of the drive |              |
 1. Run the installation script:
    ```bash
-      curl -LO https://raw.githubusercontent.com/andis-sprinkis/linux-install/master/install && sh ./install
+   curl -LO https://raw.githubusercontent.com/andis-sprinkis/linux-install/master/install && sh ./install
    ```
 1. Start GUI locally:
    ```bash
