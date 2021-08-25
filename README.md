@@ -25,8 +25,7 @@ computer. In order to do that:
    | sda2          | System root    | Rest of the drive |              |
 1. Run installation scripts:
    ```bash
-   reflector --country Latvia,Lithuania,Estonia,Finland,Sweden,Russia --protocol https --latest 5 --save /etc/pacman.d/mirrorlist
-   rm -rf /var/lib/pacman/sync && pacman --noconfirm -Sy git neovim
+   reflector --country Latvia,Lithuania,Estonia,Finland,Sweden,Russia --protocol https --latest 5 --save /etc/pacman.d/mirrorlist && rm -rf /var/lib/pacman/sync && pacman --noconfirm -Sy git vi
    git clone https://github.com/andis-sprinkis/linux-install /linux-install
    /linux-install/install
    ```
