@@ -23,7 +23,7 @@ computer. In order to do that:
    |---------------|----------------|-------------------|--------------|
    | sda1          | Boot partition | `512M`            | `EFI System` |
    | sda2          | System root    | Rest of the drive |              |
-1. Run installation scripts:
+1. Clone the repository and run the installation script:
    ```bash
    reflector --country Latvia,Lithuania,Estonia,Finland,Sweden,Russia --protocol https --latest 5 --save /etc/pacman.d/mirrorlist && rm -rf /var/lib/pacman/sync && pacman --noconfirm -Sy git vi
    git clone https://github.com/andis-sprinkis/linux-install /linux-install
