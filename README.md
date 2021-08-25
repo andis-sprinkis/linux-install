@@ -23,11 +23,9 @@ computer. In order to do that:
    |---------------|----------------|-------------------|--------------|
    | sda1          | Boot partition | `512M`            | `EFI System` |
    | sda2          | System root    | Rest of the drive |              |
-1. Clone the repository and run the installation script:
+1. Run the installation script:
    ```bash
-   reflector --country Latvia,Lithuania,Estonia,Finland,Sweden,Russia --protocol https --latest 5 --save /etc/pacman.d/mirrorlist && rm -rf /var/lib/pacman/sync && pacman --noconfirm -Sy git vi
-   git clone https://github.com/andis-sprinkis/linux-install /linux-install
-   /linux-install/install
+      curl -LO https://raw.githubusercontent.com/andis-sprinkis/linux-install/master/install && sh ./install
    ```
 1. Start GUI locally:
    ```bash
