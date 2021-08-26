@@ -9,4 +9,4 @@ cf_system_partition=/dev/sda2
 cf_mkfs_format_system_partition=ext4
 cf_swap_M_count=4096
 cf_pacman_mirror_country=Latvia,Lithuania,Estonia,Finland,Sweden,Russia
-cf_base_packages="base linux linux-firmware sudo git neovim networkmanager openssh"
+cf_base_packages="base linux linux-firmware sudo git vi networkmanager openssh"
