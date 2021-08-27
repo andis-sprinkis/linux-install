@@ -336,7 +336,7 @@ post_reboot() {
   echo_script_status 1 "$scriptname"
 }
 
-[   -z "$1" ] || [ "$1" -eq "0" ] && pre_reboot_start
+  [ -z "$1" ] || [ "$1" -eq "0" ] && pre_reboot_start
 [ ! -z "$1" ] && [ "$1" -eq "1" ] && on_chroot
 [ ! -z "$1" ] && [ "$1" -eq "2" ] && on_su_regular_user
 [ ! -z "$1" ] && [ "$1" -eq "3" ] && post_reboot
