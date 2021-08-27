@@ -307,6 +307,8 @@ on_chroot() {
   su_regular_user
 
   echo_script_status 1 "$scriptname"
+
+  echo_br_bottom "Please reboot and log into tty as $cf_username to complete the installation."
 }
 
 on_su_regular_user() {
@@ -335,6 +337,6 @@ post_reboot() {
 }
 
 [   -z "$1" ] || [ "$1" -eq "0" ] && pre_reboot_start
-[ ! -z "$1" ] && [ "$1" -eq "1" ] && on_chroot && systemctl reboot
+[ ! -z "$1" ] && [ "$1" -eq "1" ] && on_chroot
 [ ! -z "$1" ] && [ "$1" -eq "2" ] && on_su_regular_user
 [ ! -z "$1" ] && [ "$1" -eq "3" ] && post_reboot
