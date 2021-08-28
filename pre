@@ -2,10 +2,12 @@
 set -e
 
 echo "Pre-installation script has started..."; echo
+echo
 
 rm -rf /var/lib/pacman/sync
 pacman --noconfirm -Sy git vi
 git clone https://github.com/andis-sprinkis/linux-install /linux-install
-/linux-install/main
 
 echo "Pre-installation script has finished!"; echo
+echo
+echo "Please double-check /linux-install/main file and then run /linux-install/main to start installation."
