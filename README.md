@@ -23,13 +23,16 @@ computer. In order to do that:
    |---------------|----------------|-------------------|--------------|
    | sda1          | Boot partition | `512M`            | `EFI System` |
    | sda2          | System root    | Rest of the drive |              |
-1. Run the installation script:
+1. Update pacman, clone the installation media and start the installation:
    ```bash
-   curl -LO https://raw.githubusercontent.com/andis-sprinkis/linux-install/master/pre && sh ./pre
+   rm -rf /var/lib/pacman/sync && pacman --noconfirm -Sy git
+   git clone https://github.com/andis-sprinkis/linux-install /linux-install
+   vim /linux-install/config # optional double-checking of the installation config
+   /linux-install/main
    ```
-1. Start GUI locally:
-   ```bash
-   startx
+   **Or start the installation automatically (including the steps above):**
+   ```
+   curl -LO https://raw.githubusercontent.com/andis-sprinkis/linux-install/master/autostart && sh ./autostart
    ```
 ## Connecting to Wifi
 - Installation media environent:

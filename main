@@ -308,7 +308,7 @@ on_chroot() {
 
   echo_script_status 1 "$scriptname"
 
-  echo_br_bottom "Please reboot and log into tty as $cf_username to complete the installation."
+  echo_br_bottom "Please reboot now and log into tty as $cf_username to complete the installation!"
 }
 
 on_su_regular_user() {
@@ -334,6 +334,8 @@ post_reboot() {
   cleanup_zshrc
 
   echo_script_status 1 "$scriptname"
+
+  echo_br_bottom "System installation is complete. Start graphical session by running: startx"
 }
 
   [ -z "$1" ] || [ "$1" -eq "0" ] && pre_reboot_start
