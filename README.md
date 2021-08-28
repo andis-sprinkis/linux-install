@@ -30,7 +30,7 @@ computer. In order to do that:
    vim /linux-install/config # optional double-checking of the installation config
    /linux-install/main
    ```
-   **Or start the installation automatically (including the steps above):**
+   **Or start the installation automatically (including the commands above):**
    ```
    curl -LO https://raw.githubusercontent.com/andis-sprinkis/linux-install/master/autostart && sh ./autostart
    ```
