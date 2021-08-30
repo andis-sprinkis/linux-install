@@ -27,7 +27,6 @@ gzip
 hsetroot
 htop
 i3-gaps
-xfce4-panel
 lua
 m4
 make
