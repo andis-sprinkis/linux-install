@@ -250,10 +250,11 @@ activate_ntp() {
   echo_fn_status 1 ${FUNCNAME[0]}
 }
 
-enable_vboxservice() {
+install_vbox_guest_mode() {
   echo_fn_status 0 ${FUNCNAME[0]}
 
-  if ! systemctl is-active --quiet vboxservice.service; then
+  if [ "$cf_is_vbox_guest" -eq "1" ]; then
+    sudo pacman -S virtualbox-guest-utils
     sudo systemctl enable --now vboxservice.service
   fi
 
@@ -313,7 +314,7 @@ post_reboot() {
   echo_script_status 0 "$scriptname"
 
   activate_ntp
-  enable_vboxservice
+  install_vbox_guest_mode
   install_pkg_pacman
   install_st
   install_pkg_aur

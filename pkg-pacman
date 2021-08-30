@@ -61,7 +61,6 @@ unrar
 unzip
 util-linux
 vi
-virtualbox-guest-utils
 wget
 which
 x11-ssh-askpass
