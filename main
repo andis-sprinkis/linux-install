@@ -324,7 +324,6 @@ on_su_regular_user() {
   echo_script_status 1 "$scriptname"
 }
 
-
 post_reboot() {
   scriptname="Post-reboot system installation script"
   echo_script_status 0 "$scriptname"
