@@ -23,7 +23,7 @@ computer. In order to do that:
    |---------------|----------------|-------------------|--------------|
    | sda1          | Boot partition | `512M`            | `EFI System` |
    | sda2          | System root    | Rest of the drive |              |
-1. Update pacman, clone the installation media and start the installation:
+1. Update pacman, clone this repository and start the installation:
    ```bash
    rm -rf /var/lib/pacman/sync && pacman --noconfirm -Sy git
    git clone https://github.com/andis-sprinkis/linux-install /linux-install
