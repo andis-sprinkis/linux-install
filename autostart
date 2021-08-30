@@ -7,6 +7,19 @@ rm -rf /var/lib/pacman/sync
 pacman --noconfirm -Sy git vi
 git clone https://github.com/andis-sprinkis/linux-install /linux-install
 vim /linux-install/config
+
+echo
+echo -n "Installation settings confirmed. Continue with the installation? [Y/n]? "
+echo
+read answer
+
+if [ "$answer" != "${answer#[Yy]}" ] ;then
+    echo Yes
+else
+    echo No. Exiting...
+    exit
+fi
+
 /linux-install/main
 
 echo "Pre-installation script has finished!"; echo

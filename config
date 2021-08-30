@@ -1,6 +1,8 @@
 #!/usr/bin/env sh
 set -e
 
+# Please review these settings...
+
 cf_hostname=arch-00
 cf_username=user-00
 cf_timezone=Europe/Riga
