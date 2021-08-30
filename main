@@ -4,6 +4,8 @@ dir=$(cd -P -- "$(dirname -- "$0")" && pwd -P)
 . $dir/util
 . $dir/config
 
+# Functions
+
 format_partitions() {
   echo_fn_status 0 ${FUNCNAME[0]}
 
@@ -271,6 +273,8 @@ cleanup_zshrc() {
 
   echo_fn_status 0 ${FUNCNAME[1]}
 }
+
+# Scripts
 
 pre_reboot_start() {
   scriptname="Pre-reboot system installation script"
