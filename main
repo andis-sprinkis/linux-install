@@ -179,10 +179,6 @@ install_st() {
   echo_fn_status 1 ${FUNCNAME[0]}
 }
 
-su_regular_user() {
-  su $cf_username --pty -c "/linux-install/main 2"
-}
-
 install_pkg_aur() {
   echo_fn_status 0 ${FUNCNAME[0]}
 
@@ -241,7 +237,7 @@ install_node_lts() {
 set_post_reboot_script() {
   echo_fn_status 0 ${FUNCNAME[0]}
 
-  echo "/linux-install/main 3" >> /home/${cf_username}/.zshrc
+  echo "/linux-install/main 2" >> /home/${cf_username}/.zshrc
 
   echo_fn_status 1 ${FUNCNAME[0]}
 }
@@ -305,27 +301,11 @@ on_chroot() {
   set_root_password
   create_regular_user
   set_sudoers
-  install_pkg_pacman
-  install_st
-  change_shell
-  su_regular_user
+  set_post_reboot_script
 
   echo_script_status 1 "$scriptname"
 
   echo_br_bottom "Please reboot now and log into tty as $cf_username to complete the installation!"
-}
-
-on_su_regular_user() {
-  scriptname="On substitute regular user system installation script"
-  echo_script_status 0 "$scriptname"
-
-  install_pkg_aur
-  install_dotfile
-  install_otf_cascadia_code
-  install_node_lts
-  set_post_reboot_script
-
-  echo_script_status 1 "$scriptname"
 }
 
 post_reboot() {
@@ -334,6 +314,13 @@ post_reboot() {
 
   activate_ntp
   enable_vboxservice
+  install_pkg_pacman
+  install_st
+  install_pkg_aur
+  install_dotfile
+  install_otf_cascadia_code
+  install_node_lts
+  change_shell
   cleanup_zshrc
 
   echo_script_status 1 "$scriptname"
@@ -343,5 +330,4 @@ post_reboot() {
 
   [ -z "$1" ] || [ "$1" -eq "0" ] && pre_reboot_start
 [ ! -z "$1" ] && [ "$1" -eq "1" ] && on_chroot
-[ ! -z "$1" ] && [ "$1" -eq "2" ] && on_su_regular_user
-[ ! -z "$1" ] && [ "$1" -eq "3" ] && post_reboot
+[ ! -z "$1" ] && [ "$1" -eq "2" ] && post_reboot
