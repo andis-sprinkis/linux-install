@@ -150,8 +150,8 @@ set_sudoers() {
 change_shell() {
   echo_fn_status 0 ${FUNCNAME[0]}
 
-  chsh -s /bin/zsh root
-  [ ! -f /root/.zshrc ] && touch /root/.zshrc 
+  sudo chsh -s /bin/zsh root
+  [ ! -f /root/.zshrc ] && sudo touch /root/.zshrc 
 
   chsh -s /bin/zsh $cf_username 
   [ ! -f /home/$cf_username/.zshrc ] && touch /home/$cf_username/.zshrc
