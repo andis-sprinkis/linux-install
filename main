@@ -327,7 +327,7 @@ post_reboot() {
 
   echo_script_status 1 "$scriptname"
 
-  echo_br_bottom "System installation is complete. Start graphical session by running: startx"
+  echo_br_bottom "System installation is complete. Re-login in tty as $cf_username and start graphical session by running: startx"
 }
 
   [ -z "$1" ] || [ "$1" -eq "0" ] && pre_reboot_start
