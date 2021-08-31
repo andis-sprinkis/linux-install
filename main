@@ -151,9 +151,10 @@ change_shell() {
   echo_fn_status 0 ${FUNCNAME[0]}
 
   chsh -s /bin/zsh root
+  [ ! -f /root/.zshrc ] && touch /root/.zshrc 
+
   chsh -s /bin/zsh $cf_username 
-  touch /root/.zshrc
-  touch /home/$cf_username/.zshrc
+  [ ! -f /home/$cf_username/.zshrc ] && touch /home/$cf_username/.zshrc
 
   echo_fn_status 1 ${FUNCNAME[0]}
 }
@@ -173,7 +174,7 @@ install_st() {
   git clone https://github.com/andis-sprinkis/st.git $temp_path
   cd $temp_path
   git checkout 73c034ba05101e2fc337183af1cdec5bfe318b99
-  make install
+  sudo make install
   cd $HOME
 
   echo_fn_status 1 ${FUNCNAME[0]}
@@ -237,7 +238,7 @@ install_node_lts() {
 set_post_reboot_script() {
   echo_fn_status 0 ${FUNCNAME[0]}
 
-  echo "/linux-install/main 2" >> /home/${cf_username}/.zshrc
+  echo "/linux-install/main 2" >> /home/${cf_username}/.bashrc
 
   echo_fn_status 1 ${FUNCNAME[0]}
 }
@@ -261,12 +262,12 @@ install_vbox_guest_mode() {
   echo_fn_status 1 ${FUNCNAME[0]}
 }
 
-cleanup_zshrc() {
+cleanup_bashrc() {
   echo_fn_status 0 ${FUNCNAME[0]}
 
   tmp=$(mktemp)
-  path_zshrc=/home/${cf_username}/.zshrc
-  head -n -1 $path_zshrc > $tmp && mv $tmp $path_zshrc
+  path_bashrc=/home/${cf_username}/.bashrc
+  head -n -1 $path_bashrc > $tmp && mv $tmp $path_bashrc
 
   echo_fn_status 0 ${FUNCNAME[1]}
 }
@@ -322,7 +323,7 @@ post_reboot() {
   install_otf_cascadia_code
   install_node_lts
   change_shell
-  cleanup_zshrc
+  cleanup_bashrc
 
   echo_script_status 1 "$scriptname"
 
