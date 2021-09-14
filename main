@@ -213,9 +213,9 @@ install_otf_cascadia_code() {
 
   temp_path=$(mktemp -d)
   cd $temp_path
-  wget https://github.com/microsoft/cascadia-code/releases/download/v2008.25/CascadiaCode-2008.25.zip &&
+  wget https://github.com/microsoft/cascadia-code/releases/download/v2008.25/CascadiaCode-2008.25.zip
   unzip $temp_path/CascadiaCode-2008.25.zip -d $temp_path/unzip
-  mkdir -p $HOME/.fonts/CascadiaCode-2008.25/otf/*
+  mkdir -p $HOME/.fonts/CascadiaCode-2008.25/otf/
   cp -rv $temp_path/unzip/otf/* $HOME/.fonts/CascadiaCode-2008.25/otf/
   cd $HOME
 
