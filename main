@@ -274,8 +274,8 @@ cleanup_bashrc() {
 
 # Scripts
 
-pre_reboot_start() {
-  scriptname="Pre-reboot system installation script"
+pre_reboot_initial() {
+  scriptname="Pre-reboot initial system installation script"
   echo_script_status 0 "$scriptname"
 
   format_partitions
@@ -289,8 +289,8 @@ pre_reboot_start() {
   echo_script_status 1 "$scriptname"
 }
 
-on_chroot() {
-  scriptname="On chroot system installation script"
+pre_reboot_on_chroot() {
+  scriptname="Pre-reboot on-chroot system installation script"
   echo_script_status 0 "$scriptname"
 
   initialize_bootloader
@@ -330,6 +330,6 @@ post_reboot() {
   echo_br_bottom "System installation is complete. Re-login in tty as $cf_username and start graphical session by running: startx"
 }
 
-  [ -z "$1" ] || [ "$1" -eq "0" ] && pre_reboot_start
-[ ! -z "$1" ] && [ "$1" -eq "1" ] && on_chroot
+  [ -z "$1" ] || [ "$1" -eq "0" ] && pre_reboot_initial
+[ ! -z "$1" ] && [ "$1" -eq "1" ] && pre_reboot_on_chroot
 [ ! -z "$1" ] && [ "$1" -eq "2" ] && post_reboot
