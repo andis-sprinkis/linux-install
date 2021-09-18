@@ -13,7 +13,7 @@ echo -n "Installation settings confirmed. Continue with the installation? [Y/n]?
 echo
 read answer
 
-if [ "$answer" != "${answer#[Yy]}" ] ;then
+if [ "$answer" != "${answer#[Yy]}" ]; then
     echo Yes
 else
     echo No. Exiting...
