@@ -19,6 +19,7 @@ gawk
 gcc
 gettext
 git
+glu
 go
 grep
 groff
