@@ -106,9 +106,10 @@ set_hardware_clock() {
 set_locale() {
   echo_fn_status 0 ${FUNCNAME[0]}
 
-  cp $dir/sys-config/locale/etc/locale.gen /etc
+  echo $cf_locale_gen > /etc/locale.gen
   locale-gen
-  cp $dir/sys-config/locale/etc/locale.conf /etc
+
+  echo $cf_locale_conf > /etc/locale.conf
 
   echo_fn_status 1 ${FUNCNAME[0]}
 }
