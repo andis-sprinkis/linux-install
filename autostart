@@ -14,10 +14,10 @@ echo
 read answer
 
 if [ "$answer" != "${answer#[Yy]}" ]; then
-    echo Yes
+  echo Yes
 else
-    echo No. Exiting...
-    exit
+  echo No. Exiting...
+  exit
 fi
 
 /linux-install/main
