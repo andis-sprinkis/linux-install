@@ -28,7 +28,7 @@ mount_partitions() {
 sort_pacman_mirrors() {
   echo_fn_status 0 ${FUNCNAME[0]}
 
-  reflector --country $cf_pacman_mirror_country --protocol https --latest 5 --save /etc/pacman.d/mirrorlist
+  reflector --country $cf_pacman_mirror_country --protocol https --latest $cf_pacman_mirror_count --save /etc/pacman.d/mirrorlist
 
   echo_fn_status 1 ${FUNCNAME[0]}
 }

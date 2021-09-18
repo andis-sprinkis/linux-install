@@ -17,6 +17,7 @@ LC_MONETARY=lv_LV.UTF-8
 LC_NUMERIC=lv_LV.UTF-8
 LC_PAPER=lv_LV.UTF-8"
 cf_pacman_mirror_country=Latvia,Lithuania,Estonia,Finland,Sweden,Russia
+cf_pacman_mirror_count=10
 cf_base_packages="base linux linux-firmware sudo git vi networkmanager openssh"
 cf_boot_partition=/dev/sda1
 cf_system_partition=/dev/sda2
