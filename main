@@ -209,20 +209,6 @@ install_dotfile() {
   echo_fn_status 1 ${FUNCNAME[0]}
 }
 
-install_otf_cascadia_code() {
-  echo_fn_status 0 ${FUNCNAME[0]}
-
-  temp_path=$(mktemp -d)
-  cd $temp_path
-  wget https://github.com/microsoft/cascadia-code/releases/download/v2008.25/CascadiaCode-2008.25.zip
-  unzip $temp_path/CascadiaCode-2008.25.zip -d $temp_path/unzip
-  mkdir -p $HOME/.fonts/CascadiaCode-2008.25/otf/static
-  cp -rv $temp_path/unzip/otf/static/* $HOME/.fonts/CascadiaCode-2008.25/otf/static
-  cd $HOME
-
-  echo_fn_status 1 ${FUNCNAME[0]}
-}
-
 install_node_lts() {
   echo_fn_status 0 ${FUNCNAME[0]}
 
@@ -321,7 +307,6 @@ post_reboot() {
   install_st
   install_pkg_aur
   install_dotfile
-  install_otf_cascadia_code
   install_node_lts
   change_shell
   cleanup_bashrc
