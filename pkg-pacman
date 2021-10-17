@@ -13,6 +13,7 @@ cmake
 dconf-editor
 dmenu
 epiphany
+fd
 findutils
 fzf
 gawk
@@ -48,6 +49,7 @@ ripgrep
 rsync
 samba
 scrot
+sd
 sed
 sshfs
 sudo
