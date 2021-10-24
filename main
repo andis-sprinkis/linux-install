@@ -195,14 +195,22 @@ install_pkg_aur() {
   echo_fn_status 1 ${FUNCNAME[0]}
 }
 
-install_dotfile() {
+install_nix_user_config() {
   echo_fn_status 0 ${FUNCNAME[0]}
 
   temp_path=$(mktemp -d)
   git clone --separate-git-dir=$HOME/.dotfiles-git https://github.com/andis-sprinkis/nix-user-config $temp_path
   rsync --recursive --verbose --exclude '.git' $temp_path/ $HOME
   git --git-dir=$HOME/.dotfiles-git/ --work-tree=$HOME config --local status.showUntrackedFiles no
-  git --git-dir=$HOME/.dotfiles-git/ --work-tree=$HOME submodule update --init
+
+  echo_fn_status 1 ${FUNCNAME[0]}
+}
+
+install_nvim_user_config() {
+  echo_fn_status 0 ${FUNCNAME[0]}
+
+  [ ! -d $HOME/.config ] && mkdir -p $HOME/.config
+  git clone https://github.com/andis-sprinkis/nvim-user-config $HOME/.config/nvim
 
   echo_fn_status 1 ${FUNCNAME[0]}
 }
@@ -304,7 +312,8 @@ post_reboot() {
   install_pkg_pacman
   install_st
   install_pkg_aur
-  install_dotfile
+  install_nix_user_config
+  install_nvim_user_config
   install_node_lts
   change_shell
   cleanup_bashrc
