@@ -72,7 +72,7 @@ initialize_bootloader() {
   echo_fn_status 0 ${FUNCNAME[0]}
 
   bootctl --path=/boot install
-  cp -rv $dir/sys-config/systemd-boot/* /
+  cp -rv $dir/sys_config/systemd-boot/* /
   echo "options root=PARTUUID=$(blkid -s PARTUUID -o value $cf_system_partition) rw" >> /boot/loader/entries/arch.conf
 
   echo_fn_status 1 ${FUNCNAME[0]}
@@ -142,7 +142,7 @@ create_regular_user() {
 set_sudoers() {
   echo_fn_status 0 ${FUNCNAME[0]}
 
-  cp $dir/sys-config/sudoers/etc/sudoers /etc
+  cp $dir/sys_config/sudoers/etc/sudoers /etc
 
   echo_fn_status 1 ${FUNCNAME[0]}
 }
@@ -162,7 +162,7 @@ change_shell() {
 install_pkg_pacman() {
   echo_fn_status 0 ${FUNCNAME[0]}
 
-  sudo pacman -S --needed - < $dir/pkg-pacman 
+  sudo pacman -S --needed - < $dir/pkg_pacman 
 
   echo_fn_status 1 ${FUNCNAME[0]}
 }
@@ -190,7 +190,7 @@ install_pkg_aur() {
     makepkg -si
     cd $HOME
   fi
-  yay -S --needed - < $dir/pkg-aur
+  yay -S --needed - < $dir/pkg_aur
 
   echo_fn_status 1 ${FUNCNAME[0]}
 }
