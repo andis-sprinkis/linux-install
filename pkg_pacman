@@ -33,6 +33,7 @@ lua
 m4
 make
 man-db
+ncdu
 neovim
 networkmanager
 nodejs
