@@ -105,10 +105,10 @@ set_hardware_clock() {
 set_locale() {
   echo_fn_status 0 ${FUNCNAME[0]}
 
-  echo $cf_locale_gen > /etc/locale.gen
+  printf "%b" "$cf_locale_gen" > /etc/locale.gen
   locale-gen
 
-  echo $cf_locale_conf > /etc/locale.conf
+  printf "%b" "$cf_locale_conf" > /etc/locale.conf
 
   echo_fn_status 1 ${FUNCNAME[0]}
 }
