@@ -8,13 +8,16 @@ bat
 bc
 binutils
 ccls
+chromium
 clang
 cmake
 dconf-editor
 dmenu
+docker
 epiphany
 fd
 findutils
+firefox
 fzf
 gawk
 gcc
