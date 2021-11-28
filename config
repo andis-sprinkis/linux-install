@@ -8,14 +8,16 @@ cf_username=user-00
 cf_timezone=Europe/Riga
 cf_locale_gen=\
 "en_US.UTF-8 UTF-8
-lv_LV.UTF-8 UTF-8"
+lv_LV.UTF-8 UTF-8
+"
 cf_locale_conf=\
 "LANG=en_US.UTF-8
 LC_TIME=lv_LV.UTF-8
 LC_MEASUREMENT=lv_LV.UTF-8
 LC_MONETARY=lv_LV.UTF-8
 LC_NUMERIC=lv_LV.UTF-8
-LC_PAPER=lv_LV.UTF-8"
+LC_PAPER=lv_LV.UTF-8
+"
 cf_pacman_mirror_country=Latvia,Lithuania,Estonia,Finland,Sweden,Russia
 cf_pacman_mirror_count=10
 cf_base_packages="base linux linux-firmware sudo git vi networkmanager openssh"
