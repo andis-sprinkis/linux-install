@@ -1,3 +1,4 @@
+alsa-utils
 atool
 autoconf
 automake
@@ -47,6 +48,8 @@ p7zip
 pacman
 patch
 pkgconf
+pulseaudio
+pulseaudio-alsa
 python
 python-pip
 ripgrep
