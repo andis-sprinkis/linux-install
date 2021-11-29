@@ -215,7 +215,7 @@ install_nvim_user_config() {
   echo_fn_status 1 ${FUNCNAME[0]}
 }
 
-install_node_lts() {
+install_nodejs() {
   echo_fn_status 0 ${FUNCNAME[0]}
 
   mkdir -p $HOME/.nvm
@@ -314,7 +314,7 @@ post_reboot() {
   install_pkg_aur
   install_nix_user_config
   install_nvim_user_config
-  install_node_lts
+  install_nodejs
   change_shell
   cleanup_bashrc
 
