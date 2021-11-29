@@ -171,7 +171,7 @@ install_st() {
   echo_fn_status 0 ${FUNCNAME[0]}
 
   temp_path=$(mktemp -d)
-  git clone https://github.com/andis-sprinkis/st.git $temp_path
+  git clone $cf_git_url_suckless_st $temp_path
   cd $temp_path
   git checkout 73c034ba05101e2fc337183af1cdec5bfe318b99
   sudo make install
@@ -199,7 +199,7 @@ install_nix_user_config() {
   echo_fn_status 0 ${FUNCNAME[0]}
 
   temp_path=$(mktemp -d)
-  git clone --separate-git-dir=$HOME/.dotfiles-git https://github.com/andis-sprinkis/nix-user-config $temp_path
+  git clone --separate-git-dir=$HOME/.dotfiles-git $cf_git_url_nix_user_config $temp_path
   rsync --recursive --verbose --exclude '.git' $temp_path/ $HOME
   git --git-dir=$HOME/.dotfiles-git/ --work-tree=$HOME config --local status.showUntrackedFiles no
 
@@ -210,7 +210,7 @@ install_nvim_user_config() {
   echo_fn_status 0 ${FUNCNAME[0]}
 
   [ ! -d $HOME/.config ] && mkdir -p $HOME/.config
-  git clone https://github.com/andis-sprinkis/nvim-user-config $HOME/.config/nvim
+  git clone $cf_git_url_nvim_user_config $HOME/.config/nvim
 
   echo_fn_status 1 ${FUNCNAME[0]}
 }
@@ -221,9 +221,9 @@ install_node_lts() {
   mkdir -p $HOME/.nvm
   export NVM_DIR=$HOME/.nvm
   . /usr/share/nvm/nvm.sh
-  nvm install lts/fermium
-  nvm use lts/fermium
-  nvm alias default lts/fermium
+  nvm install $cf_nvm_default_nodejs_version
+  nvm use $cf_nvm_default_nodejs_version
+  nvm alias default $cf_nvm_default_nodejs_version
 
   echo_fn_status 1 ${FUNCNAME[0]}
 }
