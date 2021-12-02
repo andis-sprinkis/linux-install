@@ -228,6 +228,14 @@ install_nodejs() {
   echo_fn_status 1 ${FUNCNAME[0]}
 }
 
+install_pkg_npm() {
+  echo_fn_status 0 ${FUNCNAME[0]}
+
+  npm install --global - < $dir/pkg_npm
+
+  echo_fn_status 1 ${FUNCNAME[1]}
+}
+
 set_post_reboot_script() {
   echo_fn_status 0 ${FUNCNAME[0]}
 
@@ -315,6 +323,7 @@ post_reboot() {
   install_nix_user_config
   install_nvim_user_config
   install_nodejs
+  install_pkg_npm
   change_shell
   cleanup_bashrc
 
