@@ -233,7 +233,7 @@ install_pkg_npm() {
 
   npm install --global - < $dir/pkg_npm
 
-  echo_fn_status 1 ${FUNCNAME[1]}
+  echo_fn_status 1 ${FUNCNAME[0]}
 }
 
 set_post_reboot_script() {
@@ -270,7 +270,7 @@ cleanup_bashrc() {
   path_bashrc=/home/${cf_username}/.bashrc
   head -n -1 $path_bashrc > $tmp && mv $tmp $path_bashrc
 
-  echo_fn_status 0 ${FUNCNAME[1]}
+  echo_fn_status 0 ${FUNCNAME[0]}
 }
 
 # Scripts
