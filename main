@@ -199,9 +199,9 @@ install_nix_user_config() {
   echo_fn_status 0 ${FUNCNAME[0]}
 
   temp_path=$(mktemp -d)
-  git clone --separate-git-dir=$HOME/.dotfiles-git $cf_git_url_nix_user_config $temp_path
+  git clone --separate-git-dir=$HOME/.dotfiles_git $cf_git_url_nix_user_config $temp_path
   rsync --recursive --verbose --exclude '.git' $temp_path/ $HOME
-  git --git-dir=$HOME/.dotfiles-git/ --work-tree=$HOME config --local status.showUntrackedFiles no
+  git --git-dir=$HOME/.dotfiles_git/ --work-tree=$HOME config --local status.showUntrackedFiles no
 
   echo_fn_status 1 ${FUNCNAME[0]}
 }
@@ -222,8 +222,8 @@ install_nodejs() {
   export NVM_DIR=$HOME/.nvm
   . /usr/share/nvm/nvm.sh
   nvm install $cf_nvm_default_nodejs_version
-  nvm use $cf_nvm_default_nodejs_version
   nvm alias default $cf_nvm_default_nodejs_version
+  nvm use default
 
   echo_fn_status 1 ${FUNCNAME[0]}
 }
