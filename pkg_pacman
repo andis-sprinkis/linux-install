@@ -52,6 +52,7 @@ pulseaudio
 pulseaudio-alsa
 python
 python-pip
+reflector
 ripgrep
 rsync
 samba
