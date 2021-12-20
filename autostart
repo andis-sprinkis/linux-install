@@ -10,7 +10,6 @@ vim /linux-install/config
 
 echo
 echo -n "Installation settings confirmed. Continue with the installation? [Y/n]? "
-echo
 read answer
 
 if [ "$answer" != "${answer#[Yy]}" ]; then
