@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 set -e
 dir=$(cd -P -- "$(dirname -- "$0")" && pwd -P)
 . $dir/util
