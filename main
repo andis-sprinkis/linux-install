@@ -7,182 +7,104 @@ dir=$(cd -P -- "$(dirname -- "$0")" && pwd -P)
 # Functions
 
 format_partitions() {
-  echo_fn_status 0 ${FUNCNAME[0]}
-
   mkfs.vfat -F32 $cf_boot_partition
   mkfs.$cf_mkfs_format_system_partition $cf_system_partition
-
-  echo_fn_status 1 ${FUNCNAME[0]}
 }
 
 mount_partitions() {
-  echo_fn_status 0 ${FUNCNAME[0]}
-
   mount $cf_system_partition /mnt
   mkdir /mnt/boot
   mount $cf_boot_partition /mnt/boot
-
-  echo_fn_status 1 ${FUNCNAME[0]}
 }
 
 sort_pacman_mirrors() {
-  echo_fn_status 0 ${FUNCNAME[0]}
-
   reflector --country $cf_pacman_mirror_country --protocol https --latest $cf_pacman_mirror_count --save /etc/pacman.d/mirrorlist
-
-  echo_fn_status 1 ${FUNCNAME[0]}
 }
 
 install_base_packages() {
-  echo_fn_status 0 ${FUNCNAME[0]}
-
   echo "/mnt $cf_base_packages" | xargs pacstrap
-
-  echo_fn_status 1 ${FUNCNAME[0]}
 }
 
 generate_fstab() {
-  echo_fn_status 0 ${FUNCNAME[0]}
-
   genfstab -U /mnt >> /mnt/etc/fstab
-
-  echo_fn_status 1 ${FUNCNAME[0]}
 }
 
 cp_install_files_root() {
-  echo_fn_status 0 ${FUNCNAME[0]}
-
   cp -rv $dir /mnt/linux-install
-
-  echo_fn_status 1 ${FUNCNAME[0]}
 }
 
 add_enable_swapfile() {
-  echo_fn_status 0 ${FUNCNAME[0]}
-
   # add and enable swapfile
   dd if=/dev/zero of=/swapfile bs=1M count=$cf_swap_M_count status=progress
   chmod 600 /swapfile && mkswap /swapfile && swapon /swapfile
   echo /swapfile none swap defaults 0 0 >> /etc/fstab
-
-  echo_fn_status 1 ${FUNCNAME[0]}
 }
 
 initialize_bootloader() {
-  echo_fn_status 0 ${FUNCNAME[0]}
-
   bootctl --path=/boot install
   cp -rv $dir/sys_config/systemd-boot/* /
   echo "options root=PARTUUID=$(blkid -s PARTUUID -o value $cf_system_partition) rw" >> /boot/loader/entries/arch.conf
-
-  echo_fn_status 1 ${FUNCNAME[0]}
 }
 
 enable_networkmanager() {
-  echo_fn_status 0 ${FUNCNAME[0]}
-
   systemctl enable NetworkManager
-
-  echo_fn_status 1 ${FUNCNAME[0]}
 }
 
 set_timezone() {
-  echo_fn_status 0 ${FUNCNAME[0]}
-
   ln -sf /usr/share/zoneinfo/$cf_timezone /etc/localtime
-
-  echo_fn_status 1 ${FUNCNAME[0]}
 }
 
 set_hardware_clock() {
-  echo_fn_status 0 ${FUNCNAME[0]}
-
   hwclock --systohc 
-
-  echo_fn_status 1 ${FUNCNAME[0]}
 }
 
 set_locale() {
-  echo_fn_status 0 ${FUNCNAME[0]}
-
   printf "$cf_locale_gen" > /etc/locale.gen
   locale-gen
 
   printf "$cf_locale_conf" > /etc/locale.conf
-
-  echo_fn_status 1 ${FUNCNAME[0]}
 }
 
 set_hostname() {
-  echo_fn_status 0 ${FUNCNAME[0]}
-
   echo $cf_hostname > /etc/hostname
-
-  echo_fn_status 1 ${FUNCNAME[0]}
 }
 
 set_root_password() {
-  echo_fn_status 0 ${FUNCNAME[0]}
-
   set_user_pw root
-
-  echo_fn_status 1 ${FUNCNAME[0]} 
 }
 
 create_regular_user() {
-  echo_fn_status 0 ${FUNCNAME[0]}
-
   useradd -m $cf_username
   usermod -G wheel -a $cf_username
   set_user_pw $cf_username
-
-  echo_fn_status 1 ${FUNCNAME[0]}
 }
 
 set_sudoers() {
-  echo_fn_status 0 ${FUNCNAME[0]}
-
   cp $dir/sys_config/sudoers/etc/sudoers /etc
-
-  echo_fn_status 1 ${FUNCNAME[0]}
 }
 
 change_shell() {
-  echo_fn_status 0 ${FUNCNAME[0]}
-
   sudo chsh -s /bin/zsh root
   [ ! -f /root/.zshrc ] && sudo touch /root/.zshrc 
 
   chsh -s /bin/zsh $cf_username 
   [ ! -f /home/$cf_username/.zshrc ] && touch /home/$cf_username/.zshrc
-
-  echo_fn_status 1 ${FUNCNAME[0]}
 }
 
 install_pkg_pacman() {
-  echo_fn_status 0 ${FUNCNAME[0]}
-
   sudo pacman -S --needed - < $dir/pkg_pacman 
-
-  echo_fn_status 1 ${FUNCNAME[0]}
 }
 
 install_st() {
-  echo_fn_status 0 ${FUNCNAME[0]}
-
   temp_path=$(mktemp -d)
   git clone $cf_git_url_suckless_st $temp_path
   cd $temp_path
   git checkout 73c034ba05101e2fc337183af1cdec5bfe318b99
   sudo make install
   cd $HOME
-
-  echo_fn_status 1 ${FUNCNAME[0]}
 }
 
 install_pkg_aur() {
-  echo_fn_status 0 ${FUNCNAME[0]}
-
   if ! command -v yay &> /dev/null; then
     temp_path=$(mktemp -d)
     git clone https://aur.archlinux.org/yay.git $temp_path
@@ -191,86 +113,52 @@ install_pkg_aur() {
     cd $HOME
   fi
   yay -S --needed - < $dir/pkg_aur
-
-  echo_fn_status 1 ${FUNCNAME[0]}
 }
 
 install_nix_user_config() {
-  echo_fn_status 0 ${FUNCNAME[0]}
-
   temp_path=$(mktemp -d)
   git clone --separate-git-dir=$HOME/.dotfiles_git $cf_git_url_nix_user_config $temp_path
   rsync --recursive --verbose --exclude '.git' $temp_path/ $HOME
   git --git-dir=$HOME/.dotfiles_git/ --work-tree=$HOME config --local status.showUntrackedFiles no
-
-  echo_fn_status 1 ${FUNCNAME[0]}
 }
 
 install_nvim_user_config() {
-  echo_fn_status 0 ${FUNCNAME[0]}
-
   [ ! -d $HOME/.config ] && mkdir -p $HOME/.config
   git clone $cf_git_url_nvim_user_config $HOME/.config/nvim
-
-  echo_fn_status 1 ${FUNCNAME[0]}
 }
 
 install_nodejs() {
-  echo_fn_status 0 ${FUNCNAME[0]}
-
   mkdir -p $HOME/.nvm
   export NVM_DIR=$HOME/.nvm
   . /usr/share/nvm/nvm.sh
   nvm install $cf_nvm_default_nodejs_version
   nvm alias default $cf_nvm_default_nodejs_version
   nvm use default
-
-  echo_fn_status 1 ${FUNCNAME[0]}
 }
 
 install_pkg_npm() {
-  echo_fn_status 0 ${FUNCNAME[0]}
-
   npm install --global - < $dir/pkg_npm
-
-  echo_fn_status 1 ${FUNCNAME[0]}
 }
 
 set_post_reboot_script() {
-  echo_fn_status 0 ${FUNCNAME[0]}
-
   echo "/linux-install/main 2" >> /home/${cf_username}/.bashrc
-
-  echo_fn_status 1 ${FUNCNAME[0]}
 }
 
 activate_ntp() {
-  echo_fn_status 0 ${FUNCNAME[0]}
-
   sudo timedatectl set-ntp on
-
-  echo_fn_status 1 ${FUNCNAME[0]}
 }
 
 install_vbox_guest_mode() {
-  echo_fn_status 0 ${FUNCNAME[0]}
-
   if [ "$cf_is_vbox_guest" -eq "1" ]; then
     sudo pacman -S virtualbox-guest-utils
     sudo systemctl enable --now vboxservice.service
   fi
-
-  echo_fn_status 1 ${FUNCNAME[0]}
 }
 
 cleanup_bashrc() {
-  echo_fn_status 0 ${FUNCNAME[0]}
-
   tmp=$(mktemp)
   path_bashrc=/home/${cf_username}/.bashrc
   head -n -1 $path_bashrc > $tmp && mv $tmp $path_bashrc
-
-  echo_fn_status 0 ${FUNCNAME[0]}
 }
 
 # Scripts
@@ -279,12 +167,14 @@ pre_reboot_initial() {
   scriptname="Pre-reboot initial system installation script"
   echo_script_status 0 "$scriptname"
 
-  format_partitions
-  mount_partitions
-  sort_pacman_mirrors
-  install_base_packages
-  generate_fstab
-  cp_install_files_root
+  fn_call \
+    "format_partitions" \
+    "mount_partitions" \
+    "sort_pacman_mirrors" \
+    "install_base_packages" \
+    "generate_fstab" \
+    "cp_install_files_root" \
+
   arch-chroot /mnt /linux-install/main 1
 
   echo_script_status 1 "$scriptname"
@@ -294,17 +184,18 @@ pre_reboot_on_chroot() {
   scriptname="Pre-reboot on-chroot system installation script"
   echo_script_status 0 "$scriptname"
 
-  initialize_bootloader
-  add_enable_swapfile
-  enable_networkmanager
-  set_timezone
-  set_hardware_clock
-  set_locale
-  set_hostname
-  set_root_password
-  create_regular_user
-  set_sudoers
-  set_post_reboot_script
+  fn_call \
+    "initialize_bootloader" \
+    "add_enable_swapfile" \
+    "enable_networkmanager" \
+    "set_timezone" \
+    "set_hardware_clock" \
+    "set_locale" \
+    "set_hostname" \
+    "set_root_password" \
+    "create_regular_user" \
+    "set_sudoers" \
+    "set_post_reboot_script"
 
   echo_script_status 1 "$scriptname"
 
@@ -315,17 +206,18 @@ post_reboot() {
   scriptname="Post-reboot system installation script"
   echo_script_status 0 "$scriptname"
 
-  activate_ntp
-  install_vbox_guest_mode
-  install_pkg_pacman
-  install_st
-  install_pkg_aur
-  install_nix_user_config
-  install_nvim_user_config
-  install_nodejs
-  install_pkg_npm
-  change_shell
-  cleanup_bashrc
+  fn_call \
+    "activate_ntp" \
+    "install_vbox_guest_mode" \
+    "install_pkg_pacman" \
+    "install_st" \
+    "install_pkg_aur" \
+    "install_nix_user_config" \
+    "install_nvim_user_config" \
+    "install_nodejs" \
+    "install_pkg_npm" \
+    "change_shell" \
+    "cleanup_bashrc"
 
   echo_script_status 1 "$scriptname"
 

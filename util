@@ -13,16 +13,6 @@ echo_br_both() {
   echo; echo $1; echo
 }
 
-echo_fn_status() {
-  if [ "$1" -eq "0" ]; then
-    echo_br_bottom "Function $2 has started..."
-  fi 
-
-  if [ "$1" -eq "1" ]; then
-    echo_br_bottom "Function $2 has finished!"
-  fi 
-}
-
 echo_script_status() {
   if [ "$1" -eq "0" ]; then
     echo_br_bottom "Starting $2..."
@@ -31,6 +21,14 @@ echo_script_status() {
   if [ "$1" -eq "1" ]; then
     echo_br_bottom "$2 has finished!"
   fi 
+}
+
+fn_call() {
+  for fn in "$@"; do
+    echo_br_bottom "Function $fn has started..."
+    $fn
+    echo_br_bottom "Function $fn has finished!"
+  done
 }
 
 read_pw() {
