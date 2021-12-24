@@ -34,7 +34,6 @@ cp_install_files_root() {
 }
 
 add_enable_swapfile() {
-  # add and enable swapfile
   dd if=/dev/zero of=/swapfile bs=1M count=$cf_swap_M_count status=progress
   chmod 600 /swapfile && mkswap /swapfile && swapon /swapfile
   echo /swapfile none swap defaults 0 0 >> /etc/fstab
@@ -61,7 +60,6 @@ set_hardware_clock() {
 set_locale() {
   printf "$cf_locale_gen" > /etc/locale.gen
   locale-gen
-
   printf "$cf_locale_conf" > /etc/locale.conf
 }
 
