@@ -25,6 +25,7 @@ install_base_packages() {
   pacstrap /mnt $cf_base_packages
 }
 
+
 generate_fstab() {
   genfstab -U /mnt >> /mnt/etc/fstab
 }
@@ -83,14 +84,14 @@ set_sudoers() {
 
 change_shell() {
   sudo chsh -s /bin/zsh root
-  [ ! -f /root/.zshrc ] && sudo touch /root/.zshrc 
+  [ ! -f /root/.zshrc ] && sudo touch /root/.zshrc
 
   chsh -s /bin/zsh $cf_username 
   [ ! -f /home/$cf_username/.zshrc ] && touch /home/$cf_username/.zshrc
 }
 
 install_pkg_pacman() {
-  sudo pacman -S --needed - < $dir/pkg_pacman 
+  sudo pacman -S --needed - < $dir/pkg_pacman
 }
 
 install_st() {
