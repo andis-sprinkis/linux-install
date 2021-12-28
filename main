@@ -22,7 +22,7 @@ sort_pacman_mirrors() {
 }
 
 install_base_packages() {
-  echo "/mnt $cf_base_packages" | xargs pacstrap
+  pacstrap /mnt $cf_base_packages
 }
 
 generate_fstab() {
