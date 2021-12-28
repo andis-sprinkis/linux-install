@@ -118,6 +118,7 @@ install_nix_user_config() {
   git clone --separate-git-dir=$HOME/.dotfiles_git $cf_git_url_nix_user_config $temp_path
   rsync --recursive --verbose --exclude '.git' $temp_path/ $HOME
   git --git-dir=$HOME/.dotfiles_git/ --work-tree=$HOME config --local status.showUntrackedFiles no
+  git --git-dir=$HOME/.dotfiles_git/ --work-tree=$HOME submodule update --init
 }
 
 install_nvim_user_config() {
