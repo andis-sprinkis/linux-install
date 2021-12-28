@@ -25,7 +25,6 @@ install_base_packages() {
   pacstrap /mnt $cf_base_packages
 }
 
-
 generate_fstab() {
   genfstab -U /mnt >> /mnt/etc/fstab
 }
