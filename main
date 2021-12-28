@@ -173,7 +173,7 @@ pre_reboot_initial() {
     "sort_pacman_mirrors" \
     "install_base_packages" \
     "generate_fstab" \
-    "cp_install_files_root" \
+    "cp_install_files_root"
 
   arch-chroot /mnt /linux-install/main 1
   echo_script_status 1 "$scriptname"
