@@ -62,7 +62,6 @@ sd
 sed
 sshfs
 sudo
-sxiv
 systemd
 texinfo
 translate-shell
