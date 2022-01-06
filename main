@@ -90,7 +90,7 @@ change_shell() {
 }
 
 install_pkg_pacman() {
-  cat $dir/pkg_pacman | xargs sudo pacman -S --needed
+  sudo pacman -S --needed $(echo $(cat $dir/pkg_pacman))
 }
 
 install_st() {
@@ -110,7 +110,7 @@ install_pkg_aur() {
     makepkg -si
     cd $HOME
   fi
-  cat $dir/pkg_aur | xargs yay -S --needed
+  yay -S --needed $(echo $(cat $dir/pkg_aur))
 }
 
 install_nix_user_config() {
