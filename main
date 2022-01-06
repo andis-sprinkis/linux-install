@@ -90,7 +90,7 @@ change_shell() {
 }
 
 install_pkg_pacman() {
-  sudo cat $dir/pkg_pacman | xargs pacman -S --needed
+  cat $dir/pkg_pacman | xargs sudo pacman -S --needed
 }
 
 install_st() {
