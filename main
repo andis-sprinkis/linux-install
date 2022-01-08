@@ -136,7 +136,7 @@ install_nodejs() {
 }
 
 install_pkg_npm() {
-  cat $dir/pkg_npm | xargs npm install --global
+  npm install --global $(echo $(cat $dir/pkg_npm))
 }
 
 set_post_reboot_script() {
