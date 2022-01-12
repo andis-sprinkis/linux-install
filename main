@@ -36,7 +36,7 @@ cp_install_files_root() {
 add_enable_swapfile() {
   dd if=/dev/zero of=/swapfile bs=1M count=$cf_swap_M_count status=progress
   chmod 600 /swapfile && mkswap /swapfile && swapon /swapfile
-  echo /swapfile none swap defaults 0 0 >> /etc/fstab
+  echo "/swapfile none swap defaults 0 0" >> /etc/fstab
 }
 
 initialize_bootloader() {
@@ -64,7 +64,7 @@ set_locale() {
 }
 
 set_hostname() {
-  echo $cf_hostname > /etc/hostname
+  echo "$cf_hostname" > /etc/hostname
 }
 
 set_root_password() {
