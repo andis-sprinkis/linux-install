@@ -34,6 +34,7 @@ gzip
 hsetroot
 htop
 i3-gaps
+jq
 lua
 m4
 make
