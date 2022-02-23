@@ -42,8 +42,6 @@ man-db
 ncdu
 neovim
 networkmanager
-nodejs
-npm
 openssh
 otf-cascadia-code
 p7zip
@@ -67,6 +65,7 @@ systemd
 texinfo
 translate-shell
 tree
+tree-sitter
 ttf-dejavu
 ttf-joypixels
 unclutter
