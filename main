@@ -90,7 +90,7 @@ change_shell() {
 }
 
 install_pkg_pacman() {
-  sudo pacman -S --needed $(echo $(cat $dir/pkg_pacman))
+  [ -f $dir/pkg_pacman ] && sudo pacman -S --needed $(echo $(cat $dir/pkg_pacman))
 }
 
 install_st() {
@@ -110,7 +110,8 @@ install_pkg_aur() {
     makepkg -si
     cd $HOME
   fi
-  yay -S --needed $(echo $(cat $dir/pkg_aur))
+
+  [ -f $dir/pkg_aur ] && yay -S --needed $(echo $(cat $dir/pkg_aur))
 }
 
 install_nix_user_config() {
@@ -136,7 +137,7 @@ install_nodejs() {
 }
 
 install_pkg_npm() {
-  npm install --global $(echo $(cat $dir/pkg_npm))
+  [ -f $dir/pkg_npm ] && npm install --global $(echo $(cat $dir/pkg_npm))
 }
 
 set_post_reboot_script() {
