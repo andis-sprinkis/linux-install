@@ -39,6 +39,8 @@ lua
 m4
 make
 man-db
+mesa
+mesa-utils
 ncdu
 neovim
 networkmanager
