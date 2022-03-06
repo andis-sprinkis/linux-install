@@ -93,15 +93,6 @@ install_pkg_pacman() {
   [ -s $dir/pkg_pacman ] && sudo pacman -S --needed $(echo $(cat $dir/pkg_pacman))
 }
 
-install_st() {
-  temp_path=$(mktemp -d)
-  git clone $cf_git_url_suckless_st $temp_path
-  cd $temp_path
-  git checkout 73c034ba05101e2fc337183af1cdec5bfe318b99
-  sudo make install
-  cd $HOME
-}
-
 install_pkg_aur() {
   if ! command -v yay &> /dev/null; then
     temp_path=$(mktemp -d)
@@ -208,7 +199,6 @@ post_reboot() {
     "activate_ntp" \
     "install_vbox_guest_mode" \
     "install_pkg_pacman" \
-    "install_st" \
     "install_pkg_aur" \
     "install_nix_user_config" \
     "install_nvim_user_config" \
