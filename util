@@ -13,7 +13,7 @@ echo_br_both() {
   echo; echo $1; echo
 }
 
-echo_script_status() {
+echo_stage_status() {
   if [ "$1" -eq "0" ]; then
     echo_br_bottom "Starting $2..."
   fi 

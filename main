@@ -131,7 +131,7 @@ install_pkg_npm() {
   [ -s $dir/pkg_npm ] && npm install --global $(echo $(cat $dir/pkg_npm))
 }
 
-set_post_reboot_script() {
+set_post_reboot_stage() {
   echo "/linux-install/main 2" >> /home/${cf_username}/.bashrc
 }
 
@@ -155,8 +155,8 @@ cleanup_bashrc() {
 # Scripts
 
 pre_reboot_initial() {
-  scriptname="Pre-reboot initial system installation script"
-  echo_script_status 0 "$scriptname"
+  stage="Pre-reboot initial system installation stage"
+  echo_stage_status 0 "$stage"
 
   fn_call \
     "format_partitions" \
@@ -167,12 +167,12 @@ pre_reboot_initial() {
     "cp_install_files_root"
 
   arch-chroot /mnt /linux-install/main 1
-  echo_script_status 1 "$scriptname"
+  echo_stage_status 1 "$stage"
 }
 
 pre_reboot_on_chroot() {
-  scriptname="Pre-reboot on-chroot system installation script"
-  echo_script_status 0 "$scriptname"
+  stage="Pre-reboot on-chroot system installation stage"
+  echo_stage_status 0 "$stage"
 
   fn_call \
     "initialize_bootloader" \
@@ -185,15 +185,15 @@ pre_reboot_on_chroot() {
     "set_root_password" \
     "create_regular_user" \
     "set_sudoers" \
-    "set_post_reboot_script"
+    "set_post_reboot_stage"
 
-  echo_script_status 1 "$scriptname"
+  echo_stage_status 1 "$stage"
   echo_br_bottom "Please reboot now and log into tty as $cf_username to complete the installation!"
 }
 
 post_reboot() {
-  scriptname="Post-reboot system installation script"
-  echo_script_status 0 "$scriptname"
+  stage="Post-reboot system installation stage"
+  echo_stage_status 0 "$stage"
 
   fn_call \
     "activate_ntp" \
@@ -207,7 +207,7 @@ post_reboot() {
     "change_shell" \
     "cleanup_bashrc"
 
-  echo_script_status 1 "$scriptname"
+  echo_stage_status 1 "$stage"
   echo_br_bottom "System installation is complete. Re-login in tty as $cf_username and start graphical session by running: startx"
 }
 
