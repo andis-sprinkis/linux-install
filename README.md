@@ -19,11 +19,12 @@ computer. In order to do that:
 1. Run `cfdisk`, choose the `gpt` partitioning (if there are not options, run `cfdisk -z`).
 
    Create the partition table (make sure to `Write` the changes):
-   | /dev/ mapping | Purpose        | Size              | Format             |
-   |---------------|----------------|-------------------|--------------------|
-   | sda1          | Boot partition | `512M`            | `EFI System`       |
-   | sda2          | System root    | Rest of the drive | `Linux filesystem` |
-   | sdb1          | Home directory | Rest of the drive | `Linux filesystem` |
+   | /dev/ mapping | System directory | Size              | Format             |
+   |---------------|------------------|-------------------|--------------------|
+   | sda1          | /boot            | `512M`            | `EFI System`       |
+   | sda2          | /                | Rest of the drive | `Linux filesystem` |
+   | sdb1          | /home            | Rest of the drive | `Linux filesystem` |
+   | sdb1          | /var             | Rest of the drive | `Linux filesystem` |
 1. Update pacman, clone this repository and start the installation:
    ```bash
    rm -rf /var/lib/pacman/sync && pacman --noconfirm -Sy git
