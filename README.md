@@ -16,7 +16,7 @@ computer. In order to do that:
    ip a # determine host ip
    ```
    Then SSH to your installation disk from another computer and continue the installation as usual.
-1. Run `cfdisk`, choose the `gpt` partitioning (if there are not options, run `cfdisk -z`).
+1. For each disk run `cfdisk /dev/sdX`, choose the `gpt` partitioning (if there are not options, run `cfdisk -z /dev/sdX`).
 
    Create the partition table (make sure to `Write` the changes):
    | /dev/ mapping | System directory | Size              | Format             |
