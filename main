@@ -9,8 +9,14 @@ dir=$(cd -P -- "$(dirname -- "$0")" && pwd -P)
 format_partitions() {
   mkfs.vfat -F32 $cf_partition_boot
   mkfs.$cf_mkfs_main_file_system $cf_partition_root
-  [ ! -z "$cf_partition_home" ] && mkfs.$cf_mkfs_main_file_system $cf_partition_home
-  [ ! -z "$cf_partition_var" ] && mkfs.$cf_mkfs_main_file_system $cf_partition_var
+
+  if [ ! -z "$cf_partition_home" ]; then
+    mkfs.$cf_mkfs_main_file_system $cf_partition_home
+  fi
+
+  if [ ! -z "$cf_partition_var" ]; then
+    mkfs.$cf_mkfs_main_file_system $cf_partition_var
+  fi
 }
 
 mount_partitions() {
@@ -138,7 +144,10 @@ install_nix_user_config() {
 
 install_nvim_user_config() {
   if [ ! -z "$cf_git_url_nvim_user_config" ]; then
-    [ ! -d $HOME/.config ] && mkdir -p $HOME/.config
+    if [ ! -d $HOME/.config ]; then
+      mkdir -p $HOME/.config
+    fi
+
     git clone $cf_git_url_nvim_user_config $HOME/.config/nvim
   fi
 }
