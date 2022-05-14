@@ -119,29 +119,38 @@ install_pkg_aur() {
 }
 
 install_nix_user_config() {
-  temp_path=$(mktemp -d)
-  git clone --separate-git-dir=$HOME/.dotfiles_git $cf_git_url_nix_user_config $temp_path
-  rsync --recursive --verbose --exclude '.git' $temp_path/ $HOME
-  git --git-dir=$HOME/.dotfiles_git/ --work-tree=$HOME config --local status.showUntrackedFiles no
-  git --git-dir=$HOME/.dotfiles_git/ --work-tree=$HOME submodule update --init
+  if [ ! -z "$cf_git_url_nix_user_config" ]; then
+    temp_path=$(mktemp -d)
+    git clone --separate-git-dir=$HOME/.dotfiles_git $cf_git_url_nix_user_config $temp_path
+    rsync --recursive --verbose --exclude '.git' $temp_path/ $HOME
+    git --git-dir=$HOME/.dotfiles_git/ --work-tree=$HOME config --local status.showUntrackedFiles no
+    git --git-dir=$HOME/.dotfiles_git/ --work-tree=$HOME submodule update --init
+  fi
 }
 
 install_nvim_user_config() {
-  [ ! -d $HOME/.config ] && mkdir -p $HOME/.config
-  git clone $cf_git_url_nvim_user_config $HOME/.config/nvim
+  if [ ! -z "$cf_git_url_nvim_user_config" ]; then
+    [ ! -d $HOME/.config ] && mkdir -p $HOME/.config
+    git clone $cf_git_url_nvim_user_config $HOME/.config/nvim
+  fi
 }
 
 install_nodejs() {
-  mkdir -p $HOME/.nvm
-  export NVM_DIR=$HOME/.nvm
-  . /usr/share/nvm/nvm.sh
-  nvm install $cf_nvm_default_nodejs_version
-  nvm alias default $cf_nvm_default_nodejs_version
-  nvm use default
+    mkdir -p $HOME/.nvm
+    export NVM_DIR=$HOME/.nvm
+    . /usr/share/nvm/nvm.sh
+
+  if [ ! -z "$cf_nvm_default_nodejs_version" ]; then
+    nvm install $cf_nvm_default_nodejs_version
+    nvm alias default $cf_nvm_default_nodejs_version
+    nvm use default
+  fi
 }
 
 install_pkg_npm() {
-  [ -s $dir/pkg_npm ] && npm install --global $(echo $(cat $dir/pkg_npm))
+  if [ ! -z "$cf_nvm_default_nodejs_version" ]; then
+    [ -s $dir/pkg_npm ] && npm install --global $(echo $(cat $dir/pkg_npm))
+  fi
 }
 
 set_post_reboot_stage() {
