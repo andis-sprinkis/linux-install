@@ -96,10 +96,14 @@ set_sudoers() {
 
 change_shell() {
   sudo chsh -s /bin/zsh root
-  [ ! -f /root/.zshrc ] && sudo touch /root/.zshrc
+  if [ ! -f /root/.zshrc ]; then
+    sudo touch /root/.zshrc
+  fi
 
   chsh -s /bin/zsh $cf_username 
-  [ ! -f /home/$cf_username/.zshrc ] && touch /home/$cf_username/.zshrc
+  if [ ! -f /home/$cf_username/.zshrc ]; then
+    touch /home/$cf_username/.zshrc
+  fi
 }
 
 install_pkg_pacman() {
