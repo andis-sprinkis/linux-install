@@ -23,6 +23,7 @@ computer. In order to do that:
    |---------------|----------------|-------------------|--------------------|
    | sda1          | Boot partition | `512M`            | `EFI System`       |
    | sda2          | System root    | Rest of the drive | `Linux filesystem` |
+   | sdb1          | Home directory | Rest of the drive | `Linux filesystem` |
 1. Update pacman, clone this repository and start the installation:
    ```bash
    rm -rf /var/lib/pacman/sync && pacman --noconfirm -Sy git

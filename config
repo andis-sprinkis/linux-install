@@ -20,12 +20,13 @@ LC_PAPER=lv_LV.UTF-8
 "
 cf_pacman_mirror_country=Latvia,Lithuania,Estonia,Finland,Sweden,Russia
 cf_pacman_mirror_count=10
-cf_boot_partition=/dev/sda1
-cf_system_partition=/dev/sda2
-cf_mkfs_format_system_partition=ext4
+cf_partition_boot=/dev/sda1
+cf_partition_root=/dev/sda2
+cf_partition_home=/dev/sdb1
+cf_partition_var=
+cf_mkfs_main_file_system=ext4
 cf_swap_M_count=4096
 cf_is_vbox_guest=1
-cf_git_url_suckless_st=https://github.com/andis-sprinkis/st.git
 cf_git_url_nix_user_config=https://github.com/andis-sprinkis/nix-user-config
 cf_git_url_nvim_user_config=https://github.com/andis-sprinkis/nvim-user-config
 cf_nvm_default_nodejs_version=lts/fermium

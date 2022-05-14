@@ -7,14 +7,27 @@ dir=$(cd -P -- "$(dirname -- "$0")" && pwd -P)
 # Functions
 
 format_partitions() {
-  mkfs.vfat -F32 $cf_boot_partition
-  mkfs.$cf_mkfs_format_system_partition $cf_system_partition
+  mkfs.vfat -F32 $cf_partition_boot
+  mkfs.$cf_mkfs_main_file_system $cf_partition_root
+  [ ! -z "$cf_partition_home" ] && mkfs.$cf_mkfs_main_file_system $cf_partition_home
+  [ ! -z "$cf_partition_var" ] && mkfs.$cf_mkfs_main_file_system $cf_partition_var
 }
 
 mount_partitions() {
-  mount $cf_system_partition /mnt
+  mount $cf_partition_root /mnt
+
   mkdir /mnt/boot
-  mount $cf_boot_partition /mnt/boot
+  mount $cf_partition_boot /mnt/boot
+
+  if [ ! -z "$cf_partition_home" ]; then
+    mkdir /mnt/home
+    mount $cf_partition_home /mnt/home
+  fi
+
+  if [ ! -z "$cf_partition_var" ]; then
+    mkdir /mnt/var
+    mount $cf_partition_var /mnt/var
+  fi
 }
 
 sort_pacman_mirrors() {
@@ -42,7 +55,7 @@ add_enable_swapfile() {
 initialize_bootloader() {
   bootctl --path=/boot install
   cp -rv $dir/sys_config/systemd-boot/* /
-  echo "options root=PARTUUID=$(blkid -s PARTUUID -o value $cf_system_partition) rw" >> /boot/loader/entries/arch.conf
+  echo "options root=PARTUUID=$(blkid -s PARTUUID -o value $cf_partition_root) rw" >> /boot/loader/entries/arch.conf
 }
 
 enable_networkmanager() {
