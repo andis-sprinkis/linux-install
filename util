@@ -15,11 +15,11 @@ echo_br_both() {
 
 echo_stage_status() {
   if [ "$1" -eq "0" ]; then
-    echo_br_bottom "Starting $2..."
+    echo_br_bottom "Starting $2 stage..."
   fi 
 
   if [ "$1" -eq "1" ]; then
-    echo_br_bottom "$2 has finished!"
+    echo_br_bottom "$2 stage has finished!"
   fi 
 }
 
