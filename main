@@ -136,21 +136,16 @@ install_nvim_user_config() {
 }
 
 install_nodejs() {
-    mkdir -p $HOME/.nvm
-    export NVM_DIR=$HOME/.nvm
-    . /usr/share/nvm/nvm.sh
-
-  if [ ! -z "$cf_nvm_default_nodejs_version" ]; then
-    nvm install $cf_nvm_default_nodejs_version
-    nvm alias default $cf_nvm_default_nodejs_version
-    nvm use default
-  fi
+  mkdir -p $HOME/.nvm
+  export NVM_DIR=$HOME/.nvm
+  . /usr/share/nvm/nvm.sh
+  nvm install $cf_nvm_default_nodejs_version
+  nvm alias default $cf_nvm_default_nodejs_version
+  nvm use default
 }
 
 install_pkg_npm() {
-  if [ ! -z "$cf_nvm_default_nodejs_version" ]; then
-    [ -s $dir/pkg_npm ] && npm install --global $(echo $(cat $dir/pkg_npm))
-  fi
+  [ -s $dir/pkg_npm ] && npm install --global $(echo $(cat $dir/pkg_npm))
 }
 
 set_post_reboot_stage() {
