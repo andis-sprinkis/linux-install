@@ -174,7 +174,7 @@ cleanup_bashrc() {
   head -n -1 $path_bashrc > $tmp && mv $tmp $path_bashrc
 }
 
-# Scripts
+# Stages
 
 pre_reboot_initial() {
   stage="Pre-reboot initial system installation stage"
