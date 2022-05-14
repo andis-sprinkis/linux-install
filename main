@@ -156,13 +156,16 @@ install_nodejs() {
   mkdir -p $HOME/.nvm
   export NVM_DIR=$HOME/.nvm
   . /usr/share/nvm/nvm.sh
-  nvm install $cf_nvm_default_nodejs_version
-  nvm alias default $cf_nvm_default_nodejs_version
-  nvm use default
+
+  if [ ! -z "$cf_nvm_default_nodejs_version" ]; then
+    nvm install $cf_nvm_default_nodejs_version
+    nvm alias default $cf_nvm_default_nodejs_version
+    nvm use default
+  fi
 }
 
 install_pkg_npm() {
-  if [ -s $dir/pkg_npm ]; then
+  if [ ! -z "$cf_nvm_default_nodejs_version" ] && [ -s $dir/pkg_npm ]; then
     npm install --global $(echo $(cat $dir/pkg_npm))
   fi
 }
