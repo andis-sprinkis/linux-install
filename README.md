@@ -24,7 +24,7 @@ computer. In order to do that:
    | sda1          | /boot            | `512M`            | `EFI System`       |
    | sda2          | /                | Rest of the drive | `Linux filesystem` |
    | sdb1          | /home            | Rest of the drive | `Linux filesystem` |
-   | sdb1          | /var             | Rest of the drive | `Linux filesystem` |
+   | sdc1          | /var             | Rest of the drive | `Linux filesystem` |
 1. Update pacman, clone this repository and start the installation:
    ```bash
    rm -rf /var/lib/pacman/sync && pacman --noconfirm -Sy git
