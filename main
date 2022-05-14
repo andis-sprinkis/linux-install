@@ -103,7 +103,9 @@ change_shell() {
 }
 
 install_pkg_pacman() {
-  [ -s $dir/pkg_pacman ] && sudo pacman -S --needed $(echo $(cat $dir/pkg_pacman))
+  if [ -s $dir/pkg_pacman ]; then
+    sudo pacman -S --needed $(echo $(cat $dir/pkg_pacman))
+  fi
 }
 
 install_pkg_aur() {
@@ -115,7 +117,9 @@ install_pkg_aur() {
     cd $HOME
   fi
 
-  [ -s $dir/pkg_aur ] && yay -S --needed $(echo $(cat $dir/pkg_aur))
+  if [ -s $dir/pkg_aur ]; then
+    yay -S --needed $(echo $(cat $dir/pkg_aur))
+  fi
 }
 
 install_nix_user_config() {
