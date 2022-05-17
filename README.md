@@ -19,7 +19,7 @@ computer. In order to do that:
 1. For each disk run `cfdisk /dev/sdX`, choose the `gpt` partitioning (if there are not options, run `cfdisk -z /dev/sdX`).
 
    Create the partition table (make sure to `Write` the changes):
-   | /dev/ mapping | System directory | Size              | Format             |
+   | /dev/ mapping | Directory        | Size              | Format             |
    |---------------|------------------|-------------------|--------------------|
    | sda1          | /boot            | `512M`            | `EFI System`       |
    | sda2          | /                | Rest of the drive | `Linux filesystem` |
