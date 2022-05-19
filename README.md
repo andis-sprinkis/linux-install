@@ -29,8 +29,10 @@ computer. In order to do that:
    ```bash
    rm -rf /var/lib/pacman/sync && pacman --noconfirm -Sy git
    git clone https://github.com/andis-sprinkis/linux-install /linux-install
-   vim /linux-install/config # optional double-checking of the installation config
-   /linux-install/main
+   cd /linux-install
+   git submodule update --init
+   vim config # optional double-checking of the installation config
+   ./main
    ```
    **Or start the installation automatically (including the commands above):**
    ```

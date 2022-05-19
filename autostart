@@ -5,8 +5,12 @@ echo "Pre-installation script has started..."; echo
 
 rm -rf /var/lib/pacman/sync
 pacman --noconfirm -Sy git vi
+
 git clone https://github.com/andis-sprinkis/linux-install /linux-install
-vim /linux-install/config
+cd /linux-install
+git submodule update --init
+
+vim config
 
 echo
 echo -n "Installation settings confirmed. Continue with the installation? [Y/n]? "
@@ -19,6 +23,6 @@ else
   exit
 fi
 
-/linux-install/main
+./main
 
 echo "Pre-installation script has finished!"; echo
