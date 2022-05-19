@@ -27,15 +27,11 @@ computer. In order to do that:
    | sdc1          | /var             | Rest of the drive | `Linux filesystem` |
 1. Update pacman, clone this repository and start the installation:
    ```bash
-   rm -rf /var/lib/pacman/sync
-   pacman --noconfirm -Sy git vi
+   rm -rf /var/lib/pacman/sync && pacman --noconfirm -Sy git vi
+   git clone https://github.com/andis-sprinkis/linux-install /linux-install --recurse-submodules
 
-   git clone https://github.com/andis-sprinkis/linux-install /linux-install
-   cd /linux-install
-   git submodule update --init
-
-   vi config # optional double-checking of the installation config
-   ./main
+   vi /linux-install/config # optional double-checking of the installation config
+   /linux-install/main
    ```
    **Or start the installation automatically (including the commands above):**
    ```
