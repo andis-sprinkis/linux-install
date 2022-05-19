@@ -7,32 +7,42 @@ dir=$(cd -P -- "$(dirname -- "$0")" && pwd -P)
 # Functions
 
 format_partitions() {
-  mkfs.vfat -F32 $cf_partition_boot
-  mkfs.$cf_mkfs_main_file_system $cf_partition_root
+  mkfs.vfat -F32 $cf_dev_partition_boot
+  mkfs.$cf_mkfs_main_file_system $cf_dev_partition_root
 
-  if [ ! -z "$cf_partition_home" ]; then
-    mkfs.$cf_mkfs_main_file_system $cf_partition_home
+  if [ ! -z "$cf_dev_partition_home" ]; then
+    if [ -f "$cf_dev_partition_home" ]; then
+      mkfs.$cf_mkfs_main_file_system $cf_dev_partition_home
+    else
+      echo "Device mapping $cf_dev_partition_home does not exist."
+      exit 1
+    fi
   fi
 
-  if [ ! -z "$cf_partition_var" ]; then
-    mkfs.$cf_mkfs_main_file_system $cf_partition_var
+  if [ ! -z "$cf_dev_partition_var" ]; then
+    if [ -f "$cf_dev_partition_var" ]; then
+      mkfs.$cf_mkfs_main_file_system $cf_dev_partition_var
+    else
+      echo "Device mapping $cf_dev_partition_var does not exist."
+      exit 1
+    fi
   fi
 }
 
 mount_partitions() {
-  mount $cf_partition_root /mnt
+  mount $cf_dev_partition_root /mnt
 
   mkdir /mnt/boot
-  mount $cf_partition_boot /mnt/boot
+  mount $cf_dev_partition_boot /mnt/boot
 
-  if [ ! -z "$cf_partition_home" ]; then
+  if [ ! -z "$cf_dev_partition_home" ]; then
     mkdir /mnt/home
-    mount $cf_partition_home /mnt/home
+    mount $cf_dev_partition_home /mnt/home
   fi
 
-  if [ ! -z "$cf_partition_var" ]; then
+  if [ ! -z "$cf_dev_partition_var" ]; then
     mkdir /mnt/var
-    mount $cf_partition_var /mnt/var
+    mount $cf_dev_partition_var /mnt/var
   fi
 }
 
@@ -61,7 +71,7 @@ add_enable_swapfile() {
 initialize_bootloader() {
   bootctl --path=/boot install
   cp -rv $dir/sys_config/systemd-boot/* /
-  echo "options root=PARTUUID=$(blkid -s PARTUUID -o value $cf_partition_root) rw" >> /boot/loader/entries/arch.conf
+  echo "options root=PARTUUID=$(blkid -s PARTUUID -o value $cf_dev_partition_root) rw" >> /boot/loader/entries/arch.conf
 }
 
 enable_networkmanager() {
