@@ -1,0 +1,3 @@
+[submodule "nix-script-util"]
+	path = nix-script-util
+	url = https://github.com/andis-sprinkis/nix-script-util

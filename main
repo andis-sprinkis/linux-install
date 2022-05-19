@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -e
 dir=$(cd -P -- "$(dirname -- "$0")" && pwd -P)
-. $dir/util
+. $dir/nix-script-util/nix-script-util.bash
 . $dir/config
 
 # Functions
@@ -87,13 +87,13 @@ set_hostname() {
 }
 
 set_root_password() {
-  set_user_pw root
+  set_user_pw_confirm root
 }
 
 create_regular_user() {
   useradd -m $cf_username
   usermod -G wheel -a $cf_username
-  set_user_pw $cf_username
+  set_user_pw_confirm $cf_username
 }
 
 set_sudoers() {
