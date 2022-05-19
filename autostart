@@ -10,7 +10,7 @@ git clone https://github.com/andis-sprinkis/linux-install /linux-install
 cd /linux-install
 git submodule update --init
 
-vim config
+vi config
 
 echo
 echo -n "Installation settings confirmed. Continue with the installation? [Y/n]? "
