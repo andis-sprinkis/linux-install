@@ -7,8 +7,19 @@ dir=$(cd -P -- "$(dirname -- "$0")" && pwd -P)
 # Functions
 
 format_partitions() {
-  mkfs.vfat -F32 $cf_dev_partition_boot
-  mkfs.$cf_mkfs_main_file_system $cf_dev_partition_root
+  if [ -f "$cf_dev_partition_boot" ]; then
+    mkfs.vfat -F32 $cf_dev_partition_boot
+  else
+    echo "Device mapping $cf_dev_partition_boot does not exist."
+    exit 1
+  fi
+
+  if [ -f "$cf_dev_partition_root" ]; then
+    mkfs.$cf_mkfs_main_file_system $cf_dev_partition_root
+  else
+    echo "Device mapping $cf_dev_partition_root does not exist."
+    exit 1
+  fi
 
   if [ ! -z "$cf_dev_partition_home" ]; then
     if [ -f "$cf_dev_partition_home" ]; then
