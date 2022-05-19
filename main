@@ -6,37 +6,38 @@ dir=$(cd -P -- "$(dirname -- "$0")" && pwd -P)
 
 # Functions
 
-format_partitions() {
-  if [ -f "$cf_dev_partition_boot" ]; then
-    mkfs.vfat -F32 $cf_dev_partition_boot
-  else
+check_partitions() {
+  if [ ! -f "$cf_dev_partition_boot" ]; then
     echo "Device mapping $cf_dev_partition_boot does not exist."
     exit 1
   fi
 
-  if [ -f "$cf_dev_partition_root" ]; then
-    mkfs.$cf_mkfs_main_file_system $cf_dev_partition_root
-  else
+  if [ ! -f "$cf_dev_partition_root" ]; then
     echo "Device mapping $cf_dev_partition_root does not exist."
     exit 1
   fi
 
+  if [ ! -z "$cf_dev_partition_home" ] && [ ! -f "$cf_dev_partition_home" ]; then
+    echo "Device mapping $cf_dev_partition_home does not exist."
+    exit 1
+  fi
+
+  if [ ! -z "$cf_dev_partition_var" ] && [ ! -f "$cf_dev_partition_var" ]; then
+    echo "Device mapping $cf_dev_partition_var does not exist."
+    exit 1
+  fi
+}
+
+format_partitions() {
+  mkfs.vfat -F32 $cf_dev_partition_boot
+  mkfs.$cf_mkfs_main_file_system $cf_dev_partition_root
+
   if [ ! -z "$cf_dev_partition_home" ]; then
-    if [ -f "$cf_dev_partition_home" ]; then
-      mkfs.$cf_mkfs_main_file_system $cf_dev_partition_home
-    else
-      echo "Device mapping $cf_dev_partition_home does not exist."
-      exit 1
-    fi
+    mkfs.$cf_mkfs_main_file_system $cf_dev_partition_home
   fi
 
   if [ ! -z "$cf_dev_partition_var" ]; then
-    if [ -f "$cf_dev_partition_var" ]; then
-      mkfs.$cf_mkfs_main_file_system $cf_dev_partition_var
-    else
-      echo "Device mapping $cf_dev_partition_var does not exist."
-      exit 1
-    fi
+    mkfs.$cf_mkfs_main_file_system $cf_dev_partition_var
   fi
 }
 
@@ -219,6 +220,7 @@ pre_reboot_initial() {
   echo_stage_status 0 "$stage"
 
   fn_call \
+    "check_partitions" \
     "format_partitions" \
     "mount_partitions" \
     "sort_pacman_mirrors" \
