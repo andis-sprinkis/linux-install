@@ -7,22 +7,22 @@ dir=$(cd -P -- "$(dirname -- "$0")" && pwd -P)
 # Functions
 
 check_partitions() {
-  if [ ! -f "$cf_dev_partition_boot" ]; then
+  if [ ! -b "$cf_dev_partition_boot" ]; then
     echo "Device mapping $cf_dev_partition_boot does not exist."
     exit 1
   fi
 
-  if [ ! -f "$cf_dev_partition_root" ]; then
+  if [ ! -b "$cf_dev_partition_root" ]; then
     echo "Device mapping $cf_dev_partition_root does not exist."
     exit 1
   fi
 
-  if [ ! -z "$cf_dev_partition_home" ] && [ ! -f "$cf_dev_partition_home" ]; then
+  if [ ! -z "$cf_dev_partition_home" ] && [ ! -b "$cf_dev_partition_home" ]; then
     echo "Device mapping $cf_dev_partition_home does not exist."
     exit 1
   fi
 
-  if [ ! -z "$cf_dev_partition_var" ] && [ ! -f "$cf_dev_partition_var" ]; then
+  if [ ! -z "$cf_dev_partition_var" ] && [ ! -b "$cf_dev_partition_var" ]; then
     echo "Device mapping $cf_dev_partition_var does not exist."
     exit 1
   fi
