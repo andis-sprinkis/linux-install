@@ -44,16 +44,16 @@ format_partitions() {
 mount_partitions() {
   mount $cf_dev_partition_root /mnt
 
-  mkdir /mnt/boot
+  mkdir -p /mnt/boot
   mount $cf_dev_partition_boot /mnt/boot
 
   if [ ! -z "$cf_dev_partition_home" ]; then
-    mkdir /mnt/home
+    mkdir -p /mnt/home
     mount $cf_dev_partition_home /mnt/home
   fi
 
   if [ ! -z "$cf_dev_partition_var" ]; then
-    mkdir /mnt/var
+    mkdir -p /mnt/var
     mount $cf_dev_partition_var /mnt/var
   fi
 }
