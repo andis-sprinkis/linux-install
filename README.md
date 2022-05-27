@@ -28,7 +28,7 @@ computer. In order to do that:
 
    ---
 
-   Alternatively, the [`/partitions_default`](/partitions_default) directory has a partition table dump for 3 storage devices of 128G size according to the example above. 
+   Alternatively, the [`./partitions_default`](./partitions_default) directory has a partition table dump for 3 storage devices of 128G size according to the example above. 
 
    It can be applied to the devices using `cfdisk`.
 
