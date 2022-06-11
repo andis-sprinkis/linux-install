@@ -154,23 +154,11 @@ install_pkg_aur() {
   fi
 }
 
-install_nix_user_config() {
+install_user_config() {
   if [ ! -z "$cf_git_url_nix_user_config" ]; then
-    temp_path=$(mktemp -d)
-    git clone --separate-git-dir=$HOME/.dotfiles_git $cf_git_url_nix_user_config $temp_path
-    rsync --recursive --verbose --exclude '.git' $temp_path/ $HOME
-    git --git-dir=$HOME/.dotfiles_git/ --work-tree=$HOME config --local status.showUntrackedFiles no
-    git --git-dir=$HOME/.dotfiles_git/ --work-tree=$HOME submodule update --init
-  fi
-}
-
-install_nvim_user_config() {
-  if [ ! -z "$cf_git_url_nvim_user_config" ]; then
-    if [ ! -d $HOME/.config ]; then
-      mkdir -p $HOME/.config
-    fi
-
-    git clone $cf_git_url_nvim_user_config $HOME/.config/nvim
+    curl -LO $cf_user_config_init_script_url --output $HOME/init_user_config
+    chmod +x $HOME/init_user_config
+    $HOME/init_user_config $cf_user_config_init_script_flags
   fi
 }
 
@@ -262,8 +250,7 @@ post_reboot() {
     "install_vbox_guest_mode" \
     "install_pkg_pacman" \
     "install_pkg_aur" \
-    "install_nix_user_config" \
-    "install_nvim_user_config" \
+    "install_user_config" \
     "install_nodejs" \
     "install_pkg_npm" \
     "change_shell" \
