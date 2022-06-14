@@ -158,7 +158,7 @@ install_user_config() {
   if [ ! -z "$cf_git_url_nix_user_config" ]; then
     curl -LO $cf_user_config_init_script_url --output $HOME/init_user_config
     chmod +x $HOME/init_user_config
-    $HOME/init_user_config "$cf_user_config_init_script_flags"
+    $HOME/init_user_config "$cf_user_config_init_script_args"
     rm $HOME/init_user_config
   fi
 }
