@@ -91,6 +91,7 @@ xorg-xdpyinfo
 xorg-xev
 xorg-xinit
 xorg-xset
+xorg-xwininfo
 xterm
 yarn
 zathura
