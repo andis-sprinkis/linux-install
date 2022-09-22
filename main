@@ -122,6 +122,11 @@ set_sudoers() {
   cp $dir/sys_config/sudoers/etc/sudoers /etc
 }
 
+create_mnt_points() {
+  mkdir -p /mnt/nvme{1..5} /mnt/sata{1..5} /mnt/usb{1..5} /mnt/pc{1..5} /mnt/nas{1..5} /mnt/vm{1..5} 
+  chown $cf_username:$cf_username /mnt/nvme{1..5} /mnt/sata{1..5} /mnt/usb{1..5} /mnt/pc{1..5} /mnt/nas{1..5} /mnt/vm{1..5} 
+}
+
 change_shell() {
   sudo chsh -s /bin/zsh root
   if [ ! -f /root/.zshrc ]; then
@@ -236,6 +241,7 @@ pre_reboot_on_chroot() {
     "set_root_password" \
     "create_regular_user" \
     "set_sudoers" \
+    "create_mount_points" \
     "set_post_reboot_stage"
 
   echo_stage_status 1 "$stage"
