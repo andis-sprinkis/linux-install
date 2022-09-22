@@ -18,6 +18,7 @@ docker
 docker-compose
 epiphany
 fd
+ffmpegthumbnailer
 findutils
 firefox
 fzf
