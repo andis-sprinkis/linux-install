@@ -50,6 +50,7 @@ mesa-utils
 ncdu
 neovim
 networkmanager
+noto-fonts
 openssh
 otf-cascadia-code
 p7zip
@@ -75,8 +76,6 @@ tmux
 translate-shell
 tree
 tree-sitter
-ttf-dejavu
-ttf-joypixels
 unclutter
 unrar
 unzip
