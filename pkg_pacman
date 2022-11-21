@@ -27,6 +27,7 @@ gawk
 gcc
 gettext
 gfold
+gimp
 git
 glu
 gnome-themes-extra
@@ -41,6 +42,8 @@ i3
 i3blocks
 jq
 kitty
+lf
+libreoffice-fresh
 lua
 m4
 make
@@ -52,6 +55,7 @@ ncdu
 neovim
 networkmanager
 noto-fonts
+octave
 openssh
 otf-cascadia-code
 p7zip
