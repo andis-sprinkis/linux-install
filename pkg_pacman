@@ -1,4 +1,6 @@
 alsa-utils
+android-file-transfer
+android-udev
 atool
 autoconf
 automake
