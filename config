@@ -32,7 +32,6 @@ cf_mkfs_main_file_system=ext4
 cf_swap_M_count=4096
 cf_is_vbox_guest=1
 cf_user_mnt_dirs="/mnt/nvme{1..5} /mnt/sata{1..5} /mnt/usb{1..5} /mnt/pc{1..5} /mnt/nas{1..5} /mnt/vm{1..5} /mnt/mobile{1..5}"
-cf_user_home_dirs="/home/${cf_username}/{documents,screen} /home/${cf_username}/downloads/{_mozilla_firefox,_chromium,_qbittorrent,_jdowloader2}"
 cf_user_config_init_script_url=https://raw.githubusercontent.com/andis-sprinkis/nix-user-config/master/.local/bin/init_nix_user_config
 cf_user_config_init_script_args=--with-nvim-config
 cf_nvm_default_nodejs_version=lts/fermium

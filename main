@@ -131,15 +131,6 @@ create_user_mnt_dirs() {
   fi
 }
 
-create_user_home_dirs() {
-  local dirs=$(eval "echo $cf_user_home_dirs")
-
-  if [ ! -z "$dirs" ]; then
-    mkdir -p $dirs
-    chown $cf_username:$cf_username $dirs
-  fi
-}
-
 change_shell() {
   sudo chsh -s /bin/zsh root
   if [ ! -f /root/.zshrc ]; then
@@ -255,7 +246,6 @@ pre_reboot_on_chroot() {
     "create_regular_user" \
     "set_sudoers" \
     "create_user_mnt_dirs" \
-    "create_user_home_dirs" \
     "set_post_reboot_stage"
 
   echo_stage_status 1 "$stage"
