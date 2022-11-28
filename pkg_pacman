@@ -68,6 +68,7 @@ pulseaudio
 pulseaudio-alsa
 python
 python-pip
+qbittorrent
 reflector
 ripgrep
 rsync
