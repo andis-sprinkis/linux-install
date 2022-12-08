@@ -1,3 +1,4 @@
+alsa-tools
 alsa-utils
 android-file-transfer
 android-udev
@@ -63,12 +64,15 @@ otf-cascadia-code
 p7zip
 pacman
 patch
+pipewire
+pipewire-alsa
+pipewire-jack
+pipewire-pulse
 pkgconf
-pulseaudio
-pulseaudio-alsa
 python
 python-pip
 qbittorrent
+qpwgraph
 reflector
 ripgrep
 rsync
@@ -91,6 +95,7 @@ util-linux
 vi
 wget
 which
+wireplumber
 x11-ssh-askpass
 xbindkeys
 xclip

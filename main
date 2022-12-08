@@ -194,8 +194,14 @@ set_post_reboot_stage() {
   echo "/linux-install/main 2" >> /home/${cf_username}/.bashrc
 }
 
-activate_ntp() {
+enable_ntp() {
   sudo timedatectl set-ntp on
+}
+
+enable_audio_system() {
+  systemctl --user enable --now pipewire.socket
+  systemctl --user enable --now pipewire-pulse.socket
+  systemctl --user enable --now wireplumber.service
 }
 
 install_vbox_guest_mode() {
@@ -257,7 +263,8 @@ post_reboot() {
   echo_stage_status 0 "$stage"
 
   fn_call \
-    "activate_ntp" \
+    "enable_ntp" \
+    "enable_audio_system" \
     "install_vbox_guest_mode" \
     "install_pkg_pacman" \
     "install_pkg_aur" \
