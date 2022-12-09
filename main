@@ -17,12 +17,12 @@ check_partitions() {
     exit 1
   fi
 
-  if [ ! -z "$cf_dev_partition_home" ] && [ ! -b "$cf_dev_partition_home" ]; then
+  if [ "$cf_dev_partition_home" ] && [ ! -b "$cf_dev_partition_home" ]; then
     echo "Device mapping $cf_dev_partition_home does not exist."
     exit 1
   fi
 
-  if [ ! -z "$cf_dev_partition_var" ] && [ ! -b "$cf_dev_partition_var" ]; then
+  if [ "$cf_dev_partition_var" ] && [ ! -b "$cf_dev_partition_var" ]; then
     echo "Device mapping $cf_dev_partition_var does not exist."
     exit 1
   fi
@@ -32,11 +32,11 @@ format_partitions() {
   mkfs.vfat -F32 $cf_dev_partition_boot
   mkfs.$cf_mkfs_main_file_system $cf_dev_partition_root
 
-  if [ ! -z "$cf_dev_partition_home" ]; then
+  if [ "$cf_dev_partition_home" ]; then
     mkfs.$cf_mkfs_main_file_system $cf_dev_partition_home
   fi
 
-  if [ ! -z "$cf_dev_partition_var" ]; then
+  if [ "$cf_dev_partition_var" ]; then
     mkfs.$cf_mkfs_main_file_system $cf_dev_partition_var
   fi
 }
@@ -47,12 +47,12 @@ mount_partitions() {
   mkdir -p /mnt/boot
   mount $cf_dev_partition_boot /mnt/boot
 
-  if [ ! -z "$cf_dev_partition_home" ]; then
+  if [ "$cf_dev_partition_home" ]; then
     mkdir -p /mnt/home
     mount $cf_dev_partition_home /mnt/home
   fi
 
-  if [ ! -z "$cf_dev_partition_var" ]; then
+  if [ "$cf_dev_partition_var" ]; then
     mkdir -p /mnt/var
     mount $cf_dev_partition_var /mnt/var
   fi
@@ -125,7 +125,7 @@ set_sudoers() {
 create_user_mnt_dirs() {
   local dirs=$(eval "echo $cf_user_mnt_dirs")
 
-  if [ ! -z "$dirs" ]; then
+  if [ "$dirs" ]; then
     mkdir -p $dirs
     chown $cf_username:$cf_username $dirs
   fi
@@ -164,7 +164,7 @@ install_pkg_aur() {
 }
 
 install_user_config() {
-  if [ ! -z "$cf_git_url_nix_user_config" ]; then
+  if [ "$cf_git_url_nix_user_config" ]; then
     curl -LO $cf_user_config_init_script_url --output $HOME/init_user_config
     chmod +x $HOME/init_user_config
     $HOME/init_user_config "$cf_user_config_init_script_args"
@@ -177,7 +177,7 @@ install_nodejs() {
   export NVM_DIR=$HOME/.nvm
   . /usr/share/nvm/nvm.sh
 
-  if [ ! -z "$cf_nvm_default_nodejs_version" ]; then
+  if [ "$cf_nvm_default_nodejs_version" ]; then
     nvm install $cf_nvm_default_nodejs_version
     nvm alias default $cf_nvm_default_nodejs_version
     nvm use default
@@ -185,7 +185,7 @@ install_nodejs() {
 }
 
 install_pkg_npm() {
-  if [ ! -z "$cf_nvm_default_nodejs_version" ] && [ -s $dir/pkg_npm ]; then
+  if [ "$cf_nvm_default_nodejs_version" ] && [ -s $dir/pkg_npm ]; then
     npm install --global $(echo $(cat $dir/pkg_npm))
   fi
 }
@@ -278,6 +278,6 @@ post_reboot() {
   echo_br_bottom "System installation is complete. Re-login in tty as $cf_username and start graphical session by running: startx"
 }
 
-  [ -z "$1" ] || [ "$1" -eq "0" ] && pre_reboot_initial
-[ ! -z "$1" ] && [ "$1" -eq "1" ] && pre_reboot_on_chroot
-[ ! -z "$1" ] && [ "$1" -eq "2" ] && post_reboot
+[ -z "$1" ] || [ "$1" -eq "0" ] && pre_reboot_initial
+[ "$1" ] && [ "$1" -eq "1" ] && pre_reboot_on_chroot
+[ "$1" ] && [ "$1" -eq "2" ] && post_reboot
