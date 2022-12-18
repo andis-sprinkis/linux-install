@@ -199,9 +199,7 @@ enable_ntp() {
 }
 
 enable_audio_system() {
-  systemctl --user enable --now pipewire.socket
-  systemctl --user enable --now pipewire-pulse.socket
-  systemctl --user enable --now wireplumber.service
+  systemctl --user disable --now pipewire.socket pipewire-pulse.socket wireplumber.service
 }
 
 install_vbox_guest_mode() {
