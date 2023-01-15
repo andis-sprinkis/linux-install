@@ -34,7 +34,7 @@ computer. In order to do that:
    vi /linux-install/config # optional double-checking of the installation config
    /linux-install/main
    ```
-   **Or start the installation automatically (including the commands above):**
+   **Or start the installation automatically via autostart script, which includes the commands above:**
    ```
    curl -LO https://raw.githubusercontent.com/andis-sprinkis/linux-install/master/autostart && sh ./autostart
    ```
