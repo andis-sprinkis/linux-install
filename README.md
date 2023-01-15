@@ -26,21 +26,6 @@ computer. In order to do that:
    | sdb1          | /home            | Rest of the drive | `Linux filesystem` |
    | sdc1          | /var             | Rest of the drive | `Linux filesystem` |
 
-   ---
-
-   Alternatively, the [`./partitions_default`](./partitions_default) directory has a partition table dump for 3 storage devices of 128G size according to the example above. 
-
-   It can be applied to the devices using `cfdisk`.
-
-   ```bash
-   curl -LO https://raw.githubusercontent.com/andis-sprinkis/linux-install/master/partitions_default/sda.dump
-   curl -LO https://raw.githubusercontent.com/andis-sprinkis/linux-install/master/partitions_default/sdb.dump
-   curl -LO https://raw.githubusercontent.com/andis-sprinkis/linux-install/master/partitions_default/sdc.dump
-
-   cfdisk /dev/sda < sda.dump
-   cfdisk /dev/sdb < sdb.dump
-   cfdisk /dev/sdc < sdc.dump
-   ```
 1. Update pacman, clone this repository and start the installation:
    ```bash
    rm -rf /var/lib/pacman/sync && pacman --noconfirm -Sy git vi
