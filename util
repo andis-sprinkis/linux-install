@@ -72,28 +72,27 @@ read_pw_input() {
 confirm_pw_input() {
   local password_1
   local password_2
-  prefix_usr_input_err="User input error -"
 
   read_pw_input && password_1=$PW_INPUT
 
   if [ -z "$password_1" ]; then
     password_1="" password_2="" PW_INPUT=""
-    echo_br_top "$prefix_usr_input_err password must not be empty. Try again!"
+    echo; echo "Input error - password must not be empty. Try again!"
     confirm_pw_input $1 && return 0; return 1
   fi
 
-  echo_br_top "Repeat the password."
+  echo; echo "Repeat the password."
   read_pw_input && password_2=$PW_INPUT
 
   if [ -z "$password_2" ]; then
     password_1="" password_2="" PW_INPUT=""
-    echo_br_top "$prefix_usr_input_err password must not be empty. Try again!"
+    echo; echo "Input error - password must not be empty. Try again!"
     confirm_pw_input $1 && return 0; return 1
   fi
 
   if [ ! "$password_1" == "$password_2" ]; then
     password_1="" password_2="" PW_INPUT=""
-    echo_br_top "$prefix_usr_input_err passwords must match. Try again!"
+    echo; echo "Input error - passwords must match. Try again!"
     confirm_pw_input $1 && return 0; return 1
   fi
 
