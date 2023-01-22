@@ -70,7 +70,10 @@ read_pw_input() {
 # Prompt with user error handling for concealed password input
 
 confirm_pw_input() {
+  local password_1
+  local password_2
   prefix_usr_input_err="User input error -"
+
   read_pw_input && password_1=$PW_INPUT
 
   if [ -z "$password_1" ]; then
