@@ -29,7 +29,7 @@ computer. In order to do that:
 1. Update pacman, clone this repository and start the installation:
    ```bash
    rm -rf /var/lib/pacman/sync && pacman --noconfirm -Sy git vi
-   git clone https://github.com/andis-sprinkis/linux-install /linux-install --recurse-submodules
+   git clone https://github.com/andis-sprinkis/linux-install /linux-install
 
    vi /linux-install/config # optional double-checking of the installation config
    /linux-install/main
