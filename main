@@ -217,7 +217,7 @@ cleanup_bashrc() {
 
 # Stages
 
-pre_reboot_initial() {
+stage_pre_reboot_initial() {
   stage="Pre-reboot initial system installation"
   echo_stage_status 0 "$stage"
 
@@ -234,7 +234,7 @@ pre_reboot_initial() {
   echo_stage_status 1 "$stage"
 }
 
-pre_reboot_on_chroot() {
+stage_pre_reboot_on_chroot() {
   stage="Pre-reboot on-chroot system installation"
   echo_stage_status 0 "$stage"
 
@@ -256,7 +256,7 @@ pre_reboot_on_chroot() {
   echo_br_bottom "Please reboot now and log into tty as $cf_username to complete the installation!"
 }
 
-post_reboot() {
+stage_post_reboot() {
   stage="Post-reboot system installation"
   echo_stage_status 0 "$stage"
 
@@ -276,6 +276,6 @@ post_reboot() {
   echo_br_bottom "System installation is complete. Re-login in tty as $cf_username and start graphical session by running: startx"
 }
 
-[ -z "$1" ] || [ "$1" -eq "0" ] && pre_reboot_initial
-[ "$1" ] && [ "$1" -eq "1" ] && pre_reboot_on_chroot
-[ "$1" ] && [ "$1" -eq "2" ] && post_reboot
+[ -z "$1" ] || [ "$1" -eq "0" ] && stage_pre_reboot_initial
+[ "$1" ] && [ "$1" -eq "1" ] && stage_pre_reboot_on_chroot
+[ "$1" ] && [ "$1" -eq "2" ] && stage_post_reboot
