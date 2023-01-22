@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -e
 dir=$(cd -P -- "$(dirname -- "$0")" && pwd -P)
-. $dir/nix-script-util/nix-script-util.bash
+. $dir/util
 . $dir/config
 
 # Functions
