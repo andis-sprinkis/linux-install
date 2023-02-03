@@ -5,7 +5,6 @@ echo "Pre-installation script has started..."; echo
 
 rm -rf /var/lib/pacman/sync && pacman --noconfirm -Sy git vi
 git clone https://github.com/andis-sprinkis/linux-install /linux-install
-
 vi /linux-install/config
 
 echo

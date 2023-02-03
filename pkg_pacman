@@ -20,6 +20,7 @@ dconf-editor
 dmenu
 docker
 docker-compose
+dosfstools
 epiphany
 fd
 ffmpegthumbnailer
@@ -59,6 +60,7 @@ neovim
 networkmanager
 noto-fonts
 noto-fonts-emoji
+ntfs-3g
 octave
 openssh
 otf-cascadia-code
