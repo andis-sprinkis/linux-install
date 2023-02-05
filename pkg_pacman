@@ -12,6 +12,7 @@ bat
 bc
 binutils
 calcurse
+catimg
 ccls
 chromium
 clang
@@ -50,6 +51,7 @@ lf
 libreoffice-fresh
 lua
 m4
+maim
 make
 man-db
 man-pages
@@ -81,7 +83,6 @@ reflector
 ripgrep
 rsync
 samba
-scrot
 sd
 sed
 sshfs
