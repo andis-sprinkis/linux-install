@@ -85,6 +85,7 @@ rsync
 samba
 sd
 sed
+smartmontools
 sshfs
 sudo
 systemd
