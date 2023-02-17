@@ -219,61 +219,58 @@ cleanup_bashrc() {
 
 stage_pre_reboot_initial() {
   stage="Pre-reboot initial system installation"
-  echo_stage_status 0 "$stage"
+  print_stage_status 0 "$stage"
 
-  fn_call \
-    "check_partitions" \
-    "format_partitions" \
-    "mount_partitions" \
-    "sort_pacman_mirrors" \
-    "install_base_packages" \
-    "generate_fstab" \
-    "cp_install_files_root"
+  fn_call "check_partitions"
+  fn_call "format_partitions"
+  fn_call "mount_partitions"
+  fn_call "sort_pacman_mirrors"
+  fn_call "install_base_packages"
+  fn_call "generate_fstab"
+  fn_call "cp_install_files_root"
 
   arch-chroot /mnt /linux-install/main 1
-  echo_stage_status 1 "$stage"
+  print_stage_status 1 "$stage"
 }
 
 stage_pre_reboot_on_chroot() {
   stage="Pre-reboot on-chroot system installation"
-  echo_stage_status 0 "$stage"
+  print_stage_status 0 "$stage"
 
-  fn_call \
-    "initialize_bootloader" \
-    "add_enable_swapfile" \
-    "enable_networkmanager" \
-    "set_timezone" \
-    "set_hardware_clock" \
-    "set_locale" \
-    "set_hostname" \
-    "set_root_password" \
-    "create_regular_user" \
-    "set_sudoers" \
-    "create_user_mnt_dirs" \
-    "set_post_reboot_stage"
+  fn_call "initialize_bootloader"
+  fn_call "add_enable_swapfile"
+  fn_call "enable_networkmanager"
+  fn_call "set_timezone"
+  fn_call "set_hardware_clock"
+  fn_call "set_locale"
+  fn_call "set_hostname"
+  fn_call "set_root_password"
+  fn_call "create_regular_user"
+  fn_call "set_sudoers"
+  fn_call "create_user_mnt_dirs"
+  fn_call "set_post_reboot_stage"
 
-  echo_stage_status 1 "$stage"
-  echo_br_bottom "Please reboot now and log into tty as $cf_username to complete the installation!"
+  print_stage_status 1 "$stage"
+  print_br_bottom "Please reboot now and log into tty as $cf_username to complete the installation!"
 }
 
 stage_post_reboot() {
   stage="Post-reboot system installation"
-  echo_stage_status 0 "$stage"
+  print_stage_status 0 "$stage"
 
-  fn_call \
-    "enable_ntp" \
-    "enable_audio_system" \
-    "install_vbox_guest_mode" \
-    "install_pkg_pacman" \
-    "install_pkg_aur" \
-    "install_user_config" \
-    "install_nodejs" \
-    "install_pkg_npm" \
-    "change_shell" \
-    "cleanup_bashrc"
+  fn_call "enable_ntp"
+  fn_call "enable_audio_system"
+  fn_call "install_vbox_guest_mode"
+  fn_call "install_pkg_pacman"
+  fn_call "install_pkg_aur"
+  fn_call "install_user_config"
+  fn_call "install_nodejs"
+  fn_call "install_pkg_npm"
+  fn_call "change_shell"
+  fn_call "cleanup_bashrc"
 
-  echo_stage_status 1 "$stage"
-  echo_br_bottom "System installation is complete. Re-login in tty as $cf_username and start graphical session by running: startx"
+  print_stage_status 1 "$stage"
+  print_br_bottom "System installation is complete. Re-login in tty as $cf_username and start graphical session by running: startx"
 }
 
 [ -z "$1" ] || [ "$1" -eq "0" ] && stage_pre_reboot_initial

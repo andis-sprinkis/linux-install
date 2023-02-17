@@ -2,15 +2,15 @@
 
 # Pad echo output with line breaks
 
-echo_br_bottom() {
+print_br_bottom() {
   echo $1; echo
 }
 
-echo_br_top() {
+print_br_top() {
   echo; echo $1
 }
 
-echo_br_both() {
+print_br_both() {
   echo; echo $1; echo
 }
 
@@ -18,19 +18,19 @@ echo_br_both() {
 
 fn_call() {
   for fn in "$@"; do
-    echo_br_bottom "Function $fn has started..."
+    print_br_bottom "Function $fn has started..."
     $fn
-    echo_br_bottom "Function $fn has completed!"
+    print_br_bottom "Function $fn has completed!"
   done
 }
 
-echo_stage_status() {
+print_stage_status() {
   if [ "$1" -eq "0" ]; then
-    echo_br_bottom "Starting $2 stage..."
+    print_br_bottom "Starting $2 stage..."
   fi 
 
   if [ "$1" -eq "1" ]; then
-    echo_br_bottom "$2 stage has completed!"
+    print_br_bottom "$2 stage has completed!"
   fi 
 }
 
@@ -109,5 +109,5 @@ set_user_pw_confirm() {
   (echo "$PW_INPUT"; echo "$PW_INPUT") | passwd $1
   PW_INPUT=""
 
-  echo_br_both "Password for user $1 has been set."
+  print_br_both "Password for user $1 has been set."
 }
