@@ -91,6 +91,7 @@ sshfs
 sudo
 systemd
 texinfo
+tk
 tmux
 translate-shell
 tree
