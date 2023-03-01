@@ -158,7 +158,7 @@ install_pkg_aur() {
     cd $HOME
   fi
 
-  if [ -s $dir/pkg_aur ]; then
+  if [ -s "$dir/pkg_aur" ]; then
     yay -S --needed $(echo $(cat $dir/pkg_aur))
   fi
 }
@@ -187,6 +187,12 @@ install_nodejs() {
 install_pkg_npm() {
   if [ "$cf_nvm_default_nodejs_version" ] && [ -s $dir/pkg_npm ]; then
     npm install --global $(echo $(cat $dir/pkg_npm))
+  fi
+}
+
+install_pkg_pip3() {
+  if [ -s "$dir/pkg_npm" ]; then
+    pip3 install $(echo $(cat $dir/pkg_pip3))
   fi
 }
 
@@ -266,6 +272,7 @@ stage_post_reboot() {
   fn_call "install_user_config"
   fn_call "install_nodejs"
   fn_call "install_pkg_npm"
+  fn_call "install_pkg_pip3"
   fn_call "change_shell"
   fn_call "cleanup_bashrc"
 
