@@ -190,9 +190,9 @@ install_pkg_npm() {
   fi
 }
 
-install_pkg_pip3() {
+install_pkg_pypi() {
   if [ -s "$dir/pkg_npm" ]; then
-    pip3 install $(echo $(cat $dir/pkg_pip3))
+    pip3 install $(echo $(cat $dir/pkg_pypi))
   fi
 }
 
@@ -272,7 +272,7 @@ stage_post_reboot() {
   fn_call "install_user_config"
   fn_call "install_nodejs"
   fn_call "install_pkg_npm"
-  fn_call "install_pkg_pip3"
+  fn_call "install_pkg_pypi"
   fn_call "change_shell"
   fn_call "cleanup_bashrc"
 
