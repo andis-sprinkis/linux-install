@@ -71,7 +71,6 @@ otf-cascadia-code
 p7zip
 pacman
 patch
-picom
 pipewire
 pipewire-alsa
 pipewire-jack
@@ -109,6 +108,7 @@ wireplumber
 x11-ssh-askpass
 xbindkeys
 xclip
+xcompmgr
 xdotool
 xorg-server
 xorg-xdpyinfo
