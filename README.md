@@ -7,7 +7,7 @@
    ```bash
    ls /sys/firmware/efi/efivars
    ```
-1. *Optional* - You can launch an SSH server and continue your installation remotely from another
+1. *Optional* – You can launch an SSH server and continue your installation remotely from another
 computer. In order to do that:
 
    ```bash
@@ -38,6 +38,13 @@ computer. In order to do that:
    ```
    curl -LO https://raw.githubusercontent.com/andis-sprinkis/linux-install/master/autostart && sh ./autostart
    ```
+
+## Swap size
+
+- RAM <=1 GB – at least the size of RAM, at most double the size of RAM.
+- RAM >1 GB – at least equal to the square root of the RAM size and at most double the size of RAM.
+- With hibernation – equal to size of RAM + the square root of the RAM size.
+
 ## Connecting to Wifi
 - Installation media environent:
 
