@@ -48,12 +48,12 @@ computer. In order to do that:
 ## Connecting to Wifi
 - Installation media environent:
 
-   ```
-   iwctl station list
-   iwctl station <station> scan
-   iwctl station <station> get-networks
-   iwctl station <station> connect <network_name>
-   ```
+  ```
+  iwctl station list
+  iwctl station <station> scan
+  iwctl station <station> get-networks
+  iwctl station <station> connect <network_name>
+  ```
 - Finished installation environment:
 
   ```
