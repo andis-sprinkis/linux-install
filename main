@@ -205,7 +205,7 @@ enable_ntp() {
 }
 
 enable_audio_system() {
-  systemctl --user disable --now pipewire.socket pipewire-pulse.socket wireplumber.service
+  systemctl --user enable --now pipewire.socket pipewire-pulse.socket wireplumber.service
 }
 
 install_vbox_guest_mode() {
@@ -265,7 +265,6 @@ stage_post_reboot() {
   print_stage_status 0 "$stage"
 
   fn_call "enable_ntp"
-  fn_call "enable_audio_system"
   fn_call "install_vbox_guest_mode"
   fn_call "install_pkg_pacman"
   fn_call "install_pkg_aur"
@@ -274,6 +273,7 @@ stage_post_reboot() {
   fn_call "install_pkg_npm"
   fn_call "install_pkg_pypi"
   fn_call "change_shell"
+  fn_call "enable_audio_system"
   fn_call "cleanup_bashrc"
 
   print_stage_status 1 "$stage"
