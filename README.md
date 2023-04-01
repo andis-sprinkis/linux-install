@@ -128,7 +128,7 @@ With LVM on LUKS, systemd-boot bootloader, hibernation, applying user personal c
    title Arch Linux
    linux /vmlinuz-linux
    initrd /initramfs-linux.img
-   options cryptdevice=UUID=<LUKS container partition UUID>:nvme0n1_luks0 root=/dev/nvme0n1_luks0_volgrp0/root resume=/dev/nvme0n1_luks0_volgrp0/swap
+   options cryptdevice=UUID=<LUKS container partition UUID>:nvme0n1_luks0 root=/dev/nvme0n1_luks0_volgrp0/root resume=/dev/nvme0n1_luks0_volgrp0/swap module_blacklist=pcspkr,snd_pcsp
    ```
 1. Configure boot-loader.
    Add file `/boot/loader/loader.conf`:
@@ -325,9 +325,10 @@ With LVM on LUKS, systemd-boot bootloader, hibernation, applying user personal c
 ## Hardware configuration and troubleshooting
 
 - [AMDGPU - ArchWiki](https://wiki.archlinux.org/title/AMDGPU)
-- [NVIDIA - ArchWiki](https://wiki.archlinux.org/title/NVIDIA)
+- [Backlight - ArchWiki](https://wiki.archlinux.org/title/Backlight)
 - [Intel graphics - ArchWiki](https://wiki.archlinux.org/title/Intel_graphics)
 - [Intel graphics - LinuxReviews](https://linuxreviews.org/Intel_graphics)
+- [NVIDIA - ArchWiki](https://wiki.archlinux.org/title/NVIDIA)
 
 ## To do
 
