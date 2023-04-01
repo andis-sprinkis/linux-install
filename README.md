@@ -331,4 +331,4 @@ With LVM on LUKS, systemd-boot bootloader, hibernation, applying user personal c
 
 ## To-do
 
-- Describe encrypting and using `crypttab` for unlocking and mounting other drives.
+- Describe encrypting and using crypttab for unlocking and mounting other drives.
