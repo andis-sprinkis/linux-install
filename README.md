@@ -329,6 +329,6 @@ With LVM on LUKS, systemd-boot bootloader, hibernation, applying user personal c
 - [Intel graphics - ArchWiki](https://wiki.archlinux.org/title/Intel_graphics)
 - [Intel graphics - LinuxReviews](https://linuxreviews.org/Intel_graphics)
 
-## To-do
+## To do
 
 - Describe encrypting and using crypttab for unlocking and mounting other drives.
