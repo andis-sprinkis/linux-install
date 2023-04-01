@@ -289,6 +289,11 @@ With LVM on LUKS, systemd-boot bootloader, hibernation, applying user personal c
    ```bash
    systemctl --user enable --now pipewire.socket pipewire-pulse.socket wireplumber.service
    ```
+1. Enable non-root users to be able ot use `allow_other` mount option in FUSE.
+   In file `/etc/fuse.conf` add or uncomment line 
+   ```
+   user_allow_other
+   ```
 1. To customize functions of the device power buttons:
    1. Update file `/etc/systemd/logind.conf`.
       ```bash
