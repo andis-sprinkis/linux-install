@@ -238,7 +238,7 @@ With LVM on LUKS, systemd-boot bootloader, hibernation, applying user personal c
    ```bash
    sudo pacman -S --needed $(echo $(cat ./pkg_pacman))
    ```
-1. If device is VirtualBox guest, install and enable the VirtualBox guest utilities.
+1. If installation target computer is a VirtualBox guest, install and enable the VirtualBox guest utilities.
    ```bash
    sudo pacman -S virtualbox-guest-utils
    sudo systemctl enable --now vboxservice.service
