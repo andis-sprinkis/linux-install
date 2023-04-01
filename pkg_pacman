@@ -111,6 +111,7 @@ xclip
 xcompmgr
 xdotool
 xorg-server
+xorg-xbacklight
 xorg-xdpyinfo
 xorg-xev
 xorg-xinit
