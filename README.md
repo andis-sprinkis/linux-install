@@ -195,7 +195,7 @@ With LVM on LUKS, systemd-boot bootloader, hibernation, applying user personal c
    ```bash
    echo "arch-pc-00" > /etc/hostname
    ```
-1. Set `root` user password.
+1. Set root user password.
    ```bash
    passwd root
    ```
@@ -219,7 +219,7 @@ With LVM on LUKS, systemd-boot bootloader, hibernation, applying user personal c
    mkdir -p $dirs
    chown user-00:user-00 $dirs
    ```
-1. Exit from `/mnt` root shell and reboot.
+1. Exit from /mnt root shell and reboot.
    ```bash
    exit
    reboot
