@@ -2,7 +2,7 @@
 
 With LVM on LUKS, systemd-boot bootloader, hibernation, applying user personal configuration.
 
-## General process
+## Setup process
 
 1. [Download](https://archlinux.org/download/) the Arch Linux installer image.
 1. Write the installation image to the installation media.
