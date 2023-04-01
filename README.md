@@ -10,7 +10,7 @@ With LVM on LUKS, systemd-boot bootloader, hibernation, applying user personal c
    cat path/to/archlinux-version-x86_64.iso > /dev/sdx
    ```
 1. Disable "Secure Boot" in the BIOS of the installation target computer.
-1. Boot installation target computer into Arch Linux live installation media environment.
+1. Boot installation target computer into Arch Linux installation media environment.
 1. Verify EFI boot mode by listing efivars directory.
    ```bash
    ls /sys/firmware/efi/efivars
