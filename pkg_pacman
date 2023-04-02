@@ -7,7 +7,6 @@ atool
 autoconf
 automake
 autossh
-base
 base-devel
 bat
 bc
@@ -34,7 +33,6 @@ gcc
 gettext
 gfold
 gimp
-git
 glu
 gnome-themes-extra
 go
@@ -63,14 +61,11 @@ mesa
 mesa-utils
 mpv
 ncdu
-neovim
-networkmanager
 noto-fonts
 noto-fonts-emoji
 ntfs-3g
 octave
 odt2txt
-openssh
 otf-cascadia-code
 p7zip
 pacman
@@ -93,7 +88,6 @@ sd
 sed
 smartmontools
 sshfs
-sudo
 systemd
 texinfo
 tk

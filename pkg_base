@@ -2,7 +2,8 @@ base
 git
 linux
 linux-firmware
+lvm2
+neovim
 networkmanager
 openssh
 sudo
-vi
