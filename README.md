@@ -272,7 +272,7 @@ With LVM on LUKS, systemd-boot bootloader, hibernation, applying user personal c
    ```
 1. Execute ZSH.
    ```bash
-   zsh
+   exec zsh
    ```
 1. Install Node.js.
    ```bash
