@@ -265,16 +265,18 @@ With LVM on LUKS, systemd-boot bootloader, hibernation, applying user personal c
    git --git-dir=$dir_cfg_git --work-tree=$HOME config --local status.showUntrackedFiles no
    git --git-dir=$dir_cfg_git --work-tree=$HOME submodule update --init
    ```
+1. Switch shell to ZSH for the regular user and the root user.
+   ```bash
+   sudo chsh -s /usr/bin/zsh user-00
+   sudo chsh -s /usr/bin/zsh root
+   ```
+1. Execute ZSH.
+   ```bash
+   zsh
+   ```
 1. Install Node.js.
    ```bash
-   mkdir -p $HOME/.nvm
-   export NVM_DIR=$HOME/.nvm
-   . /usr/share/nvm/nvm.sh
-
-   node_version=lts/gallium
-   nvm install $node_version
-   nvm alias default $node_version
-   nvm use default
+   volta install node
    ```
 1. Install npm packages.
    ```bash
