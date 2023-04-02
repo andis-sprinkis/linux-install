@@ -277,7 +277,7 @@ With LVM on LUKS, systemd-boot bootloader, hibernation, applying user personal c
    ```
 1. Install npm packages.
    ```bash
-   npm install --global $(echo $(cat ./pkg_npm))
+   volta install $(echo $(cat ./pkg_npm))
    ```
 1. Install PyPi packages.
    ```bash
