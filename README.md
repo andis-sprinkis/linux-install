@@ -201,9 +201,9 @@ With LVM on LUKS, systemd-boot bootloader, hibernation, applying user personal c
    ```
 1. Create a regular user.
    ```bash
-   useradd -m "user-00"
-   usermod -G wheel -a "user-00"
-   passwd "user-00"
+   useradd -m user-00
+   usermod -G wheel -a user-00
+   passwd user-00
    ```
 1. Set sudo-ers.
    1. ```bash
