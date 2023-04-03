@@ -24,6 +24,7 @@ docker-compose
 dosfstools
 epiphany
 fd
+ffmpeg
 ffmpegthumbnailer
 findutils
 firefox
