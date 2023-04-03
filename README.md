@@ -155,6 +155,7 @@ With LVM on LUKS, systemd-boot bootloader, hibernation, applying user personal c
    bootctl --path=/boot install
    ```
 1. Add pacman update hook for systemd-boot bootloader.
+
    Add file `/etc/pacman.d/hooks/100-systemd-boot.hook`:
    ```ini
    [Trigger]
@@ -167,6 +168,7 @@ With LVM on LUKS, systemd-boot bootloader, hibernation, applying user personal c
    When = PostTransaction
    Exec = /usr/bin/bootctl update
    ```
+
 1. Enable NetworkManager service.
    ```bash
    systemctl enable NetworkManager
@@ -299,7 +301,7 @@ With LVM on LUKS, systemd-boot bootloader, hibernation, applying user personal c
    systemctl --user enable --now pipewire.socket pipewire-pulse.socket wireplumber.service
    ```
 1. Enable non-root users to be able to use `allow_other` mount option with FUSE.
-   In file `/etc/fuse.conf` add or uncomment line 
+   In file `/etc/fuse.conf` add or uncomment line
    ```
    user_allow_other
    ```
