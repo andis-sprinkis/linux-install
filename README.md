@@ -114,9 +114,15 @@ With LVM on LUKS, systemd-boot bootloader, hibernation, applying user personal c
    ```bash
    arch-chroot /mnt
    ```
+1. Install root user Neovim configuration.
+   ```bash
+   mkdir -p /root/.config && cd /root/.config
+   git clone https://github.com/andis-sprinkis/nvim-user-config nvim
+   cd nvim && git checkout minimal-config
+   ```
 1. Add boot-loader directories.
    ```bash
-   mdkir -p /boot/loader/entries
+   mkdir -p /boot/loader/entries
    ```
 1. Get the LUKS container partition UUID
    ```bash
@@ -255,7 +261,7 @@ With LVM on LUKS, systemd-boot bootloader, hibernation, applying user personal c
    ```bash
    yay -S --needed $(echo $(cat ./pkg_aur))
    ```
-1. Install user configuration.
+1. Install user general configuration.
    ```bash
    git_url_cfg=https://github.com/andis-sprinkis/nix-user-config
    dir_cfg_git=$HOME/.dotfiles_git
@@ -264,6 +270,11 @@ With LVM on LUKS, systemd-boot bootloader, hibernation, applying user personal c
    rsync --recursive --verbose --exclude '.git' $temp_path/ $HOME
    git --git-dir=$dir_cfg_git --work-tree=$HOME config --local status.showUntrackedFiles no
    git --git-dir=$dir_cfg_git --work-tree=$HOME submodule update --init
+   ```
+1. Install user Neovim configuration.
+   ```bash
+   cd $HOME/.config
+   git clone https://github.com/andis-sprinkis/nvim-user-config nvim
    ```
 1. Switch shell to ZSH for both root and the regular user and execute ZSH.
    ```bash
