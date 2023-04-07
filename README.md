@@ -228,17 +228,6 @@ With LVM on LUKS, systemd-boot bootloader, hibernation, applying user personal c
    mkdir -p $dirs
    chown user-00:user-00 $dirs
    ```
-1. Create tmpfs for the regular user cache directory.
-   1. Create user cache mount point directory and mount cache tmpfs.
-   ```bash
-   mkdir -p $HOME/.cache
-   chown user-00:user-00 $HOME/.cache
-   ```
-   1. Add to file /etc/fstab:
-   ```bash
-   # User user-00 cache directory
-   tmpfs /home/user-00/.cache tmpfs rw,size=8G,nr_inodes=5k,noexec,nodev,nosuid,uid=1000,gid=1000,mode=1700 0 0
-   ```
 1. Exit from /mnt root shell and reboot, then log in as the regular user.
    ```bash
    exit
