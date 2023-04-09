@@ -323,7 +323,7 @@ With LVM on LUKS, systemd-boot bootloader, hibernation, applying user personal c
 ## Connecting to Wi-Fi
 
 - Installation media environment:
-  ```
+  ```bash
   iwctl station list
   iwctl station <station> scan
   iwctl station <station> get-networks
