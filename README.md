@@ -325,9 +325,9 @@ With LVM on LUKS, systemd-boot bootloader, hibernation, applying user personal c
 - Installation media environment:
   ```bash
   iwctl station list
-  iwctl station <station> scan
-  iwctl station <station> get-networks
-  iwctl station <station> connect <network_name>
+  iwctl station $station scan
+  iwctl station $station get-networks
+  iwctl station $station connect $network_name
   ```
 - Finished installation OS environment:
   - Interactively:
@@ -336,7 +336,7 @@ With LVM on LUKS, systemd-boot bootloader, hibernation, applying user personal c
     ```
   - Non-interactively:
     ```bash
-    nmcli device wifi connect <SSID> password <password>
+    nmcli device wifi connect $ssid password $password
     ```
 
 ## Hardware configuration and troubleshooting
