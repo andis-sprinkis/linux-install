@@ -1,6 +1,6 @@
 # Arch Linux setup
 
-With LVM on LUKS, systemd-boot bootloader, hibernation, applying user personal configuration and preferences.
+With LVM on LUKS, systemd-boot bootloader, hibernation, applying user personal configuration files and preferences.
 
 ## Setup process
 
