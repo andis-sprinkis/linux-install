@@ -237,7 +237,7 @@ With LVM on LUKS, systemd-boot bootloader, hibernation, applying user personal c
    ```bash
    sudo timedatectl set-ntp on
    ```
-1. Clone the repository containing user package lists.
+1. Clone the repository containing the user package lists.
    ```bash
    cd $HOME
    git clone https://github.com/andis-sprinkis/linux-install
