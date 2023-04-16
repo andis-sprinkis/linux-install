@@ -285,10 +285,6 @@ With LVM on LUKS, systemd-boot bootloader, hibernation, applying user personal c
    sudo chsh -s /usr/bin/zsh user-00
    exec zsh
    ```
-1. Install Node.js.
-   ```bash
-   volta install node
-   ```
 1. Install npm packages.
    ```bash
    volta install $(echo $(cat ./pkg_npm))
