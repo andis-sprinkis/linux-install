@@ -78,6 +78,7 @@ pipewire-pulse
 pkgconf
 python
 python-pip
+python-pipenv
 qbittorrent
 qpwgraph
 r
