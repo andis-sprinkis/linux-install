@@ -18,7 +18,6 @@ chromium
 clang
 cmake
 curl
-dconf-editor
 dmenu
 docker
 docker-compose
