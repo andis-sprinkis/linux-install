@@ -108,7 +108,6 @@ wget
 which
 wireplumber
 x11-ssh-askpass
-xbindkeys
 xclip
 xcompmgr
 xdotool
