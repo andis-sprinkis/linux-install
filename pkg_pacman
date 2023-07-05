@@ -93,7 +93,6 @@ systemd
 texinfo
 tk
 tmux
-translate-shell
 tree
 tree-sitter
 unclutter
