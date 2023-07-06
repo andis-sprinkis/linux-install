@@ -124,7 +124,7 @@ With LVM on LUKS, systemd-boot bootloader, hibernation, applying user personal c
    ```sh
    mkdir -p /boot/loader/entries
    ```
-1. Get the LUKS container partition UUID
+1. Get the LUKS container partition UUID.
    ```sh
    blkid --match-tag UUID -o value /dev/nvme0n1p2
    ```
