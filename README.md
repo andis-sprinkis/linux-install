@@ -303,7 +303,7 @@ With LVM on LUKS, systemd-boot bootloader, hibernation, applying user personal c
    ```
 1. Enable the PC/SD Smart Card Daemon service.
    ```sh
-   sudo sytemctl enable pcscd.service
+   sudo systemctl enable pcscd.service
    ```
 1. Enable non-root users to be able to use `allow_other` mount option with FUSE.
    In file `/etc/fuse.conf` add or uncomment line
