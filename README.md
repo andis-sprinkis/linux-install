@@ -219,11 +219,12 @@ With LVM on LUKS, systemd-boot bootloader, hibernation, applying user personal c
    ```
 1. Set sudo-ers.
    1. ```sh
+      EDITOR=nvim
       visudo
       ```
    1. Add or uncomment:
       ```
-      %wheel ALL=(ALL) ALL
+      %wheel ALL=(ALL:ALL) ALL
       ```
 1. Create user mount directories.
    ```sh
@@ -236,7 +237,7 @@ With LVM on LUKS, systemd-boot bootloader, hibernation, applying user personal c
    exit
    reboot
    ```
-1. Enable Network time protocol.
+1. Enable Network Time Protocol.
    ```sh
    sudo timedatectl set-ntp on
    ```
