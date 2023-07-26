@@ -262,7 +262,7 @@ With LVM on LUKS, systemd-boot bootloader, hibernation, applying user personal c
    git clone https://aur.archlinux.org/yay.git $temp_path
    cd $temp_path
    makepkg -si
-   cd $HOME
+   cd $HOME/linux-install
    ```
 1. Install AUR packages.
    ```sh
