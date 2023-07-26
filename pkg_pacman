@@ -13,6 +13,7 @@ bc
 binutils
 calcurse
 catimg
+ccid
 ccls
 chromium
 clang
@@ -66,10 +67,12 @@ nsxiv
 ntfs-3g
 octave
 odt2txt
+opensc
 otf-cascadia-code
 p7zip
 pacman
 patch
+pcsc-tools
 pipewire
 pipewire-alsa
 pipewire-jack

@@ -297,6 +297,10 @@ With LVM on LUKS, systemd-boot bootloader, hibernation, applying user personal c
    ```sh
    systemctl --user enable --now pipewire.socket pipewire-pulse.socket wireplumber.service
    ```
+1. Enable the PC/SD Smart Card Daemon service.
+   ```sh
+   sudo sytemctl enable pcscd.service
+   ```
 1. Enable non-root users to be able to use `allow_other` mount option with FUSE.
    In file `/etc/fuse.conf` add or uncomment line
    ```
@@ -342,6 +346,7 @@ With LVM on LUKS, systemd-boot bootloader, hibernation, applying user personal c
 - [Intel graphics - ArchWiki](https://wiki.archlinux.org/title/Intel_graphics)
 - [Intel graphics - LinuxReviews](https://linuxreviews.org/Intel_graphics)
 - [NVIDIA - ArchWiki](https://wiki.archlinux.org/title/NVIDIA)
+- [Smartcards - ArchWiki](https://wiki.archlinux.org/title/Smartcards)
 
 ## To do
 
