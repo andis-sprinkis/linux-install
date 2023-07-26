@@ -32,7 +32,7 @@ With LVM on LUKS, systemd-boot bootloader, hibernation, applying user personal c
       ```sh
       ssh root@192.168.1.99
       ```
-1. Wipe the installation target disk. This document assumes installation target disk is `/dev/nvme0n1` (use `blkid` to list block devices).
+1. Wipe the installation target disk. This document assumes installation target disk is `/dev/nvme0n1` (use `lsblk` to list block devices).
    ```sh
    cryptsetup open --type plain -d /dev/urandom /dev/nvme0n1 to_be_wiped
    dd if=/dev/zero of=/dev/mapper/to_be_wiped bs=1M status=progress 2> /dev/null
