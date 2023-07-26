@@ -154,21 +154,24 @@ With LVM on LUKS, systemd-boot bootloader, hibernation, applying user personal c
    ```sh
    bootctl --path=/boot install
    ```
-1. Add pacman update hook for systemd-boot bootloader.
+1. Add pacman update hook for systemd-boot bootloader:
 
-   Add file `/etc/pacman.d/hooks/100-systemd-boot.hook`:
+   1. ```sh
+      mkdir /etc/pacman.d/hooks
+      ```
+   1. Add file `/etc/pacman.d/hooks/100-systemd-boot.hook`:
 
-   ```ini
-   [Trigger]
-   Type = Package
-   Operation = Upgrade
-   Target = systemd
+      ```ini
+      [Trigger]
+      Type = Package
+      Operation = Upgrade
+      Target = systemd
 
-   [Action]
-   Description = Updating systemd-boot
-   When = PostTransaction
-   Exec = /usr/bin/bootctl update
-   ```
+      [Action]
+      Description = Updating systemd-boot
+      When = PostTransaction
+      Exec = /usr/bin/bootctl update
+      ```
 
 1. Enable NetworkManager service.
    ```sh
