@@ -241,6 +241,10 @@ With LVM on LUKS, systemd-boot bootloader, hibernation, applying user personal c
    ```sh
    sudo timedatectl set-ntp on
    ```
+1. Set the timezone.
+   ```sh
+   sudo timedatectl set-timezone Europe/Riga
+   ```
 1. Clone the repository containing the user package lists.
    ```sh
    cd $HOME
