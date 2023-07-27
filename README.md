@@ -328,7 +328,7 @@ With LVM on LUKS, systemd-boot bootloader, hibernation, applying user personal c
    exit
    ```
 
-## Encryption, automatic unlocking and mounting of the other drives in the system
+## Encryption, automatic unlocking and mounting of the other drives on the system
 
 LVM on LUKS.
 
