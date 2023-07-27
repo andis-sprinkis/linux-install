@@ -328,6 +328,80 @@ With LVM on LUKS, systemd-boot bootloader, hibernation, applying user personal c
    exit
    ```
 
+## Encryption, automatic unlocking and mounting of the other drives in the system
+
+LVM on LUKS.
+
+1. Wipe the target disk. This document assumes the target disk is `/dev/nvme1n1` (use `lsblk` to list block devices).
+   ```sh
+   sudo su
+   cryptsetup open --type plain -d /dev/urandom /dev/nvme1n1 to_be_wiped
+   dd if=/dev/zero of=/dev/mapper/to_be_wiped bs=1M status=progress 2> /dev/null
+   cryptsetup close to_be_wiped
+   ```
+1. Create the top level physical partition. Choose the option `GPT partitioning` and set the entire drive as `Linux filesystem`.
+   ```sh
+   cfdisk /dev/nvme0n1
+   ```
+1. Generate the keyfile.
+   ```sh
+   dd bs=512 count=4 if=/dev/random of=/nvme1.key iflag=fullblock
+   ```
+1. Set keyfile ownership and access permissions.
+   ```sh
+   chown root:root /nvme1.key
+   chmod a=,u=rw /nvme1.key
+   ```
+1. Format the LUKS container partition. Must provide the password.
+   ```sh
+   cryptsetup luksFormat /dev/nvme1n1p1
+   ```
+1. Associate the keyfile with the LUKS container partition.
+   ```sh
+   cryptsetup luksAddKey /dev/nvme1np1p1 /nvme1.key
+   ```
+1. Open the LUKS container.
+   ```sh
+   cryptsetup luksOpen /dev/nvme1n1p1 nvme1n1_luks0
+   ```
+1. Create the physical volume in LUKS container.
+   ```sh
+   pvcreate /dev/mapper/nvme1n1_luks0
+   ```
+1. Create a logical volume group and add the physical volume of the LUKS container to it.
+   ```sh
+   vgcreate nvme1n1_luks0_volgrp0 /dev/mapper/nvme1n1_luks0
+   ```
+1. Create the logical partition in the volume group.
+   ```sh
+   lvcreate -l 100%FREE nvme1n1_luks0_volgrp0 -n data
+   ```
+1. Reduce the /data logical partition by 256MiB for e2scrub use.
+   ```sh
+   lvreduce -L -256M nvme1n1_luks0_volgrp0/data
+   ```
+1. Format the partition of the logical volume.
+   ```sh
+   mkfs.ext4 /dev/nvme1n1_luks0_volgrp0/data
+   ```
+1. Get the LUKS container partition UUID.
+   ```sh
+   blkid --match-tag UUID -o value /dev/nvme1n1p1
+   ```
+1. Add the LUKS container partition entry to `/etc/crypttab`:
+   ```
+   nvme1          UUID=<LUKS container partition UUID>    /nvme1.key
+   ```
+1. Get the logical volume partition UUID.
+   ```sh
+   blkid --match-tag UUID -o value /dev/mapper/nvme1n1_luks0_volgrp0-data
+   ```
+1. Add the logical volume partition entry to `/etc/fstab`:
+   ```
+   # /dev/mapper/nvme1n1_luks0_volgrp0-data
+   UUID=<Logical volume partition UUID>  /mnt/nvme1 ext4 rw,relatime 0 0
+   ```
+
 ## Connecting to Wi-Fi
 
 - Installation media environment:
@@ -355,7 +429,3 @@ With LVM on LUKS, systemd-boot bootloader, hibernation, applying user personal c
 - [Intel graphics - LinuxReviews](https://linuxreviews.org/Intel_graphics)
 - [NVIDIA - ArchWiki](https://wiki.archlinux.org/title/NVIDIA)
 - [Smartcards - ArchWiki](https://wiki.archlinux.org/title/Smartcards)
-
-## To do
-
-- Describe encrypting and using crypttab for unlocking and mounting other drives.
