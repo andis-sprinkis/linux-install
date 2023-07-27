@@ -39,7 +39,7 @@ With LVM on LUKS, systemd-boot bootloader, hibernation, applying user personal c
    cryptsetup close to_be_wiped
    ```
 1. Create the top level physical partitions. Choose the option `GPT partitioning`.
-   ```
+   ```sh
    cfdisk /dev/nvme0n1
    ```
    | /dev/ mapping  | Size              | Type             |
