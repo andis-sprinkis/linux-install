@@ -341,15 +341,14 @@ LVM on LUKS.
    ```
 1. Create the top level physical partition. Choose the option `GPT partitioning` and set the entire drive as `Linux filesystem`.
    ```sh
-   cfdisk /dev/nvme0n1
+   cfdisk /dev/nvme1n1
    ```
 1. Generate the keyfile.
    ```sh
    dd bs=512 count=4 if=/dev/random of=/nvme1.key iflag=fullblock
    ```
-1. Set keyfile ownership and access permissions.
+1. Set keyfile access permissions.
    ```sh
-   chown root:root /nvme1.key
    chmod a=,u=rw /nvme1.key
    ```
 1. Format the LUKS container partition. Must provide the password.
@@ -358,11 +357,11 @@ LVM on LUKS.
    ```
 1. Associate the keyfile with the LUKS container partition.
    ```sh
-   cryptsetup luksAddKey /dev/nvme1np1p1 /nvme1.key
+   cryptsetup luksAddKey /dev/nvme1n1p1 /nvme1.key
    ```
 1. Open the LUKS container.
    ```sh
-   cryptsetup luksOpen /dev/nvme1n1p1 nvme1n1_luks0
+   cryptsetup luksOpen /dev/nvme1n1p1 nvme1n1_luks0 --key-file /nvme1.key
    ```
 1. Create the physical volume in LUKS container.
    ```sh
@@ -400,6 +399,19 @@ LVM on LUKS.
    ```
    # /dev/mapper/nvme1n1_luks0_volgrp0-data
    UUID=<Logical volume partition UUID>  /mnt/nvme1 ext4 rw,relatime 0 0
+   ```
+1. Re-mount `/etc/fstab` specified devices.
+   ```sh
+   mount -a
+   systemctl daemon-reload
+   ```
+1. Change the mounted file system ownership to the regular user.
+   ```sh
+   chown -R user-00:user-00 /mnt/nvme1
+   ```
+1. Reboot.
+   ```sh
+   systemctl reboot
    ```
 
 ## Connecting to Wi-Fi
