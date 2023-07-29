@@ -387,7 +387,7 @@ LVM on LUKS.
    ```sh
    blkid --match-tag UUID -o value /dev/nvme1n1p1
    ```
-1. Add the LUKS container partition entry to `/etc/crypttab`:
+1. Add the LUKS container partition entry to file `/etc/crypttab`:
    ```
    nvme1          UUID=<LUKS container partition UUID>    /nvme1.key
    ```
@@ -395,7 +395,7 @@ LVM on LUKS.
    ```sh
    blkid --match-tag UUID -o value /dev/mapper/nvme1n1_luks0_volgrp0-data
    ```
-1. Add the logical volume partition entry to `/etc/fstab`:
+1. Add the logical volume partition entry to file `/etc/fstab`:
    ```
    # /dev/mapper/nvme1n1_luks0_volgrp0-data
    UUID=<Logical volume partition UUID>  /mnt/nvme1 ext4 rw,relatime 0 0
