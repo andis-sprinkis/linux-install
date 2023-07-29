@@ -400,7 +400,7 @@ LVM on LUKS.
    # /dev/mapper/nvme1n1_luks0_volgrp0-data
    UUID=<Logical volume partition UUID>  /mnt/nvme1 ext4 rw,relatime 0 0
    ```
-1. Re-mount `/etc/fstab` specified devices.
+1. Re-mount `/etc/fstab` file specified devices.
    ```sh
    mount -a
    systemctl daemon-reload
