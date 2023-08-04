@@ -80,6 +80,7 @@ pipewire-alsa
 pipewire-jack
 pipewire-pulse
 pkgconf
+pyenv
 python
 python-pip
 python-pipenv
