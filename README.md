@@ -206,8 +206,8 @@ With LVM on LUKS, systemd-boot bootloader, hibernation, applying user personal c
 1. Set the console font and keymap.
    Add to file `/etc/vconsole.conf`:
    ```sh
-   KEYMAP=lv
    FONT=ter-v22b
+   KEYMAP=lv
    ```
 1. Set hostname.
    ```sh
