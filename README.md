@@ -429,7 +429,7 @@ LVM on LUKS.
   iwctl station $station get-networks
   iwctl station $station connect $network_name
   ```
-- Finished installation OS environment:
+- The installed OS environment:
   - Interactively:
     ```sh
     nmtui
