@@ -96,6 +96,7 @@ sed
 smartmontools
 sshfs
 systemd
+terminus-font
 texinfo
 tk
 tmux

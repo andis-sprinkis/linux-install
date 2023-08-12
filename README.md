@@ -104,7 +104,7 @@ With LVM on LUKS, systemd-boot bootloader, hibernation, applying user personal c
    ```
 1. Install base packages.
    ```sh
-   pacstrap /mnt base linux linux-firmware networkmanager openssh sudo neovim git lvm2
+   pacstrap /mnt base linux linux-firmware networkmanager openssh sudo neovim git terminus-font lvm2
    ```
 1. Generate fstab.
    ```sh
@@ -203,6 +203,12 @@ With LVM on LUKS, systemd-boot bootloader, hibernation, applying user personal c
       LC_TELEPHONE=lv_LV.UTF-8
       LC_TIME=lv_LV.UTF-8
       ```
+1. Set the console font and keymap.
+   Add to file `/etc/vconsole.conf`:
+   ```sh
+   KEYMAP=lv
+   FONT=ter-v22b
+   ```
 1. Set hostname.
    ```sh
    echo "arch-pc-00" > /etc/hostname
