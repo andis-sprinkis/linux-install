@@ -6,9 +6,14 @@ With LVM on LUKS, systemd-boot bootloader, hibernation, applying user personal c
 
 1. [Download](https://archlinux.org/download/) the Arch Linux installer image.
 1. Write the installation image to the installation media.
-   ```sh
-   cat path/to/archlinux-version-x86_64.iso > /dev/sdx
-   ```
+
+   - To write the image from a \*nix system:
+     ```sh
+     < path/to/archlinux-version-x86_64.iso > /dev/sdx
+     ```
+   - To write the image from Microsoft Windows, use [Rufus](https://rufus.ie/en/).
+   - Alternatively – copy the downloaded image to a [Ventoy](https://github.com/ventoy/Ventoy) prepared device.
+
 1. Disable "Secure Boot" in the BIOS of the installation target computer.
 1. Boot installation target computer into Arch Linux installation media environment.
 1. Verify EFI boot mode by listing efivars directory.
@@ -259,7 +264,7 @@ With LVM on LUKS, systemd-boot bootloader, hibernation, applying user personal c
    ```
 1. Install the Arch official package repository packages.
    ```sh
-   sudo pacman -S --needed $(echo $(cat ./pkg_pacman))
+   sudo pacman -S --needed $(echo $(< ./pkg_pacman))
    ```
 1. If installation target computer is a VirtualBox guest, install and enable the VirtualBox guest utilities.
    ```sh
@@ -276,7 +281,7 @@ With LVM on LUKS, systemd-boot bootloader, hibernation, applying user personal c
    ```
 1. Install AUR packages.
    ```sh
-   yay -S --needed $(echo $(cat ./pkg_aur))
+   yay -S --needed $(echo $(< ./pkg_aur))
    ```
 1. Install user general configuration.
    ```sh
@@ -301,11 +306,11 @@ With LVM on LUKS, systemd-boot bootloader, hibernation, applying user personal c
    ```
 1. Install npm packages.
    ```sh
-   volta install $(echo $(cat ./pkg_npm))
+   volta install $(echo $(< ./pkg_npm))
    ```
 1. Install PyPi packages.
    ```sh
-   pip3 install $(echo $(cat ./pkg_pypi))
+   pip3 install $(echo $(< ./pkg_pypi))
    ```
 1. Enable the audio system.
    ```sh
