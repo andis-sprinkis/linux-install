@@ -12,7 +12,7 @@ With LVM on LUKS, systemd-boot bootloader, hibernation, applying user personal c
      < path/to/archlinux-version-x86_64.iso > /dev/sdx
      ```
    - To write the image from Microsoft Windows, use [Rufus](https://rufus.ie/en/).
-   - Alternatively – copy the downloaded image to a [Ventoy](https://github.com/ventoy/Ventoy) prepared device.
+   - Alternatively, copy the downloaded image to a [Ventoy](https://github.com/ventoy/Ventoy) prepared device.
 
 1. Disable "Secure Boot" in the BIOS of the installation target computer.
 1. Boot installation target computer into Arch Linux installation media environment.
