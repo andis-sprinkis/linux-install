@@ -120,6 +120,7 @@ xorg-xinit
 xorg-xrandr
 xorg-xset
 xorg-xwininfo
+xsettingsd
 zathura
 zathura-pdf-mupdf
 zathura-ps
