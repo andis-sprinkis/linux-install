@@ -446,9 +446,11 @@ LVM on LUKS.
 
 ## Hardware configuration and troubleshooting
 
+- Manpages – `xorg.conf`, `xrandr`.
 - [AMDGPU - ArchWiki](https://wiki.archlinux.org/title/AMDGPU)
 - [Backlight - ArchWiki](https://wiki.archlinux.org/title/Backlight)
 - [Intel graphics - ArchWiki](https://wiki.archlinux.org/title/Intel_graphics)
 - [Intel graphics - LinuxReviews](https://linuxreviews.org/Intel_graphics)
 - [NVIDIA - ArchWiki](https://wiki.archlinux.org/title/NVIDIA)
 - [Smartcards - ArchWiki](https://wiki.archlinux.org/title/Smartcards)
+- [Xorg - ArchWiki](https://wiki.archlinux.org/title/Xorg)
