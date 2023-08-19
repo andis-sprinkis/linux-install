@@ -452,5 +452,7 @@ LVM on LUKS.
 - [Intel graphics - ArchWiki](https://wiki.archlinux.org/title/Intel_graphics)
 - [Intel graphics - LinuxReviews](https://linuxreviews.org/Intel_graphics)
 - [NVIDIA - ArchWiki](https://wiki.archlinux.org/title/NVIDIA)
+- [Network UPS Tools - ArchWiki](https://wiki.archlinux.org/title/Network_UPS_Tools)
+- [Network UPS Tools - Hardware compatibility list](https://networkupstools.org/stable-hcl.html)
 - [Smartcards - ArchWiki](https://wiki.archlinux.org/title/Smartcards)
 - [Xorg - ArchWiki](https://wiki.archlinux.org/title/Xorg)
