@@ -141,6 +141,14 @@ With LVM on LUKS, systemd-boot bootloader, hibernation, applying user personal c
     initrd /initramfs-linux.img
     options cryptdevice=UUID=<LUKS container partition UUID>:nvme0n1_luks0 root=/dev/nvme0n1_luks0_volgrp0/root resume=/dev/nvme0n1_luks0_volgrp0/swap module_blacklist=pcspkr,snd_pcsp
     ```
+   ---
+   Set TTY default screen rotation by specifying the `fbcon=rotate:X` boot options value.
+
+   For a counter-clockwise rotation set:
+
+   ```
+   options ... fbcon=rotate:1
+   ```
 1. Configure boot-loader.
    Add file `/boot/loader/loader.conf`:
     ```
