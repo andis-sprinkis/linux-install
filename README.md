@@ -456,7 +456,7 @@ LVM on LUKS.
         nmcli device wifi connect $ssid password $password
         ```
 
-## Hardware configuration and troubleshooting
+## Related resources
 
 -   `xorg.conf`, `xrandr` manpages
 -   [AMDGPU - ArchWiki](https://wiki.archlinux.org/title/AMDGPU)
