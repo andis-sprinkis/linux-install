@@ -135,20 +135,24 @@ With LVM on LUKS, systemd-boot bootloader, hibernation, applying user personal c
     ```
 1. Add boot-loader entry.
    Add file `/boot/loader/entries/arch.conf`:
+
     ```
     title Arch Linux
     linux /vmlinuz-linux
     initrd /initramfs-linux.img
     options cryptdevice=UUID=<LUKS container partition UUID>:nvme0n1_luks0 root=/dev/nvme0n1_luks0_volgrp0/root resume=/dev/nvme0n1_luks0_volgrp0/swap module_blacklist=pcspkr,snd_pcsp
     ```
-   ---
-   Set TTY default screen rotation by specifying the `fbcon=rotate:X` boot options value.
 
-   For a counter-clockwise rotation set:
+    ***
 
-   ```
-   options ... fbcon=rotate:1
-   ```
+    Set TTY default screen rotation by specifying the `fbcon=rotate:X` boot options value.
+
+    For a counter-clockwise rotation set:
+
+    ```
+    options ... fbcon=rotate:1
+    ```
+
 1. Configure boot-loader.
    Add file `/boot/loader/loader.conf`:
     ```
@@ -463,4 +467,5 @@ LVM on LUKS.
 -   [Network UPS Tools - ArchWiki](https://wiki.archlinux.org/title/Network_UPS_Tools)
 -   [Network UPS Tools - Hardware compatibility list](https://networkupstools.org/stable-hcl.html)
 -   [Smartcards - ArchWiki](https://wiki.archlinux.org/title/Smartcards)
+-   [The Framebuffer Console — The Linux Kernel documentation](https://www.kernel.org/doc/html/latest/fb/fbcon.html)
 -   [Xorg - ArchWiki](https://wiki.archlinux.org/title/Xorg)
