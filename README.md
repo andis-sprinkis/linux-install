@@ -156,7 +156,7 @@ With LVM on LUKS, systemd-boot bootloader, hibernation, applying user personal c
 1. Configure boot-loader.
    Add file `/boot/loader/loader.conf`:
     ```
-    #timeout 3
+    #timeout 0
     #console-mode keep
     ```
 1. Update `/etc/mkinitcpio.conf` variable `HOOKS`, adding `encrypt lvm2 resume`
