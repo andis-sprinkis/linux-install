@@ -207,7 +207,7 @@ With LVM on LUKS, systemd-boot bootloader, hibernation, applying user personal c
     1. ```sh
        locale-gen
        ```
-    1. Add to file `/etc/locale.conf`
+    1. Add file `/etc/locale.conf`
         ```sh
         LANG=en_US.UTF-8
         LC_ADDRESS=lv_LV.UTF-8
@@ -262,7 +262,7 @@ With LVM on LUKS, systemd-boot bootloader, hibernation, applying user personal c
     ```
 1. Set console typematic delay and rate (keyboard input speed).
 
-    1. Add to file `/etc/systemd/system/console-kbdrate.service`:
+    1. Add file `/etc/systemd/system/console-kbdrate.service`:
 
         ```systemd
         [Unit]
