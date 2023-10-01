@@ -178,7 +178,7 @@ With LVM on LUKS, systemd-boot bootloader, hibernation, applying user personal c
        ```
     1. Add file `/etc/pacman.d/hooks/100-systemd-boot.hook`:
 
-        ```ini
+        ```systemd
         [Trigger]
         Type = Package
         Operation = Upgrade
@@ -260,6 +260,29 @@ With LVM on LUKS, systemd-boot bootloader, hibernation, applying user personal c
     exit
     reboot
     ```
+1. Set console typematic delay and rate (keyboard input speed).
+
+    1. Add to file `/etc/systemd/system/console-kbdrate.service`:
+
+        ```systemd
+        [Unit]
+        Description=Console typematic delay and rate (kbdrate).
+
+        [Service]
+        Type=oneshot
+        RemainAfterExit=yes
+        StandardInput=tty
+        StandardOutput=tty
+        ExecStart=/usr/bin/kbdrate --silent --delay 165 --rate 55
+
+        [Install]
+        WantedBy=multi-user.target
+        ```
+
+    1. ```sh
+       systemctl enable --now console-kbdrate.service
+       ```
+
 1. Enable Network Time Protocol.
     ```sh
     sudo timedatectl set-ntp on
