@@ -345,7 +345,7 @@ With LVM on LUKS, systemd-boot bootloader, hibernation, applying user personal c
     ```
 1. Install PyPi packages.
     ```sh
-    pip3 install $(echo $(< ./pkg_pypi))
+    pipx install $(echo $(< ./pkg_pypi))
     ```
 1. Enable the audio system.
     ```sh
