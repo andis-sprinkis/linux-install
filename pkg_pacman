@@ -87,6 +87,7 @@ pyenv
 python
 python-pip
 python-pipenv
+python-pipx
 qbittorrent
 qpwgraph
 r
