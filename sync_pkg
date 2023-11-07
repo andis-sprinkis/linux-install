@@ -1,6 +1,27 @@
 #!/usr/bin/env sh
+set -e
 
+echo "
+System upgrade
+"
+yay -Syu
+
+echo "
+Arch package repository packages installation
+"
 yay -S --needed $(echo $(< ./pkg_pacman))
+
+echo "
+AUR packages installation
+"
 yay -S --needed $(echo $(< ./pkg_aur))
+
+echo "
+PyPI packages installation
+"
 for p in $(echo $(< ./pkg_pypi)); do pipx install $p; done
+
+echo "
+NPM packages installation
+"
 volta install $(echo $(< ./pkg_npm))
