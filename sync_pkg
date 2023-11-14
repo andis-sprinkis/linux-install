@@ -33,17 +33,3 @@ NPM packages installation:
 "
   volta install $(echo $(< "./pkg_npm"))
 }
-
-[ -s "./pkg_pypi" ] && {
-  echo "
-PyPI packages installation:
-"
-  for p in $(echo $(< "./pkg_pypi")); do pipx install $p; done
-}
-
-[ -s "./pkg_npm" ] && {
-  echo "
-npm packages installation:
-"
-  volta install $(echo $(< "./pkg_npm"))
-}
