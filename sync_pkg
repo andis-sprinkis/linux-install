@@ -10,8 +10,7 @@ yay -Syu
   echo "
 Arch package repository packages installation:
 "
-  yay -S --needed $(echo $(< "./pkg_base"))
-  yay -S --needed $(echo $(< "./pkg_pacman"))
+  yay -S --needed $(echo $(< "./pkg_base")) $(echo $(< "./pkg_pacman"))
 }
 
 [ -s "./pkg_yay" ] && {
