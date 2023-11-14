@@ -33,6 +33,7 @@ NPM packages installation:
 "
   volta install $(echo $(< "./pkg_npm"))
 }
+
 [ -s "./pkg_pypi" ] && {
   echo "
 PyPI packages installation:
