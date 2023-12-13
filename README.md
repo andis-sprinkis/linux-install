@@ -335,7 +335,7 @@ With LVM on LUKS, systemd-boot bootloader, hibernation, applying user personal c
     ```
 1. Create user download directries.
    ```sh
-   mkdir -p $HOME/dl/{_chrm,_ff,_jd2,_mnt,_qbt,_scdl,_ytdlp}
+   mkdir -p $HOME/dl/{_chrm,_eph,_ff,_jd2,_mnt,_qbt,_scdl,_ytdlp}
    ```
 1. Switch shell to ZSH for both root and the regular user and execute ZSH.
     ```sh
