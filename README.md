@@ -333,6 +333,10 @@ With LVM on LUKS, systemd-boot bootloader, hibernation, applying user personal c
     cd $HOME/.config
     git clone https://github.com/andis-sprinkis/nvim-user-config nvim
     ```
+1. Create user download directries.
+   ```sh
+   mkdir -p $HOME/dl/{_chrm,_ff,_jd2,_mnt,_qbt,_scdl,_ytdlp}
+   ```
 1. Switch shell to ZSH for both root and the regular user and execute ZSH.
     ```sh
     sudo chsh -s /usr/bin/zsh root
