@@ -334,9 +334,9 @@ With LVM on LUKS, systemd-boot bootloader, hibernation, applying user personal c
     git clone https://github.com/andis-sprinkis/nvim-user-config nvim
     ```
 1. Create user download directries.
-   ```sh
-   mkdir -p $HOME/dl/{_chrm,_eph,_ff,_jd2,_mnt,_qbt,_scdl,_ytdlp}
-   ```
+    ```sh
+    mkdir -p $HOME/dl/{_chrm,_eph,_ff,_jd2,_mnt,_qbt,_scdl,_ytdlp}
+    ```
 1. Switch shell to ZSH for both root and the regular user and execute ZSH.
     ```sh
     sudo chsh -s /usr/bin/zsh root
@@ -363,6 +363,10 @@ With LVM on LUKS, systemd-boot bootloader, hibernation, applying user personal c
    In file `/etc/fuse.conf` add or uncomment line
     ```
     user_allow_other
+    ```
+1. Detect the hardware sensors.
+    ```sh
+    sudo sensors-detect
     ```
 1. To customize functions of the device power buttons:
     1. Update file `/etc/systemd/logind.conf`.
