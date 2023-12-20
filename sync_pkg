@@ -27,6 +27,7 @@ AUR packages installation:
   echo "
 PyPI packages installation:
 "
+
   for p in $(echo $(< "./pkg_pypi")); do pipx install $p; done
 }
 
@@ -34,5 +35,6 @@ PyPI packages installation:
   echo "
 NPM packages installation:
 "
+
   volta install $(echo $(< "./pkg_npm"))
 }
