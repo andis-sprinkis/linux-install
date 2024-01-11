@@ -103,6 +103,7 @@ sed
 smartmontools
 sshfs
 systemd
+tcl
 texinfo
 tk
 tmux
