@@ -318,6 +318,18 @@ With LVM on LUKS, systemd-boot bootloader, hibernation, applying user personal c
     ```sh
     yay -S --needed $(echo $(< ./pkg_aur))
     ```
+1. Install AppImage packages.
+
+    ```sh
+    appimage_dir="$HOME/.local/opt/appimage"
+
+    for p in $(echo $(< ./pkg_appimage)); do
+        curl --location --output-dir "$appimage_dir" --remote-name "$p"
+    done
+
+    chmod +x ~/.local/opt/appimage/*
+    ```
+
 1. Install user general configuration.
     ```sh
     git_url_cfg=https://github.com/andis-sprinkis/nix-user-config
