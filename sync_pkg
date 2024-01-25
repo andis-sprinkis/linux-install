@@ -28,17 +28,17 @@ AUR packages installation:
 
 # ------------------------------------------------------------------------------
 
-[ -s "./pkg_appimage" ] && {
-  echo "
-AppImage packages installation:
-"
-
-  for p in $(echo $(< "./pkg_appimage")); do
-      curl --location --no-clobber --output-dir "$HOME/.local/opt/appimage" --remote-name "$p"
-  done
-
-  chmod +x $HOME/.local/opt/appimage/*
-}
+# [ -s "./pkg_appimage" ] && {
+#   echo "
+# AppImage packages installation:
+# "
+#
+#   for p in $(echo $(< "./pkg_appimage")); do
+#       curl --location --no-clobber --output-dir "$HOME/.local/opt/appimage" --remote-name "$p"
+#   done
+#
+#   chmod +x $HOME/.local/opt/appimage/*
+# }
 
 # ------------------------------------------------------------------------------
 
@@ -46,7 +46,7 @@ AppImage packages installation:
   echo "
 PyPI packages installation:
 "
-  for p in $(echo $(< "./pkg_pypi")); do pipx install $p; done
+  for p in $(echo $(< "./pkg_pypi")); do pipx install "$p"; done
 }
 
 # ------------------------------------------------------------------------------

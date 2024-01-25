@@ -53,6 +53,7 @@ jq
 keepassxc
 kitty
 lf
+libcalculate
 libreoffice-fresh
 lm_sensors
 lua
@@ -91,6 +92,7 @@ python
 python-pip
 python-pipenv
 python-pipx
+qalculate-gtk
 qbittorrent
 qpwgraph
 r
