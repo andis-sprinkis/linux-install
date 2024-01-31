@@ -46,7 +46,6 @@ AUR packages installation:
   echo "
 PyPI packages upgrade:
 "
-
   pipx upgrade-all
 
   echo "
