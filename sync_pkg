@@ -44,6 +44,12 @@ AUR packages installation:
 
 [ -s "./pkg_pypi" ] && {
   echo "
+PyPI packages upgrade:
+"
+
+  pipx upgrade-all
+
+  echo "
 PyPI packages installation:
 "
   for p in $(echo $(< "./pkg_pypi")); do pipx install "$p"; done
