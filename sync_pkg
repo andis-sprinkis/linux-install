@@ -6,7 +6,7 @@ set -e
 echo "
 System upgrade:
 "
-yay -Syu
+yay --color=auto -Syu
 
 # ------------------------------------------------------------------------------
 
@@ -14,7 +14,7 @@ yay -Syu
   echo "
 Arch package repository packages installation:
 "
-  yay -S --needed $(echo $(< "./pkg_base")) $(echo $(< "./pkg_pacman"))
+  yay --color=auto -S --needed $(echo $(< "./pkg_base")) $(echo $(< "./pkg_pacman"))
 }
 
 # ------------------------------------------------------------------------------
@@ -23,7 +23,7 @@ Arch package repository packages installation:
   echo "
 AUR packages installation:
 "
-  yay -S --needed $(echo $(< "./pkg_aur"))
+  yay --color=auto -S --needed $(echo $(< "./pkg_aur"))
 }
 
 # ------------------------------------------------------------------------------
