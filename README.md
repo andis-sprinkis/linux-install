@@ -228,7 +228,7 @@ With LVM on LUKS, systemd-boot bootloader, hibernation, applying user personal c
     ```
 1. Set hostname.
     ```sh
-    echo "arch-pc-00" > /etc/hostname
+    echo "archpc0" > /etc/hostname
     ```
 1. Set root user password.
     ```sh
@@ -236,9 +236,9 @@ With LVM on LUKS, systemd-boot bootloader, hibernation, applying user personal c
     ```
 1. Create a regular user.
     ```sh
-    useradd -m user-00
-    usermod -Ga wheel user-00
-    passwd user-00
+    useradd -m user0
+    usermod -Ga wheel user0
+    passwd user0
     ```
 1. Set sudo-ers.
     1. ```sh
@@ -253,7 +253,7 @@ With LVM on LUKS, systemd-boot bootloader, hibernation, applying user personal c
     ```sh
     dirs=$(eval "echo /mnt/nvme{1..5} /mnt/sata{1..5} /mnt/usb{1..5} /mnt/pc{1..5} /mnt/nas{1..5} /mnt/vm{1..5} /mnt/mobile{1..5}")
     mkdir -p $dirs
-    chown user-00:user-00 $dirs
+    chown user0:user0 $dirs
     ```
 1. Exit from /mnt root shell and reboot, then log in as the regular user.
     ```sh
@@ -340,7 +340,7 @@ With LVM on LUKS, systemd-boot bootloader, hibernation, applying user personal c
 1. Switch shell to ZSH for both root and the regular user and execute ZSH.
     ```sh
     sudo chsh -s /usr/bin/zsh root
-    sudo chsh -s /usr/bin/zsh user-00
+    sudo chsh -s /usr/bin/zsh user0
     exec zsh
     ```
 1. Install AppImage packages.
@@ -466,7 +466,7 @@ LVM on LUKS.
     ```
 1. Change the mounted file system ownership to the regular user.
     ```sh
-    chown -R user-00:user-00 /mnt/nvme1
+    chown -R user0:user0 /mnt/nvme1
     ```
 1. Reboot.
     ```sh
@@ -505,4 +505,5 @@ LVM on LUKS.
 -   [Persistent block device naming - ArchWiki](https://wiki.archlinux.org/title/Persistent_block_device_naming)
 -   [Smartcards - ArchWiki](https://wiki.archlinux.org/title/Smartcards)
 -   [The Framebuffer Console — The Linux Kernel documentation](https://www.kernel.org/doc/html/latest/fb/fbcon.html)
+-   [User/Group Name Syntax](https://systemd.io/USER_NAMES/)
 -   [Xorg - ArchWiki](https://wiki.archlinux.org/title/Xorg)
