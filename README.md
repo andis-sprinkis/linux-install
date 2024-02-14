@@ -236,9 +236,9 @@ With LVM on LUKS, systemd-boot bootloader, hibernation, applying user personal c
     ```
 1. Create a regular user.
     ```sh
-    useradd -m user0
-    usermod -Ga wheel user0
-    passwd user0
+    useradd -m usr0
+    usermod -Ga wheel usr0
+    passwd usr0
     ```
 1. Set sudo-ers.
     1. ```sh
@@ -253,7 +253,7 @@ With LVM on LUKS, systemd-boot bootloader, hibernation, applying user personal c
     ```sh
     dirs=$(eval "echo /mnt/nvme{1..5} /mnt/sata{1..5} /mnt/usb{1..5} /mnt/pc{1..5} /mnt/nas{1..5} /mnt/vm{1..5} /mnt/mobile{1..5}")
     mkdir -p $dirs
-    chown user0:user0 $dirs
+    chown usr0:usr0 $dirs
     ```
 1. Exit from /mnt root shell and reboot, then log in as the regular user.
     ```sh
@@ -340,7 +340,7 @@ With LVM on LUKS, systemd-boot bootloader, hibernation, applying user personal c
 1. Switch shell to ZSH for both root and the regular user and execute ZSH.
     ```sh
     sudo chsh -s /usr/bin/zsh root
-    sudo chsh -s /usr/bin/zsh user0
+    sudo chsh -s /usr/bin/zsh usr0
     exec zsh
     ```
 1. Install AppImage packages.
@@ -466,7 +466,7 @@ LVM on LUKS.
     ```
 1. Change the mounted file system ownership to the regular user.
     ```sh
-    chown -R user0:user0 /mnt/nvme1
+    chown -R usr0:usr0 /mnt/nvme1
     ```
 1. Reboot.
     ```sh
