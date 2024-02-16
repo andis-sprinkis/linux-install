@@ -83,6 +83,7 @@ p7zip
 pacman
 patch
 pcsc-tools
+picom
 pipewire
 pipewire-alsa
 pipewire-jack
@@ -124,7 +125,6 @@ which
 wireplumber
 x11-ssh-askpass
 xclip
-xcompmgr
 xdotool
 xorg-server
 xorg-xbacklight
