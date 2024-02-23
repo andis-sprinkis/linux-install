@@ -14,6 +14,7 @@ bat
 bc
 binutils
 calcurse
+calf
 ccid
 ccls
 chafa
@@ -51,6 +52,7 @@ imagemagick
 inkscape
 inxi
 j4-dmenu-desktop
+jalv
 jq
 keepassxc
 kitty
@@ -58,12 +60,14 @@ lf
 libcalculate
 libreoffice-fresh
 lm_sensors
+lsp-plugins-lv2
 lua
 m4
 maim
 make
 man-db
 man-pages
+mda.lv2
 mesa
 mesa-utils
 mpv
@@ -138,6 +142,7 @@ xorg-xwininfo
 xscreensaver
 xsettingsd
 xss-lock
+zam-plugins-lv2
 zathura
 zathura-pdf-mupdf
 zathura-ps
