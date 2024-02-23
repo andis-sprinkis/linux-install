@@ -25,6 +25,7 @@ curl
 dmenu
 docker
 docker-compose
+dos2unix
 dosfstools
 easyeffects
 epiphany
