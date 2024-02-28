@@ -306,6 +306,10 @@ With LVM on LUKS, systemd-boot bootloader, hibernation, applying user personal c
     sudo pacman -S virtualbox-guest-utils
     sudo systemctl enable --now vboxservice.service
     ```
+1. Add the regular user to `vboxusers` group for the guest OS USB port access in VirtualBox VMs running on this host.
+    ```sh
+    sudo usermod -Ga vboxusers usr0
+    ```
 1. Install AUR helper.
     ```sh
     temp_path=$(mktemp -d)
