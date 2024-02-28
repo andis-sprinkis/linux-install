@@ -125,6 +125,8 @@ unicode-character-database
 unrar
 unzip
 util-linux
+virtualbox
+virtualbox-host-modules-arch
 wezterm
 wget
 which
