@@ -126,6 +126,7 @@ unrar
 unzip
 util-linux
 virtualbox
+virtualbox-guest-iso
 virtualbox-host-modules-arch
 wezterm
 wget
