@@ -46,7 +46,8 @@ grep
 gzip
 hsetroot
 htop
-i3
+i3-wm
+i3blocks
 imagemagick
 inkscape
 inxi
@@ -113,6 +114,7 @@ smartmontools
 sshfs
 systemd
 tcl
+tessarect-data-eng
 texinfo
 tk
 tmux
