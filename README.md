@@ -97,7 +97,7 @@ With LVM on LUKS, systemd-boot bootloader, hibernation, applying user personal c
     mount /dev/mapper/nvme0n1_luks0_volgrp0-root /mnt
     mkdir /mnt/{boot,home}
     mount /dev/mapper/nvme0n1_luks0_volgrp0-home /mnt/home
-    mount /dev/nvme0n1p1 /mnt/boot
+    mount /dev/nvme0n1p1 /mnt/boot -o fmask=0137,dmask=0027
     ```
 1. Initialize /swap partition.
     ```sh
