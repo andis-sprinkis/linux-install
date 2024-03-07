@@ -325,7 +325,7 @@ With LVM on LUKS, systemd-boot bootloader, hibernation, applying user personal c
 1. Install user general configuration.
     ```sh
     git_url_cfg=https://github.com/andis-sprinkis/nix-user-config
-    dir_cfg_git=$HOME/.dotfiles_git
+    dir_cfg_git=$HOME/.local/state/dotfiles_git
     temp_path=$(mktemp -d)
     git clone --separate-git-dir=$dir_cfg_git $git_url_cfg $temp_path
     rsync --recursive --verbose --exclude '.git' $temp_path/ $HOME
