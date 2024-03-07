@@ -226,6 +226,29 @@ With LVM on LUKS, systemd-boot bootloader, hibernation, applying user personal c
     FONT=ter-v24b
     KEYMAP=lv
     ```
+1. Set console typematic delay and rate (keyboard input speed).
+
+    1. Add file `/etc/systemd/system/console-kbdrate.service`:
+
+        ```systemd
+        [Unit]
+        Description=Console typematic delay and rate (kbdrate).
+
+        [Service]
+        Type=oneshot
+        RemainAfterExit=yes
+        StandardInput=tty
+        StandardOutput=tty
+        ExecStart=/usr/bin/kbdrate --silent --delay 165 --rate 55
+
+        [Install]
+        WantedBy=multi-user.target
+        ```
+
+    1. ```sh
+       systemctl enable console-kbdrate.service
+       ```
+
 1. Set hostname.
     ```sh
     echo "archpc0" > /etc/hostname
@@ -237,7 +260,7 @@ With LVM on LUKS, systemd-boot bootloader, hibernation, applying user personal c
 1. Create a regular user.
     ```sh
     useradd -m usr0
-    usermod -Ga wheel usr0
+    usermod -aG wheel usr0
     passwd usr0
     ```
 1. Set sudo-ers.
@@ -260,29 +283,6 @@ With LVM on LUKS, systemd-boot bootloader, hibernation, applying user personal c
     exit
     reboot
     ```
-1. Set console typematic delay and rate (keyboard input speed).
-
-    1. Add file `/etc/systemd/system/console-kbdrate.service`:
-
-        ```systemd
-        [Unit]
-        Description=Console typematic delay and rate (kbdrate).
-
-        [Service]
-        Type=oneshot
-        RemainAfterExit=yes
-        StandardInput=tty
-        StandardOutput=tty
-        ExecStart=/usr/bin/kbdrate --silent --delay 165 --rate 55
-
-        [Install]
-        WantedBy=multi-user.target
-        ```
-
-    1. ```sh
-       systemctl enable --now console-kbdrate.service
-       ```
-
 1. Enable Network Time Protocol.
     ```sh
     sudo timedatectl set-ntp on
@@ -308,7 +308,7 @@ With LVM on LUKS, systemd-boot bootloader, hibernation, applying user personal c
     ```
 1. Add the regular user to `vboxusers` group for the guest OS USB port access in VirtualBox VMs running on this host.
     ```sh
-    sudo usermod -Ga vboxusers usr0
+    sudo usermod -aG vboxusers usr0
     ```
 1. Install AUR helper.
     ```sh
