@@ -93,7 +93,7 @@ With LVM on LUKS, systemd-boot bootloader, hibernation, applying user personal c
     ```
 1. Create mount points and mount the system partitions.
     ```sh
-    mkdir /mnt
+    mkdir -p /mnt
     mount /dev/mapper/nvme0n1_luks0_volgrp0-root /mnt
     mkdir /mnt/{boot,home}
     mount /dev/mapper/nvme0n1_luks0_volgrp0-home /mnt/home
