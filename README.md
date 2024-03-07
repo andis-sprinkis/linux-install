@@ -299,7 +299,7 @@ With LVM on LUKS, systemd-boot bootloader, hibernation, applying user personal c
     ```
 1. Install the Arch official package repository packages.
     ```sh
-    sudo pacman -S --needed $(echo $(< ./pkg_pacman))
+    sudo pacman -S --needed $(echo $(cat ./pkg_pacman))
     ```
 1. If installation target computer is a VirtualBox guest, install and enable the VirtualBox guest utilities.
     ```sh
@@ -320,7 +320,7 @@ With LVM on LUKS, systemd-boot bootloader, hibernation, applying user personal c
     ```
 1. Install AUR packages.
     ```sh
-    yay -S --needed $(echo $(< ./pkg_aur))
+    yay -S --needed $(echo $(cat ./pkg_aur))
     ```
 1. Install user general configuration.
     ```sh
