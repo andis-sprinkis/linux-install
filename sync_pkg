@@ -14,7 +14,7 @@ yay --color=auto -Syu
   echo "
 Arch package repository packages installation:
 "
-  yay --color=auto -S --needed $(echo $(< "./pkg_base")) $(echo $(< "./pkg_pacman"))
+  yay --color=auto -S --needed $(echo $(cat "./pkg_base")) $(echo $(cat "./pkg_pacman"))
 }
 
 # ------------------------------------------------------------------------------
@@ -23,7 +23,7 @@ Arch package repository packages installation:
   echo "
 AUR packages installation:
 "
-  yay --color=auto -S --needed $(echo $(< "./pkg_aur"))
+  yay --color=auto -S --needed $(echo $(cat "./pkg_aur"))
 }
 
 # ------------------------------------------------------------------------------
@@ -33,8 +33,8 @@ AUR packages installation:
 # AppImage packages installation:
 # "
 #
-#   for p in $(echo $(< "./pkg_appimage")); do
-#       curl --location --no-clobber --output-dir "$HOME/.local/opt/appimage" --remote-name "$p"
+#   for p in $(echo $(cat "./pkg_appimage")); do
+#     curl --location --no-clobber --output-dir "$HOME/.local/opt/appimage" --remote-name "$p"
 #   done
 #
 #   chmod +x $HOME/.local/opt/appimage/*
@@ -51,7 +51,7 @@ PyPI packages upgrade:
   echo "
 PyPI packages installation:
 "
-  for p in $(echo $(< "./pkg_pypi")); do pipx install "$p"; done
+  for p in $(echo $(cat "./pkg_pypi")); do pipx install "$p"; done
 }
 
 # ------------------------------------------------------------------------------
@@ -60,5 +60,5 @@ PyPI packages installation:
   echo "
 NPM packages installation:
 "
-  volta install $(echo $(< "./pkg_npm"))
+  volta install $(echo $(cat "./pkg_npm"))
 }
