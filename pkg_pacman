@@ -150,7 +150,6 @@ xdg-desktop-portal-gtk
 xdg-desktop-portal-wlr
 xdotool
 xorg-server
-xorg-xbacklight
 xorg-xdpyinfo
 xorg-xev
 xorg-xinit
