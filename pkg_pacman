@@ -113,6 +113,10 @@ sd
 sed
 smartmontools
 sshfs
+sway
+swaybg
+swayidle
+swaylock
 systemd
 tcl
 tessarect-data-eng
@@ -129,12 +133,18 @@ util-linux
 virtualbox
 virtualbox-guest-iso
 virtualbox-host-modules-arch
+wayland
 wezterm
 wget
 which
 wireplumber
+wl-clipboard
+wlmenu
+wlroots
 x11-ssh-askpass
 xclip
+xdg-desktop-portal-gtk
+xdg-desktop-portal-wlr
 xdotool
 xorg-server
 xorg-xbacklight
@@ -143,6 +153,7 @@ xorg-xev
 xorg-xinit
 xorg-xrandr
 xorg-xset
+xorg-xwayland
 xorg-xwininfo
 xscreensaver
 xsettingsd
