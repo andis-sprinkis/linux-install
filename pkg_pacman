@@ -142,6 +142,7 @@ wireplumber
 wl-clipboard
 wlmenu
 wlroots
+wmenu
 x11-ssh-askpass
 xclip
 xdg-desktop-portal-gtk
