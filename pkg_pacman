@@ -110,6 +110,7 @@ rsync
 rust
 samba
 sd
+seatd
 sed
 smartmontools
 sshfs
