@@ -10,6 +10,7 @@ autossh
 base-devel
 bat
 bc
+bemenu-wayland
 binutils
 calcurse
 calf
