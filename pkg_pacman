@@ -45,6 +45,7 @@ glu
 gnome-themes-extra
 go
 grep
+grim
 gzip
 hsetroot
 htop
@@ -114,6 +115,7 @@ samba
 sd
 seatd
 sed
+slurp
 smartmontools
 sshfs
 sway
