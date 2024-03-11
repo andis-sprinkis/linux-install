@@ -35,7 +35,6 @@ ffmpegthumbnailer
 findutils
 firefox
 fzf
-gammastep
 gawk
 gcc
 gdb
@@ -147,6 +146,7 @@ wireplumber
 wl-clipboard
 wlmenu
 wlroots
+wlsunset
 wmenu
 x11-ssh-askpass
 xclip
