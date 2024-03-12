@@ -140,6 +140,7 @@ virtualbox-guest-iso
 virtualbox-host-modules-arch
 wayland
 wezterm
+wf-recorder
 wget
 which
 wireplumber
