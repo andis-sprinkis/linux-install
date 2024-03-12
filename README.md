@@ -159,7 +159,7 @@ With LVM on LUKS, systemd-boot bootloader, hibernation, applying user personal c
     #timeout 0
     #console-mode keep
     ```
-1. Update `/etc/mkinitcpio.conf` variable `HOOKS`, adding `encrypt lvm2 resume`:
+1. In file `/etc/mkinitcpio.conf` update the variable `HOOKS`, adding `encrypt lvm2 resume`:
     ```sh
     HOOKS=(base udev autodetect modconf kms keyboard keymap consolefont block filesystems fsck encrypt lvm2 resume)
     ```
