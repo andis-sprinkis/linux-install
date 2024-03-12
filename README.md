@@ -134,7 +134,7 @@ With LVM on LUKS, systemd-boot bootloader, hibernation, applying user personal c
     blkid --match-tag UUID -o value /dev/nvme0n1p2
     ```
 1. Add boot-loader entry.
-   Add file `/boot/loader/entries/arch.conf`:
+   Create file `/boot/loader/entries/arch.conf`:
 
     ```
     title Arch Linux
@@ -154,7 +154,7 @@ With LVM on LUKS, systemd-boot bootloader, hibernation, applying user personal c
     ```
 
 1. Configure boot-loader.
-   Add file `/boot/loader/loader.conf`:
+   Create file `/boot/loader/loader.conf`:
     ```
     #timeout 0
     #console-mode keep
@@ -176,7 +176,7 @@ With LVM on LUKS, systemd-boot bootloader, hibernation, applying user personal c
     1. ```sh
        mkdir /etc/pacman.d/hooks
        ```
-    1. Add file `/etc/pacman.d/hooks/100-systemd-boot.hook`:
+    1. Create file `/etc/pacman.d/hooks/100-systemd-boot.hook`:
 
         ```systemd
         [Trigger]
@@ -207,7 +207,7 @@ With LVM on LUKS, systemd-boot bootloader, hibernation, applying user personal c
     1. ```sh
        locale-gen
        ```
-    1. Add file `/etc/locale.conf`
+    1. Create file `/etc/locale.conf`
         ```sh
         LANG=en_US.UTF-8
         LC_ADDRESS=lv_LV.UTF-8
@@ -228,7 +228,7 @@ With LVM on LUKS, systemd-boot bootloader, hibernation, applying user personal c
     ```
 1. Set console typematic delay and rate (keyboard input speed).
 
-    1. Add file `/etc/systemd/system/console-kbdrate.service`:
+    1. Create file `/etc/systemd/system/console-kbdrate.service`:
 
         ```systemd
         [Unit]
