@@ -364,6 +364,10 @@ With LVM on LUKS, systemd-boot bootloader, hibernation, applying user personal c
     ```sh
     systemctl --user enable --now pipewire.socket pipewire-pulse.socket wireplumber.service
     ```
+1. Enable the Bluetooth service.
+    ```sh
+    sudo systemctl enable bluetooth.service
+    ```
 1. Enable the PC/SD Smart Card Daemon service.
     ```sh
     sudo systemctl enable pcscd.service
