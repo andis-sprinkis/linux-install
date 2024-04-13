@@ -12,6 +12,8 @@ bat
 bc
 bemenu-wayland
 binutils
+bluez
+bluez-utils
 brightnessctl
 calcurse
 calf
