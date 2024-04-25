@@ -37,6 +37,7 @@ ffmpeg
 ffmpegthumbnailer
 findutils
 firefox
+font-manager
 fzf
 gawk
 gcc
