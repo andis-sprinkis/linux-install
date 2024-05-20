@@ -103,6 +103,7 @@ pipewire-alsa
 pipewire-jack
 pipewire-pulse
 pkgconf
+polkit-gnome
 pyenv
 python
 python-pip
