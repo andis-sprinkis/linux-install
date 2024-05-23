@@ -161,7 +161,7 @@ With LVM on LUKS, systemd-boot bootloader, hibernation, applying user personal c
     ```
 1. In file `/etc/mkinitcpio.conf` update the variable `HOOKS`, adding `encrypt lvm2 resume`:
     ```sh
-    HOOKS=(base udev autodetect modconf kms keyboard keymap consolefont block filesystems fsck encrypt lvm2 resume)
+    HOOKS=(base udev keyboard autodetect modconf kms keymap consolefont block filesystems fsck encrypt lvm2 resume)
     ```
 1. Regenerate initfram file.
     ```sh
