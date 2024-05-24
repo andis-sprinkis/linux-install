@@ -159,16 +159,19 @@ With LVM on LUKS, systemd-boot bootloader, hibernation, applying user personal c
     #timeout 0
     #console-mode keep
     ```
-1. In file `/etc/mkinitcpio.conf` update the variable `MODULES`, adding `usbhid xhci_hcd`:
-    ```sh
-    MODULES=(usbhid·xhci_hcd)
-    ```
-1. In file `/etc/mkinitcpio.conf` update the variable `HOOKS`, adding `encrypt lvm2 resume` and moving `keyboard` before
-   `autodetect`:
-    ```sh
-    HOOKS=(base udev keyboard autodetect modconf kms keymap consolefont block filesystems fsck encrypt lvm2 resume)
-    ```
-1. Regenerate initfram file.
+1. Update the file `/etc/mkinitcpio.conf`.
+
+    1. Change value of the variable `MODULES`, adding `usbhid xhci_hcd`:
+        ```sh
+        MODULES=(usbhid xhci_hcd)
+        ```
+    1. Change value of the variable `HOOKS`, adding `encrypt lvm2 resume` and moving `keyboard` before
+      `autodetect`:
+        ```sh
+        HOOKS=(base udev keyboard autodetect modconf kms keymap consolefont block filesystems fsck encrypt lvm2 resume)
+        ```
+
+1. Regenerate the initfram file.
     ```sh
     mkinitcpio -P
     ```
