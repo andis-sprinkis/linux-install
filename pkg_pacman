@@ -113,6 +113,7 @@ python-pipx
 qalculate-gtk
 qbittorrent
 qpwgraph
+qrencode
 r
 reflector
 ripgrep
