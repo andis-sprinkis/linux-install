@@ -145,7 +145,7 @@ With LVM on LUKS, systemd-boot bootloader, hibernation, applying user personal c
 
     ### Addtional kernel options
 
-    - Set TTY default screen rotation by specifying the `fbcon=rotate:X` boot options value.
+    - Set the TTY default screen rotation by specifying the `fbcon=rotate:X` option.
 
         For a counter-clockwise rotation set:
 
