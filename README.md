@@ -143,15 +143,28 @@ With LVM on LUKS, systemd-boot bootloader, hibernation, applying user personal c
     options cryptdevice=UUID=<LUKS container partition UUID>:nvme0n1_luks0 root=/dev/nvme0n1_luks0_volgrp0/root resume=/dev/nvme0n1_luks0_volgrp0/swap module_blacklist=pcspkr,snd_pcsp
     ```
 
-    ***
+    ### Addtional kernel options
 
-    Set TTY default screen rotation by specifying the `fbcon=rotate:X` boot options value.
+    - Set TTY default screen rotation by specifying the `fbcon=rotate:X` boot options value.
 
-    For a counter-clockwise rotation set:
+        For a counter-clockwise rotation set:
 
-    ```
-    options ... fbcon=rotate:1
-    ```
+        ```
+        options ... fbcon=rotate:1
+        ```
+
+    - To prevent a kernel panic due to an Intel HD Graphics related power management issue in certain Intel CPUs, add the option `i915.enable_dc=0`.
+
+        ```
+        options ... i915.enable_dc=0
+        ```
+
+        ⚠️ This issue also applies to the installation media.
+
+        More information on the issue:
+
+        - [Issue with Kernel Panic on Dell Latitude 7490 and i915 - English / Hardware - openSUSE Forums](https://forums.opensuse.org/t/issue-with-kernel-panic-on-dell-latitude-7490-and-i915/164462) ([archived](https://archive.is/7IAD6))
+        - [Intel graphics - LinuxReviews](https://linuxreviews.org/Intel_graphics#Kernel_Parameters) ([archived](https://archive.is/km0z3))
 
 1. Configure boot-loader.
    Create file `/boot/loader/loader.conf`:
@@ -165,8 +178,7 @@ With LVM on LUKS, systemd-boot bootloader, hibernation, applying user personal c
         ```sh
         MODULES=(usbhid xhci_hcd)
         ```
-    1. Change value of the variable `HOOKS`, adding `encrypt lvm2 resume` and moving `keyboard` before
-      `autodetect`:
+    1. Change value of the variable `HOOKS`, adding `encrypt lvm2 resume` and moving `keyboard` before `autodetect`:
         ```sh
         HOOKS=(base udev keyboard autodetect modconf kms keymap consolefont block filesystems fsck encrypt lvm2 resume)
         ```
@@ -514,7 +526,7 @@ LVM on LUKS.
 -   [AMDGPU - ArchWiki](https://wiki.archlinux.org/title/AMDGPU)
 -   [Backlight - ArchWiki](https://wiki.archlinux.org/title/Backlight)
 -   [Intel graphics - ArchWiki](https://wiki.archlinux.org/title/Intel_graphics)
--   [Intel graphics - LinuxReviews](https://linuxreviews.org/Intel_graphics)
+-   [Intel graphics - LinuxReviews](https://linuxreviews.org/Intel_graphics) ([archived](https://archive.is/km0z3))
 -   [NVIDIA - ArchWiki](https://wiki.archlinux.org/title/NVIDIA)
 -   [Network UPS Tools - ArchWiki](https://wiki.archlinux.org/title/Network_UPS_Tools)
 -   [Network UPS Tools - Hardware compatibility list](https://networkupstools.org/stable-hcl.html)
