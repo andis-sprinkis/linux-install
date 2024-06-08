@@ -159,7 +159,7 @@ With LVM on LUKS, systemd-boot bootloader, hibernation, applying user personal c
         options ... i915.enable_dc=0
         ```
 
-        ⚠️ This issue also applies to the installation media.
+        ⚠️ This issue also applies to the installation media environment.
 
         More information on the issue:
 
