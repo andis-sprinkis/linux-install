@@ -269,6 +269,10 @@ With LVM on LUKS, systemd-boot bootloader, hibernation, applying user personal c
        systemctl enable console-kbdrate.service
        ```
 
+1. Enable mouse support in console.
+    ```sh
+    systemctl enable gpm.service
+    ```
 1. Set hostname.
     ```sh
     echo "archpc0" > /etc/hostname
