@@ -126,6 +126,7 @@ sed
 slurp
 smartmontools
 sshfs
+strace
 sway
 swaybg
 swayidle
