@@ -505,25 +505,6 @@ LVM on LUKS.
     systemctl reboot
     ```
 
-## Connecting to Wi-Fi
-
--   Installation media environment:
-    ```sh
-    iwctl station list
-    iwctl station $station scan
-    iwctl station $station get-networks
-    iwctl station $station connect $network_name
-    ```
--   The installed OS environment:
-    -   Interactively:
-        ```sh
-        nmtui
-        ```
-    -   Non-interactively:
-        ```sh
-        nmcli device wifi connect $ssid password $password
-        ```
-
 ## Addition of newly listed packages to an existing setup
 
 Steps for adding any newly listed packages from the user package lists to an already existing setup.
@@ -578,6 +559,25 @@ Steps for adding any newly listed packages from the user package lists to an alr
 
         ```sh
         volta install $(echo $(cat "./pkg_npm"))
+        ```
+
+## Connecting to Wi-Fi
+
+-   Installation media environment:
+    ```sh
+    iwctl station list
+    iwctl station $station scan
+    iwctl station $station get-networks
+    iwctl station $station connect $network_name
+    ```
+-   The installed OS environment:
+    -   Interactively:
+        ```sh
+        nmtui
+        ```
+    -   Non-interactively:
+        ```sh
+        nmcli device wifi connect $ssid password $password
         ```
 
 ## Related resources
