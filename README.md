@@ -524,6 +524,63 @@ LVM on LUKS.
         nmcli device wifi connect $ssid password $password
         ```
 
+## Addition of newly listed packages to an existing setup
+
+Steps for adding any newly listed packages from the user package lists to an already existing setup.
+
+1. Clone the repository containing the user package lists.
+    ```sh
+    cd $HOME
+    git clone https://github.com/andis-sprinkis/linux-install
+    cd linux-install
+    ```
+1. Upgrade the system packages.
+    ```sh
+    yay --color=auto -Syu
+    ```
+1. Add the packages from the respective packages lists.
+
+    - The Arch package repository:
+
+        ```sh
+        yay --color=auto -S --needed $(echo $(cat "./pkg_base")) $(echo $(cat "./pkg_pacman"))
+        ```
+
+    - AUR:
+
+        ```sh
+        yay --color=auto -S --needed $(echo $(cat "./pkg_aur"))
+        ```
+
+    - AppImage sources:
+
+        ```sh
+        path_dir_appimage="$HOME/.local/opt/appimage"
+
+        for p in $(echo $(cat "./pkg_appimage")); do
+          [ ! -f "${path_dir_appimage}/${p}" ] && curl --location --output-dir "$path_dir_appimage" --remote-name "$p"
+        done
+
+        chmod +x "${path_dir_appimage}/"*
+        ```
+
+    - PyPI:
+
+        - Upgrade existing packages.
+            ```sh
+            pipx upgrade-all
+            ```
+        - Sync with the package list.
+            ```sh
+            for p in $(echo $(cat "./pkg_pypi")); do pipx install "$p"; done
+            ```
+
+    - npm:
+
+        ```sh
+        volta install $(echo $(cat "./pkg_npm"))
+        ```
+
 ## Related resources
 
 -   `xorg.conf`, `xrandr` manpages
