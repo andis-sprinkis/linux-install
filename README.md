@@ -537,7 +537,7 @@ Steps for adding any newly listed packages from the user package lists to an alr
     git clone https://github.com/andis-sprinkis/linux-install
     cd linux-install
     ```
-1. Add the packages from the respective packages lists.
+1. Add the packages from the respective source lists.
 
     - The Arch package repository:
 
