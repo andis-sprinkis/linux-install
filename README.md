@@ -528,15 +528,14 @@ LVM on LUKS.
 
 Steps for adding any newly listed packages from the user package lists to an already existing setup.
 
-1. Clone the repository containing the user package lists.
-    ```sh
-    cd $HOME
-    git clone https://github.com/andis-sprinkis/linux-install
-    cd linux-install
-    ```
 1. Upgrade the system packages.
     ```sh
     yay --color=auto -Syu
+    ```
+1. Clone the repository containing the user package lists.
+    ```sh
+    git clone https://github.com/andis-sprinkis/linux-install
+    cd linux-install
     ```
 1. Add the packages from the respective packages lists.
 
