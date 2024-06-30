@@ -505,7 +505,7 @@ LVM on LUKS.
     systemctl reboot
     ```
 
-## Addition of newly listed packages to an existing setup
+## Adding newly listed packages to an existing setup
 
 Steps for adding any newly listed packages from the user package lists to an already existing setup.
 
